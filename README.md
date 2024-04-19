@@ -1,8 +1,8 @@
 # Funeral_Service
-Учебная практика
-Имеются 4 ветки (back, front, wpf) main просьба не трогать
-Чтобы склонировать из репозитория опредённую ветку выполняется команда
-git clone -b название_ветки https://github.com/savayaqu/Funeral_Service.git
+Учебная практика<br>
+Имеются 4 ветки (back, front, wpf) main просьба не трогать<br>
+Чтобы склонировать из репозитория опредённую ветку выполняется команда<br>
+git clone -b название_ветки https://github.com/savayaqu/Funeral_Service.git<br>
 <h1>Порядок выполнения команд</h1>
 <ul>
   <li>git branch (проверка на какой ветке)/вы должны быть на своей ветке</li>
