@@ -13,6 +13,6 @@ class Authenticate extends Middleware
      */
     protected function redirectTo(Request $request): ?string
     {
-        throw new ApiException(401, 'Ошибка входа');
+        throw new ApiException(401, 'Несанкционированный');
     }
 }
