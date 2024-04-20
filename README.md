@@ -4,9 +4,7 @@
 Чтобы склонировать из репозитория опредённую ветку выполняется команда<br>
 git clone -b название_ветки https://github.com/savayaqu/Funeral_Service.git 
 <h4>Клонирование API<h4/>
-````
 git clone -b back https://github.com/savayaqu/Funeral_Service.git theendzone.ru
-````
 <h1>Порядок выполнения команд</h1>
 <ul>
   <li>git branch (проверка на какой ветке)/вы должны быть на своей ветке</li>
