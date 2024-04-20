@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Shift extends Model
 {
     use HasFactory;
+    protected $fillable = ['status', 'date_start', 'date_end'];
+    public function users()
+    {
+        $this->hasMany(User::class);
+    }
 }

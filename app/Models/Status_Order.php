@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Status_Order extends Model
 {
     use HasFactory;
+    protected $fillable = ['name'];
+    public function orders()
+    {
+        $this->hasMany(Order::class);
+    }
 }
