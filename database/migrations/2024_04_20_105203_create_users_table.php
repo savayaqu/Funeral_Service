@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('password', 255);
             $table->string('email', 128)->unique();
             $table->bigInteger('telephone')->unique();
-            $table->string('api_token', 255)->nullable();
+            $table->string('api_token', 255)->nullable()->unique();
             $table->foreignId('role_id')->constrained('roles', 'id')->onUpdate('cascade');
             $table->foreignId('shift_id')->nullable()->constrained('roles', 'id')->onUpdate('cascade');
             $table->timestamps();
