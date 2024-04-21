@@ -9,7 +9,7 @@ use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\AuthController;
-
+use \App\Http\Controllers\NewsController;
 
     // Функционал пользователя
 //Регистрация
@@ -26,6 +26,10 @@ Route::get('/product/{id}', [ProductController::class, 'show']);
 Route::get('/products', [ProductController::class, 'index']);
 //Просмотр отзывов у товара
 Route::get('/product/{id}/review', [ReviewController::class, 'index']);
+//Просмотр всех новостей
+Route::get('/news', [NewsController::class, 'index']);
+//Просмотр конкретной новости
+Route::get('/news/{id}', [NewsController::class, 'show']);
 
     // Функционал авторизированного пользователя
 Route::middleware('auth:api')->group(function () {
