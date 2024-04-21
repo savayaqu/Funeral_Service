@@ -12,6 +12,7 @@ use Illuminate\Support\Str;
 
 class AuthController extends Controller
 {
+    // Метод авторизации
     public function login(LoginRequest $request)
     {
         $user = User
@@ -23,8 +24,9 @@ class AuthController extends Controller
         }
         $user->api_token = Hash::make(microtime(true)*1000 . Str::random());
         $user->save();
-        return response()->json($user)->setStatusCode(200);
+        return response(['data' => $user])->setStatusCode(200);
     }
+    //Метод выхода
     public function logout(Request $request)
     {
         $user = $request->user();

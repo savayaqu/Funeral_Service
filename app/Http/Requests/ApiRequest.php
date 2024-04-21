@@ -14,6 +14,6 @@ class ApiRequest extends FormRequest
    }
    public function failedAuthorization()
    {
-       throw new ApiException(401, 'Несанкционированный');
+       throw new ApiException(401, 'Ошибка авторизации');
    }
 }
