@@ -16,7 +16,7 @@ return new class extends Migration
             $table->dateTime('date_order');
             $table->foreignId('payment_id')->constrained('payments', 'id')->onUpdate('cascade');
             $table->foreignId('user_id')->constrained('users', 'id')->onUpdate('cascade');
-            $table->foreignId('employee_id')->constrained('users', 'id')->onUpdate('cascade');
+            $table->foreignId('employee_id')->nullable()->constrained('users', 'id')->onUpdate('cascade');
             $table->foreignId('status_order_id')->constrained('status_orders', 'id')->onUpdate('cascade');
             $table->timestamps();
         });

@@ -13,7 +13,9 @@ use \App\Http\Controllers\AuthController;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+
 // Авторизация
 Route::post('/login', [AuthController::class, 'login']);
 // Выход
 Route::middleware('auth:api')->get('/logout', [AuthController::class, 'logout']);
+// Регистрация

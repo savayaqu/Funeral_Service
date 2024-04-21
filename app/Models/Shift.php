@@ -11,6 +11,6 @@ class Shift extends Model
     protected $fillable = ['status', 'date_start', 'date_end'];
     public function users()
     {
-        $this->hasMany(User::class);
+        return $this->hasMany(User::class);
     }
 }

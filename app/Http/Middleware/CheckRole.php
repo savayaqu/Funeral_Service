@@ -3,19 +3,22 @@
 namespace App\Http\Middleware;
 
 use App\Exceptions\ApiException;
+use App\Models\Role;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Symfony\Component\HttpFoundation\Response;
+
 
 class CheckRole
 {
     public function handle(Request $request, Closure $next, ...$roles)
     {
-        if (Auth::check() && Auth::user()->hasRole($roles)) {
-            return $next($request);
+        $user = Auth::user();
+
+        if (!$user || !$user->hasRoleByCode($roles)) {
+            throw new ApiException(403, 'Доступ запрещён');
         }
-        throw new ApiException(403, 'Доступ запрещён');
+        return $next($request);
     }
 
 }

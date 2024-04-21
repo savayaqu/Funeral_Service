@@ -11,6 +11,6 @@ class Payment extends Model
     protected $fillable = ['name'];
     public function orders()
     {
-        $this->hasMany(Order::class);
+        return $this->hasMany(Order::class);
     }
 }

@@ -11,22 +11,22 @@ class Product extends Model
     protected $fillable = ['name', 'description', 'price', 'quantity', 'category_id'];
     public function categories()
     {
-        $this->belongsTo(Category::class);
+        return $this->belongsTo(Category::class);
     }
     public function photo_products()
     {
-        $this->hasMany(Photo_Product::class);
+        return $this->hasMany(Photo_Product::class);
     }
     public function reviews()
     {
-        $this->hasMany(Review::class);
+        return $this->hasMany(Review::class);
     }
     public function carts()
     {
-        $this->hasMany(Cart::class);
+        return $this->hasMany(Cart::class);
     }
     public function compounds()
     {
-        $this->hasMany(Compound::class);
+        return $this->hasMany(Compound::class);
     }
 }

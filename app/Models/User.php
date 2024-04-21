@@ -2,12 +2,21 @@
 
 namespace App\Models;
 
+// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
-class User extends Model
+class User extends Authenticatable
 {
-    use HasFactory;
+    use HasApiTokens, HasFactory, Notifiable;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
     protected $fillable = [
         'name',
         'surname',
@@ -19,30 +28,30 @@ class User extends Model
         'api_token',
         'role_id',
         'shift_id',
-        ];
+    ];
     public function shifts()
     {
-        $this->belongsTo(Shift::class);
+        return $this->belongsTo(Shift::class);
     }
     public function roles()
     {
-        $this->belongsTo(Role::class);
+        return $this->belongsTo(Role::class, 'role_id');
     }
     public function carts()
     {
-        $this->hasMany(Cart::class);
+        return $this->hasMany(Cart::class);
     }
     public function orders()
     {
-        $this->hasMany(Order::class);
+        return $this->hasMany(Order::class);
     }
     public function reviews()
     {
-        $this->hasMany(Review::class);
+        return $this->hasMany(Review::class);
+    }
+    public function hasRoleByCode(array $codes) {
+        $userRole = $this->roles()->first();
+        return in_array($userRole->code, $codes);
     }
 
-    public function hasRole(array $role)
-    {
-        return in_array($this->role->code,$role);
-    }
 }

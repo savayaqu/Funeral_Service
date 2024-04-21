@@ -11,6 +11,6 @@ class Photo_News extends Model
     protected $fillable = ['path', 'news_id'];
     public function news()
     {
-        $this->belongsTo(News::class);
+        return $this->belongsTo(News::class);
     }
 }

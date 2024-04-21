@@ -11,11 +11,11 @@ class Compound extends Model
     protected $fillable = ['quantity', 'total_price', 'order_id', 'product_id'];
     public function orders()
     {
-        $this->belongsTo(Order::class);
+        return $this->belongsTo(Order::class);
 
     }
     public function products()
     {
-        $this->belongsTo(Product::class);
+        return $this->belongsTo(Product::class);
     }
 }
