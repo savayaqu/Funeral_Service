@@ -11,7 +11,35 @@ use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\AuthController;
 use \App\Http\Controllers\NewsController;
 
-    // Функционал пользователя
+                        //Хз по ролям
+
+// Просмотр всех пользователей
+Route::get('/users', [UserController::class, 'index']);
+
+// Просмотр всех заказов
+Route::get('/orders', [OrderController::class, 'index']);
+// Просмотр конкретного заказа
+Route::get('/order/{id}', [OrderController::class, 'show']);
+// Просмотр всех заказов по конкретному товару и общей выручки за всё время, а также количеством заказов для данного товара и количество купленного товара
+Route::get('/orders/product/{id}', [OrderController::class, 'showProduct']);
+// Просмотр всех заказов и общей выручки, заказов за конкретный ГГГГ.ММ.ДД
+Route::post('/orders', [OrderController::class, 'dateOrder']);
+// Просмотр всех заказов и общей выручки за период от ГГГГ.ММ.ДД до ГГГГ.ММ.ДД
+Route::post('/orders/between', [OrderController::class, 'betweenDate']);
+// Просмотр всех заказов по конкретному товару и общей выручки за период ГГГГ.ММ.ДД до ГГГГ.ММ.ДД, а также количеством заказов для данного товара и количество купленного товара
+Route::post('/orders/product/{id}/between', [OrderController::class, 'productBetweenDate']);
+
+
+
+
+
+
+
+
+
+
+
+             // Функционал пользователя
 //Регистрация
 Route::post('/register', [UserController::class, 'create']);
 //Авторизация
@@ -31,15 +59,17 @@ Route::get('/news', [NewsController::class, 'index']);
 //Просмотр конкретной новости
 Route::get('/news/{id}', [NewsController::class, 'show']);
 
-    // Функционал авторизированного пользователя
+            // Функционал авторизированного пользователя
 Route::middleware('auth:api')->group(function () {
     //Выход
     Route::get('/logout', [AuthController::class, 'logout']);
     //Просмотр профиля
     Route::get('/profile', [UserController::class, 'this']);
+    //Изменнеие пароля в профиле
+    Route::patch('/profile', [UserController::class, 'changePass']);
 });
 
-    // Функционал клиента
+            // Функционал клиента
 Route::middleware('auth:api', 'role:user')->group(function () {
     //Добавление товара в корзину
     Route::post('/product/{id}', [CartController::class, 'addToCart']);
@@ -51,25 +81,30 @@ Route::middleware('auth:api', 'role:user')->group(function () {
     Route::post('/product/{id}/review', [ReviewController::class, 'store']);
     //Редактирование своей корзины
     Route::patch('/cart', [CartController::class, 'update']);
-    //Редактирование профиля текущего пользователя
-    Route::patch('/profile', [UserController::class, 'updateProfile']);
     //Удалеления товара из корзины
     Route::delete('/cart/product/{id}', [CartController::class, 'delete']);
     //Просмотр всех заказов текущего пользователя
     Route::get('/orders', [OrderController::class, 'index']);
+
 });
 
-    // Функционал менеджера
+            // Функционал менеджера
 Route::middleware('auth:api', 'role:manager')->group(function () {
 
 });
 
-    // Функционал сотрудника
+            // Функционал сотрудника
 Route::middleware('auth:api', 'role:employee')->group(function () {
-
+    //
 });
 
-    // Функционал администратора
+            // Функционал администратора
 Route::middleware('auth:api', 'role:admin')->group(function () {
-
+    // CRUD новости
+    // CRUD товары
+    // CRUD категории
+    // CRUD пользователи
+    // CRUD смены
+    // CRUD отзывы
+    // CRUD
 });

@@ -65,4 +65,125 @@ class OrderController extends Controller
         // Возвращаем ответ с сообщением об успешном оформлении заказа
         return response()->json(['message' => 'Заказ успешно оформлен'], 200);
     }
+    //Просмотр всех заказов
+    public function index()
+    {
+        $compounds = Compound::with('orders')->get();
+        return response(['data'=>$compounds]);
+    }
+    // Просмотр конкретного заказа
+    public function show(int $id)
+    {
+        $compound = Compound::with('orders')->where('id', $id)->first();
+        return response(['data'=>$compound]);
+    }
+    // Просмотр всех заказов по конкретному товару и общей выручки за всё время, а также количеством заказов для данного товара и количество купленного товара
+    public function showProduct(int $id)
+    {
+        $compounds = Compound::with('orders')->where('product_id', $id)->get();
+        $total_money = 0;
+        $countProduct = 0;
+        $countOrder = 0;
+        $orderIds = [];
+        foreach ($compounds as $compound) {
+            if (!in_array($compound->order_id, $orderIds)) {
+                $orderIds[] = $compound->order_id;
+                $countOrder++;
+            }
+            $total_money += $compound->total_price;
+            $countProduct += $compound->quantity;
+        }
+        return response()->json([
+            'data'=>$compounds,
+            'total_money' => $total_money,
+            'order_count'=>$countOrder,
+            'product_count'=>$countProduct
+        ]);
+    }
+    // Просмотр всех заказов и общей выручки за конкретный ГГГГ.ММ.ДД
+    public function dateOrder(Request $request)
+    {
+        // Получаем заказы для переданной даты
+        $date = $request->input('date_order');
+        $orders = Order::whereDate('date_order', $date)->get();
+
+        // Выбираем только идентификаторы заказов
+        $orderIds = $orders->pluck('id');
+
+        // Получаем все связанные с заказами объекты Compound
+        $compounds = Compound::with('orders')->whereHas('orders', function ($query) use ($orderIds) {
+            $query->whereIn('id', $orderIds);
+        })->get();
+        $total_money = 0;
+        foreach ($compounds as $compound) {
+            $total_money += $compound->total_price;
+        }
+        return response()->json([
+            'data' => $compounds,
+            'total_money'=>$total_money
+        ]);
+    }
+    // Просмотр всех заказов и общей выручки за период от ГГГГ.ММ.ДД до ГГГГ.ММ.ДД
+    public function betweenDate(Request $request)
+    {
+        // Получаем начальную и конечную даты из запроса
+        $date_start = $request->input('date_start');
+        $date_end = $request->input('date_end');
+        // Конвертируем даты в формат datetime
+        $start_datetime = Carbon::parse($date_start)->startOfDay();
+        $end_datetime = Carbon::parse($date_end)->endOfDay();
+        // Выполняем запрос на выборку всех заказов за указанный период
+        $orders = Order::whereBetween('date_order', [$start_datetime, $end_datetime])->get();
+        // Выбираем только идентификаторы заказов
+        $orderIds = $orders->pluck('id');
+        // Получаем все связанные с заказами объекты Compound
+        $compounds = Compound::with('orders')->whereHas('orders', function ($query) use ($orderIds) {
+            $query->whereIn('id', $orderIds);
+        })->get();
+        $total_money = 0;
+        foreach ($compounds as $compound) {
+            $total_money += $compound->total_price;
+        }
+        // Возвращаем данные о заказах и общей выручке
+        return response()->json([
+            'data' => $compounds,
+            'total_money' => $total_money,
+        ]);
+    }
+    // Просмотр всех заказов по конкретному товару и общей выручки за период ГГГГ.ММ.ДД до ГГГГ.ММ.ДД, а также количеством заказов для данного товара и количество купленного товара
+    public function productBetweenDate(Request $request, int $id)
+    {
+        // Получаем начальную и конечную даты из запроса
+        $date_start = $request->input('date_start');
+        $date_end = $request->input('date_end');
+        // Конвертируем даты в формат datetime
+        $start_datetime = Carbon::parse($date_start)->startOfDay();
+        $end_datetime = Carbon::parse($date_end)->endOfDay();
+        // Выполняем запрос на выборку всех заказов за указанный период
+        $orders = Order::whereBetween('date_order', [$start_datetime, $end_datetime])->get();
+        // Выбираем только идентификаторы заказов
+        $orderIds = $orders->pluck('id');
+        // Получаем все связанные с заказами объекты Compound
+        $compounds = Compound::with('orders')->where('product_id', $id)->whereHas('orders', function ($query) use ($orderIds) {
+            $query->whereIn('id', $orderIds);
+        })->get();
+        $total_money = 0;
+        $countProduct = 0;
+        $countOrder = 0;
+        $orderIds = [];
+        foreach ($compounds as $compound) {
+            if (!in_array($compound->order_id, $orderIds)) {
+                $orderIds[] = $compound->order_id;
+                $countOrder++;
+            }
+            $total_money += $compound->total_price;
+            $countProduct += $compound->quantity;
+        }
+        return response()->json([
+            'data'=>$compounds,
+            'total_money' => $total_money,
+            'order_count'=>$countOrder,
+            'product_count'=>$countProduct
+        ]);
+    }
 }

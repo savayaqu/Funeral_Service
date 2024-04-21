@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exceptions\ApiException;
 use App\Http\Requests\CreateUserRequest;
 use App\Models\Role;
 use App\Models\User;
@@ -23,6 +24,26 @@ class UserController extends Controller
     {
         $user=auth()->user();
         return response(['data'=>$user])->setStatusCode(200);
+    }
+    //Метод изменения пароля
+    public function changePass(Request $request)
+    {
+        $user = auth()->user();
+        $user->password = $request->input('password');
+        $user->save();
+        return response()->json('Пароль изменен')->setStatusCode(200);
+    }
+    // Просмотр всех пользователей
+    public function index()
+    {
+        $users = User::all();
+        if(!$users) {
+            throw new ApiException(404, 'Не найдено');
+        } else {
+            return response([
+                'data' => $users
+            ]);
+        }
     }
 
 }
