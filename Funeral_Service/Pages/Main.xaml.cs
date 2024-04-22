@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -53,11 +54,17 @@ namespace Funeral_Service.Pages
                         string responseBody = await response.Content.ReadAsStringAsync();
                         MessageBox.Show(responseBody);
 
-                        // Десериализуем JSON в список объектов Compound
-                        List<Compound> compounds = JsonConvert.DeserializeObject<List<Compound>>(responseBody);
+                        // Десериализуем JSON в объект JObject
+                        JObject jsonResponse = JObject.Parse(responseBody);
 
-                        // Привязываем список compounds к источнику данных таблицы
-                        dataGrid.ItemsSource = compounds;
+                        // Получаем массив объектов orders из свойства "data" в JSON
+                        JArray ordersArray = (JArray)jsonResponse["data"];
+
+                        // Десериализуем JSON-массив в список объектов Order
+                        List<Сompounds> orders = ordersArray.ToObject<List<Сompounds>>();
+
+                        // Привязываем список orders к источнику данных таблицы
+                        dataGrid.ItemsSource = orders;
                     }
                     else
                     {
@@ -70,16 +77,18 @@ namespace Funeral_Service.Pages
                 MessageBox.Show("Ошибка: " + ex.Message);
             }
         }
-   
 
-    // Класс для представления данных о компаундах
-    public class Compound
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-        // Другие свойства, если есть
-    }
+
+
+        // Класс для представления данных о заказах
+        public class Сompounds
+        {
+            public int Id { get; set; } // Идентификатор заказа
+            public int Quantity { get; set; } // Количество товара
+            public decimal TotalPrice { get; set; } // Общая цена
+            public int OrderId { get; set; } // Идентификатор заказа
+            public int ProductId { get; set; } // Идентификатор товара
+        }
         private void OrdersButton_Click(object sender, RoutedEventArgs e)
         {
             // Обработка нажатия кнопки "Заказы"
