@@ -68,7 +68,7 @@ class OrderController extends Controller
     //Просмотр всех заказов
     public function index()
     {
-        $compounds = Compound::with('orders')->get();
+        $compounds = Compound::all();
         return response()->json(['data'=>$compounds])->setStatusCode(200);
     }
     // Просмотр конкретного заказа

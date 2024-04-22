@@ -16,13 +16,17 @@ class ShiftController extends Controller
         if(!$shift) {
             throw new ApiException(404, 'Смена не найдена');
         }
-        $user = User::where('id', $request->input('user_id'))->first();
+        $user = User::where('id', $request->input('user_id'))
+            ->whereHas('roles', function ($query) {
+                $query->where('code', 'employee');
+            })
+            ->first();
         if (!$user) {
-            throw new ApiException(404, 'Пользователь не найден');
+            throw new ApiException(404, 'Пользователь не найден или не является сотрудником');
         }
-        $user->fill($request->all());
+        $user->shift_id = $id;
         $user->save();
-        return response()->json(['message'=> 'Пользователь '.$request->input('user_id').' добавлен на смену '.$id])->setStatusCode(200);
+        return response()->json(['message' => 'Пользователь ' . $id . ' обновлён'])->setStatusCode(200);
     }
     public function deleteUser(ShiftRequest $request, int $id) {
         $shift = Shift::where('id', $id)->first();
@@ -33,7 +37,7 @@ class ShiftController extends Controller
         if (!$user) {
             throw new ApiException(404, 'Пользователь не найден');
         }
-        $user->delete();
+        $user->shift_id = NULL;
         return response()->json(['message'=> 'Пользователь '.$request->input('user_id').' удалён со смены '.$id])->setStatusCode(200);
     }
 }
