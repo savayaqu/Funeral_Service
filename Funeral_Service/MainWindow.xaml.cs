@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Funeral_Service.Pages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,9 @@ namespace Funeral_Service
         public MainWindow()
         {
             InitializeComponent();
+            FrameManager.MainFrame = this.Mainframe;
+
+         Mainframe.Navigate(new Auth(this));
         }
     }
 }
