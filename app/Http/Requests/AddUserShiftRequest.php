@@ -4,12 +4,12 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateOrderRequest extends ApiRequest
+class AddUserShiftRequest extends FormRequest
 {
     public function rules(): array
     {
         return [
-            'payment_id' => 'required|integer|min:1|max:20'
+            'user_id' => 'required|integer|min:1|exists:users,id'
         ];
     }
 }

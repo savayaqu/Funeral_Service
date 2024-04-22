@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Exceptions\ApiException;
 use App\Http\Requests\CreateUserRequest;
+use App\Http\Requests\UpdateUserRequest;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -26,7 +27,7 @@ class UserController extends Controller
         return response()->json(['data'=>$user])->setStatusCode(200);
     }
     //Метод изменения пароля
-    public function changePass(Request $request)
+    public function changePass(UpdateUserRequest $request)
     {
         $user = auth()->user();
         $user->password = $request->input('password');
@@ -44,6 +45,13 @@ class UserController extends Controller
                 'data' => $users
             ])->setStatusCode(200);
         }
+    }
+    public function show(int $id) {
+        $user = User::where('id', $id)->first();
+        if (!$user) {
+            throw new ApiException(404, 'Пользователь не найден');
+        }
+        return response()->json(['data'=>$user])->setStatusCode(200);
     }
 
 }

@@ -10,21 +10,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\AuthController;
 use \App\Http\Controllers\NewsController;
-
-                        //Хз по ролям
-
-
-
-
-
-
-
-
-
-
-
-
-
+use \App\Http\Controllers\AdminController;
+use \App\Http\Controllers\ShiftController;
              // Функционал пользователя
 //Регистрация
 Route::post('/register', [UserController::class, 'create']);
@@ -51,7 +38,7 @@ Route::middleware('auth:api')->group(function () {
     Route::get('/logout', [AuthController::class, 'logout']);
     //Просмотр профиля
     Route::get('/profile', [UserController::class, 'this']);
-    //Изменнеие пароля в профиле
+    //Изменение пароля в профиле
     Route::patch('/profile', [UserController::class, 'changePass']);
 });
 
@@ -76,7 +63,12 @@ Route::middleware('auth:api', 'role:user')->group(function () {
 
             // Функционал менеджера
 Route::middleware('auth:api', 'role:manager')->group(function () {
-
+    // Просмотр всех пользователей
+    Route::get('/users', [UserController::class, 'index']);
+    //Добавление сотрудника на смену
+    Route::post('/shift/{id}/user/add', [ShiftController::class, 'addUser']);
+    //Просмотр конкретного пользователя
+    Route::get('/user/{id}', [UserController::class, 'show']);
 });
 
             // Функционал сотрудника
@@ -86,13 +78,16 @@ Route::middleware('auth:api', 'role:employee')->group(function () {
 
             // Функционал администратора
 Route::middleware('auth:api', 'role:admin')->group(function () {
-    // CRUD новости
-    // CRUD товары
-    // CRUD категории
-    // CRUD пользователи
-    // CRUD смены
-    // CRUD отзывы
-    // CRUD
+    //Создание нового пользователя с присвоением роли
+    Route::post('/admin/user/create', [AdminController::class, 'createUser']);
+    //Редактирование пользователя
+    Route::patch('/admin/user/{id}/update', [AdminController::class, 'updateUser']);
+    //Удаление пользователя
+    Route::delete('/admin/user/{id}/delete', [AdminController::class, 'deleteUser']);
+    //Добавление сотрудника на смену
+    Route::post('shift/{id}/user/add', [ShiftController::class, 'addUser']);
+    //Просмотр конкретного пользователя
+    Route::get('/user/{id}', [UserController::class, 'show']);
     // Просмотр всех пользователей
     Route::get('/users', [UserController::class, 'index']);
 // Просмотр всех заказов
