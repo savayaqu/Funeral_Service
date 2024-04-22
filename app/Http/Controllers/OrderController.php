@@ -69,13 +69,13 @@ class OrderController extends Controller
     public function index()
     {
         $compounds = Compound::with('orders')->get();
-        return response(['data'=>$compounds]);
+        return response()->json(['data'=>$compounds])->setStatusCode(200);
     }
     // Просмотр конкретного заказа
     public function show(int $id)
     {
         $compound = Compound::with('orders')->where('id', $id)->first();
-        return response(['data'=>$compound]);
+        return response()->json(['data'=>$compound])->setStatusCode(200);
     }
     // Просмотр всех заказов по конкретному товару и общей выручки за всё время, а также количеством заказов для данного товара и количество купленного товара
     public function showProduct(int $id)
@@ -121,7 +121,7 @@ class OrderController extends Controller
         return response()->json([
             'data' => $compounds,
             'total_money'=>$total_money
-        ]);
+        ])->setStatusCode(200);
     }
     // Просмотр всех заказов и общей выручки за период от ГГГГ.ММ.ДД до ГГГГ.ММ.ДД
     public function betweenDate(Request $request)
@@ -148,7 +148,7 @@ class OrderController extends Controller
         return response()->json([
             'data' => $compounds,
             'total_money' => $total_money,
-        ]);
+        ])->setStatusCode(200);
     }
     // Просмотр всех заказов по конкретному товару и общей выручки за период ГГГГ.ММ.ДД до ГГГГ.ММ.ДД, а также количеством заказов для данного товара и количество купленного товара
     public function productBetweenDate(Request $request, int $id)
@@ -184,6 +184,6 @@ class OrderController extends Controller
             'total_money' => $total_money,
             'order_count'=>$countOrder,
             'product_count'=>$countProduct
-        ]);
+        ])->setStatusCode(200);
     }
 }

@@ -23,7 +23,7 @@ class UserController extends Controller
     public function this()
     {
         $user=auth()->user();
-        return response(['data'=>$user])->setStatusCode(200);
+        return response()->json(['data'=>$user])->setStatusCode(200);
     }
     //Метод изменения пароля
     public function changePass(Request $request)
@@ -40,9 +40,9 @@ class UserController extends Controller
         if(!$users) {
             throw new ApiException(404, 'Не найдено');
         } else {
-            return response([
+            return response()->json([
                 'data' => $users
-            ]);
+            ])->setStatusCode(200);
         }
     }
 

@@ -20,18 +20,18 @@ class AuthController extends Controller
             ->where('password', $request->password)
             ->first();
         if(!$user) {
-            throw new ApiException(401, 'Несанкционированный');
+            throw new ApiException(401, 'Ошибка авторизации');
         }
         $user->api_token = Hash::make(microtime(true)*1000 . Str::random());
         $user->save();
-        return response(['data' => $user])->setStatusCode(200);
+        return response(['api_token' => $user->api_token])->setStatusCode(200);
     }
     //Метод выхода
     public function logout(Request $request)
     {
         $user = $request->user();
         if(!$user) {
-            throw new ApiException(401, 'Несанкционированный');
+            throw new ApiException(401, 'Ошибка авторизации');
         }
         $user->api_token = null;
         $user->save();

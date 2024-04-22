@@ -13,21 +13,7 @@ use \App\Http\Controllers\NewsController;
 
                         //Хз по ролям
 
-// Просмотр всех пользователей
-Route::get('/users', [UserController::class, 'index']);
 
-// Просмотр всех заказов
-Route::get('/orders', [OrderController::class, 'index']);
-// Просмотр конкретного заказа
-Route::get('/order/{id}', [OrderController::class, 'show']);
-// Просмотр всех заказов по конкретному товару и общей выручки за всё время, а также количеством заказов для данного товара и количество купленного товара
-Route::get('/orders/product/{id}', [OrderController::class, 'showProduct']);
-// Просмотр всех заказов и общей выручки, заказов за конкретный ГГГГ.ММ.ДД
-Route::post('/orders', [OrderController::class, 'dateOrder']);
-// Просмотр всех заказов и общей выручки за период от ГГГГ.ММ.ДД до ГГГГ.ММ.ДД
-Route::post('/orders/between', [OrderController::class, 'betweenDate']);
-// Просмотр всех заказов по конкретному товару и общей выручки за период ГГГГ.ММ.ДД до ГГГГ.ММ.ДД, а также количеством заказов для данного товара и количество купленного товара
-Route::post('/orders/product/{id}/between', [OrderController::class, 'productBetweenDate']);
 
 
 
@@ -107,4 +93,18 @@ Route::middleware('auth:api', 'role:admin')->group(function () {
     // CRUD смены
     // CRUD отзывы
     // CRUD
+    // Просмотр всех пользователей
+    Route::get('/users', [UserController::class, 'index']);
+// Просмотр всех заказов
+    Route::get('/orders', [OrderController::class, 'index']);
+// Просмотр конкретного заказа
+    Route::get('/order/{id}', [OrderController::class, 'show']);
+// Просмотр всех заказов по конкретному товару и общей выручки за всё время, а также количеством заказов для данного товара и количество купленного товара
+    Route::get('/orders/product/{id}', [OrderController::class, 'showProduct']);
+// Просмотр всех заказов и общей выручки, заказов за конкретный ГГГГ.ММ.ДД
+    Route::post('/orders', [OrderController::class, 'dateOrder']);
+// Просмотр всех заказов и общей выручки за период от ГГГГ.ММ.ДД до ГГГГ.ММ.ДД
+    Route::post('/orders/between', [OrderController::class, 'betweenDate']);
+// Просмотр всех заказов по конкретному товару и общей выручки за период ГГГГ.ММ.ДД до ГГГГ.ММ.ДД, а также количеством заказов для данного товара и количество купленного товара
+    Route::post('/orders/product/{id}/between', [OrderController::class, 'productBetweenDate']);
 });
