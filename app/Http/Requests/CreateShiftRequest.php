@@ -22,7 +22,7 @@ class CreateShiftRequest extends ApiRequest
             $dateEnd = $this->input('date_end');
 
             if ($dateStart >= $dateEnd) {
-                throw new ApiException(400, 'Дата окончания должна быть позже даты начала');
+                throw new ApiException(400, 'Некорректный запрос');
             }
         });
     }

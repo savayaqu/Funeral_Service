@@ -69,7 +69,7 @@ class ShiftController extends Controller
             throw new ApiException(404, 'Не найдено');
         }
         if ($user->shift_id != NULL) {
-            throw new ApiException(406, 'Пользователь находится на смене ' . $user->shift_id);
+            throw new ApiException(406, 'Неприемлимо');
         }
         $user->shift_id = $id;
         $user->save();

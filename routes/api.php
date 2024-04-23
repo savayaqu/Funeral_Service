@@ -40,12 +40,8 @@ Route::middleware('auth:api')->group(function () {
     Route::get('/profile', [UserController::class, 'this']);
     //Изменение пароля в профиле
     Route::patch('/profile', [UserController::class, 'changePass']);
-});
-
-            // Функционал клиента
-Route::middleware('auth:api', 'role:user')->group(function () {
     //Добавление товара в корзину
-    Route::post('/product/{id}', [CartController::class, 'addToCart']);
+    Route::post('/cart/product/{id}', [CartController::class, 'addToCart']);
     //Просмотр своей корзины
     Route::get('/cart', [CartController::class, 'index']);
     //Оформление заказа
@@ -58,9 +54,7 @@ Route::middleware('auth:api', 'role:user')->group(function () {
     Route::delete('/cart/product/{id}', [CartController::class, 'delete']);
     //Просмотр всех заказов текущего пользователя
     Route::get('/orders', [OrderController::class, 'index']);
-
 });
-
             // Функционал менеджера
 Route::middleware('auth:api', 'role:manager')->group(function () {
     // Просмотр всех пользователей
@@ -108,7 +102,18 @@ Route::middleware('auth:api', 'role:admin')->group(function () {
     Route::patch('/role/{id}/update', [AdminController::class, 'updateRole']);
     // Удаление роли
     Route::delete('/role/{id}/delete', [AdminController::class, 'deleteRole']);
-
+    // Создание новости
+    Route::post('/news/create', [AdminController::class, 'createNews']);
+    // Редактирвание новости
+    Route::patch('/news/{id}/update', [AdminController::class, 'updateNews']);
+    // Удаление новости
+    Route::delete('/news/{id}/delete', [AdminController::class, 'deleteNews']);
+    // Добавление фото к новостям
+    Route::post('/photo/news/create', [NewsController::class, 'createPhoto']);
+    //Редактирование фото новости
+    Route::post('/photo/{id}/news/update', [NewsController::class, 'updatePhoto']);
+    //Удаление фото новости
+    Route::delete('/photo/{id}/news/delete', [NewsController::class, 'deletePhoto']);
 // Просмотр всех заказов
     Route::get('/orders', [OrderController::class, 'index']);
 // Просмотр конкретного заказа

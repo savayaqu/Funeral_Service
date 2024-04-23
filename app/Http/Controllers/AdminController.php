@@ -5,14 +5,39 @@ namespace App\Http\Controllers;
 use App\Exceptions\ApiException;
 use App\Http\Requests\AdminCreateUserRequest;
 use App\Http\Requests\AdminUpdateUserRequest;
+use App\Http\Requests\CreateNewsRequest;
 use App\Http\Requests\CreateRoleRequest;
+use App\Http\Requests\UpdateNewsRequest;
 use App\Http\Requests\UpdateRoleRequest;
+use App\Models\News;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
+    public function createNews(CreateNewsRequest $request) {
+        $news = new News($request->all());
+        $news->save();
+        return response()->json(['message' => 'Новость создана'])->setStatusCode(201);
+    }
+    public function updateNews(UpdateNewsRequest $request, int $id) {
+        $news = News::where('id', $id)->first();
+        if(!$news) {
+            throw new ApiException(404, 'Не найдено');
+        }
+        $news->fill($request->all());
+        $news->save();
+        return response()->json(['message'=> 'Новость '. $id .' обновлена'])->setStatusCode(200);
+    }
+    public function deleteNews(int $id) {
+        $news = News::where('id', $id)->first();
+        if(!$news) {
+            throw new ApiException(404, 'Не найдено');
+        }
+        $news->delete();
+        return response()->json(['message'=> 'Новость '. $id .' удалена'])->setStatusCode(200);
+    }
     public function createUser(AdminCreateUserRequest $request) {
         $user = new User($request->all());
         $user->save();

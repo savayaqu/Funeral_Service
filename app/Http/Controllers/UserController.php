@@ -23,7 +23,7 @@ class UserController extends Controller
     //Метод просмотра текущего профиля
     public function this()
     {
-        $user=auth()->user();
+        $user=auth()->user()->load('shifts');
         return response()->json(['data'=>$user])->setStatusCode(200);
     }
     //Метод изменения пароля
@@ -37,25 +37,22 @@ class UserController extends Controller
     // Просмотр всех пользователей
     public function index()
     {
-        $users = User::with('roles')->get();
-
+        $users = User::with('roles', 'shifts')->get();
         if($users->isEmpty()) {
             throw new ApiException(404, 'Не найдено');
         }
-
         $users = $users->map(function ($user){
             $userArray = $user->toArray();
             $userArray['role'] = $user->roles->name;
             unset($userArray['roles']); // Удалить roles из основного массива
             return $userArray;
         });
-
         return response()->json(['data' => $users])->setStatusCode(200);
     }
 
     public function show(int $id)
     {
-        $user = User::with('roles')->where('id', $id)->first();
+        $user = User::with('roles', 'shifts')->where('id', $id)->first();
         if (!$user) {
             throw new ApiException(404, 'Не найдено');
         }
@@ -64,6 +61,4 @@ class UserController extends Controller
         unset($userData['roles']); // Удалить roles из основного массива
         return response()->json(['data' => $userData])->setStatusCode(200);
     }
-
-
 }

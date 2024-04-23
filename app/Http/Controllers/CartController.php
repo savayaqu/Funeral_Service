@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Exceptions\ApiException;
+use App\Models\Cart;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -38,7 +40,7 @@ class CartController extends Controller
         // Получение доступного количества товара из базы данных
         $availableQuantity = $product->quantity;
         // Проверяем, существует ли уже запись для этого товара в корзине пользователя
-        $existingCartItem = $user->cart()->where('product_id', $product->id)->first();
+        $existingCartItem = $user->carts()->where('product_id', $product->id)->first();
         // Проверяем, чтобы новое количество было положительным числом и не было больше того, что в хранится в БД
         if ($newQuantity > 0 && $newQuantity <= $availableQuantity) {
             // Обновляем количество товара
@@ -48,7 +50,7 @@ class CartController extends Controller
             // Возвращаем ответ с сообщением об успешном обновлении корзины
             return response()->json(['message' => 'Количество товара в корзине успешно обновлено'], 200);
         } else {
-            throw new ApiException(400, 'Количество товара должно быть положительным числом');
+            throw new ApiException(400, 'Некорректный запрос');
         }
     }
     //Метод добавления товара в корзину
@@ -70,30 +72,28 @@ class CartController extends Controller
         $quantity = $request->input('quantity', 1);
         // Проверка, что количество товара больше 0
         if ($quantity <= 0) {
-            throw new ApiException(400, 'Количество товара должно быть больше 0');
+            throw new ApiException(400, 'Некорректный запрос');
         }
         // Проверка, что запрошенное количество товара не превышает доступное количество
         if ($quantity > $availableQuantity) {
-            throw new ApiException(400, 'Недостаточное количество товара в наличии');
+            throw new ApiException(400, 'Некорректный запрос');
 
         }
         // Проверяем, существует ли уже запись для этого товара в корзине пользователя
-        $existingCartItem = $user->cart()->where('product_id', $product->id)->first();
+        $existingCartItem = $user->carts()->where('product_id', $product->id)->first();
         if ($existingCartItem) {
             // Если запись уже существует, обновляем количество товара
-            $existingCartItem->quantity = $quantity;
-            $existingCartItem->price = $product->price * $quantity;
+            $existingCartItem->quantity += $quantity;
             $existingCartItem->save();
         } else {
             // Создание нового элемента корзины и связывание с пользователем
             $cartItem = new Cart([
                 'quantity' => $quantity,
-                'price' => $product->price * $quantity,
                 'product_id' => $product->id,
             ]);
-            $user->cart()->save($cartItem);
+            $user->carts()->save($cartItem);
         }
-        return response()->json(['message' => 'Продукт добавлен в корзину']);
+        return response()->json(['message' => 'Продукт добавлен в корзину'])->setStatusCode(200);
     }
     //Метод удаления товара из корзины
     public function delete(Request $request, int $id)

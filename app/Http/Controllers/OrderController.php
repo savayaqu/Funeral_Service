@@ -45,7 +45,7 @@ class OrderController extends Controller
             }
             // Проверяем, достаточно ли товара для оформления заказа
             if ($product->quantity < $cartItem->quantity) {
-                return response()->json(['error' => 'Недостаточное количество товара в наличии'], 400);
+                throw new ApiException(400, 'Некорректный запрос');
             }
             // Уменьшаем количество товара в таблице Product
             $product->quantity -= $cartItem->quantity;
