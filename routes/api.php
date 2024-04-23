@@ -114,6 +114,12 @@ Route::middleware('auth:api', 'role:admin')->group(function () {
     Route::post('/photo/{id}/news/update', [NewsController::class, 'updatePhoto']);
     //Удаление фото новости
     Route::delete('/photo/{id}/news/delete', [NewsController::class, 'deletePhoto']);
+    // Добавление фото к товарам
+    Route::post('/photo/product/create', [ProductController::class, 'createPhoto']);
+    //Редактирование фото товара
+    Route::post('/photo/{id}/product/update', [ProductController::class, 'updatePhoto']);
+    //Удаление фото товара
+    Route::delete('/photo/{id}/product/delete', [ProductController::class, 'deletePhoto']);
 // Просмотр всех заказов
     Route::get('/orders', [OrderController::class, 'index']);
 // Просмотр конкретного заказа

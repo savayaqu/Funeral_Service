@@ -45,17 +45,18 @@ class NewsController extends Controller
         $fileName = $newsId . '_' . time() . '.' . $file->getClientOriginalExtension();
         // Сохраняем файл в папку public/storage/News/news_id/filename
         $filePath = $file->storeAs('public/News/' . $newsId, $fileName);
-        $filePathForBD = '/public/storage/News/'. $newsId.'/'. $fileName;
         // Создаем запись о фото в базе данных
         $photo = new PhotoNews([
-            'path' => $filePathForBD,
+            'path' => $filePath,
             'news_id' => $newsId,
         ]);
         $photo->save();
         return response()->json(['message' => 'Фото успешно добавлено', 'data' => $photo])->setStatusCode(201);
     }
+    // Обновление фото
     public function updatePhoto(UpdatePhotoNewsRequest $request, int $photoId) {
         // Получаем фотографию для обновления
+        $newsId = $request->input('news_id');
         $photo = PhotoNews::find($photoId);
         if (!$photo) {
             throw new ApiException(404, 'Не найдено');
@@ -70,21 +71,25 @@ class NewsController extends Controller
         if (!$file) {
             throw new ApiException(400, 'Некорректный запрос');
         }
-
         // Генерируем уникальное имя для файла
         $fileName = $news->id . '_' . time() . '.' . $file->getClientOriginalExtension();
         // Удаляем старый файл
-        throw new ApiException(400, $photo->path);
         Storage::delete($photo->path);
         // Сохраняем новый файл, заменяя старый
-        $filePath = $file->storeAs('public/News/' . $news->id, $fileName);
-
-
-
+        $filePath = $file->storeAs('public/News/' . $newsId, $fileName);
         // Обновляем запись о фотографии в базе данных
-        $photo->path = '/public/storage/News/' . $news->id . '/' . $fileName;
+        $photo->path = $filePath;
         $photo->save();
-
-        return response()->json(['message' => 'Фото успешно обновлено', 'data' => $photo])->setStatusCode(200);
+        return response()->json(['message' => 'Фото обновлено', 'data' => $photo])->setStatusCode(200);
+    }
+    // Удаление записи о фото
+    public function deletePhoto(int $photoId)
+    {
+        $photo = PhotoNews::find($photoId);
+        if (!$photo) {
+            throw new ApiException(404, 'Не найдено');
+        }
+        $photo->delete();
+        return response()->json(['message' => 'Фото удалено'])->setStatusCode(200);
     }
 }
