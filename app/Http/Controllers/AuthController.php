@@ -16,7 +16,7 @@ class AuthController extends Controller
     public function login(LoginRequest $request)
     {
         $user = User
-            ::where('login',    $request->login)
+            ::with('roles')->where('login',    $request->login)
             ->where('password', $request->password)
             ->first();
         if(!$user) {
@@ -24,7 +24,7 @@ class AuthController extends Controller
         }
         $user->api_token = Hash::make(microtime(true)*1000 . Str::random());
         $user->save();
-        return response(['api_token' => $user->api_token])->setStatusCode(200);
+        return response(['api_token' => $user->api_token, 'role' => $user->roles->name])->setStatusCode(200);
     }
     //Метод выхода
     public function logout(Request $request)

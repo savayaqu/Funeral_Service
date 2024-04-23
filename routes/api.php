@@ -79,17 +79,36 @@ Route::middleware('auth:api', 'role:employee')->group(function () {
             // Функционал администратора
 Route::middleware('auth:api', 'role:admin')->group(function () {
     //Создание нового пользователя с присвоением роли
-    Route::post('/admin/user/create', [AdminController::class, 'createUser']);
+    Route::post('/user/create', [AdminController::class, 'createUser']);
     //Редактирование пользователя
-    Route::patch('/admin/user/{id}/update', [AdminController::class, 'updateUser']);
+    Route::patch('/user/{id}/update', [AdminController::class, 'updateUser']);
     //Удаление пользователя
-    Route::delete('/admin/user/{id}/delete', [AdminController::class, 'deleteUser']);
+    Route::delete('/user/{id}/delete', [AdminController::class, 'deleteUser']);
     //Добавление сотрудника на смену
-    Route::post('shift/{id}/user/add', [ShiftController::class, 'addUser']);
+    Route::post('/shift/{id}/user/add', [ShiftController::class, 'addUser']);
+    // Удаление сотрудника со смены
+    Route::delete('/shift/{id}/user/add', [ShiftController::class, 'deleteUser']);
+    // Создание смены
+    Route::post('/shift/create', [ShiftController::class, 'createShift']);
+    // Редактирование смены
+    Route::patch('/shift/{id}/update', [ShiftController::class, 'updateShift']);
+    // Удаление смены
+    Route::delete('/shift/{id}/delete', [ShiftController::class, 'deleteShift']);
+    // Просмотр смен
+    Route::get('/shifts', [ShiftController::class, 'index']);
+    // Просмотр конкретной смены
+    Route::get('/shift/{id}', [ShiftController::class, 'show']);
     //Просмотр конкретного пользователя
     Route::get('/user/{id}', [UserController::class, 'show']);
     // Просмотр всех пользователей
     Route::get('/users', [UserController::class, 'index']);
+    // Создание роли
+    Route::post('/role/create', [AdminController::class, 'createRole']);
+    // Редактирование роли
+    Route::patch('/role/{id}/update', [AdminController::class, 'updateRole']);
+    // Удаление роли
+    Route::delete('/role/{id}/delete', [AdminController::class, 'deleteRole']);
+
 // Просмотр всех заказов
     Route::get('/orders', [OrderController::class, 'index']);
 // Просмотр конкретного заказа

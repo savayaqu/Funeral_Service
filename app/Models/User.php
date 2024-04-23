@@ -31,7 +31,7 @@ class User extends Authenticatable
     ];
     public function shifts()
     {
-        return $this->belongsTo(Shift::class);
+        return $this->belongsTo(Shift::class, 'shift_id');
     }
     public function roles()
     {

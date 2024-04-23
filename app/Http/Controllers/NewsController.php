@@ -12,7 +12,7 @@ class NewsController extends Controller
     public function index() {
         $news = News::all();
         if($news->isEmpty()) {
-            throw new ApiException(404, 'Новости не найдены');
+            throw new ApiException(404, 'Не найдено');
         } else {
             return response([
                 'data' => $news,
@@ -22,7 +22,7 @@ class NewsController extends Controller
     //Метод просмотра конкретной новости
     public function show(int $id) {
         $news = News::where('id', $id)->first();
-        if(!$news) throw new ApiException(404, 'Новость не найдена');
+        if(!$news) throw new ApiException(404, 'Не найдено');
         return response([
             'data' => $news
         ]);

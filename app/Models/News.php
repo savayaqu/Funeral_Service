@@ -11,6 +11,6 @@ class News extends Model
     protected $fillable = ['date', 'name', 'short_description', 'long_description'];
     public function photo_news()
     {
-        return $this->hasMany(Photo_News::class);
+        return $this->hasMany(PhotoNews::class);
     }
 }

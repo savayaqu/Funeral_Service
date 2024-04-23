@@ -15,18 +15,18 @@ class Order extends Model
     }
     public function payments()
     {
-        return $this->belongsTo(Payment::class);
+        return $this->belongsTo(Payment::class, 'payment_id');
     }
     public function users()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
     public function employees()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'employee_id');
     }
     public function status_orders()
     {
-        return $this->belongsTo(Status_Order::class);
+        return $this->belongsTo(StatusOrder::class, 'status_order_id');
     }
 }

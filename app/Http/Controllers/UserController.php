@@ -37,21 +37,33 @@ class UserController extends Controller
     // Просмотр всех пользователей
     public function index()
     {
-        $users = User::all();
-        if(!$users) {
+        $users = User::with('roles')->get();
+
+        if($users->isEmpty()) {
             throw new ApiException(404, 'Не найдено');
-        } else {
-            return response()->json([
-                'data' => $users
-            ])->setStatusCode(200);
         }
+
+        $users = $users->map(function ($user){
+            $userArray = $user->toArray();
+            $userArray['role'] = $user->roles->name;
+            unset($userArray['roles']); // Удалить roles из основного массива
+            return $userArray;
+        });
+
+        return response()->json(['data' => $users])->setStatusCode(200);
     }
-    public function show(int $id) {
-        $user = User::where('id', $id)->first();
+
+    public function show(int $id)
+    {
+        $user = User::with('roles')->where('id', $id)->first();
         if (!$user) {
-            throw new ApiException(404, 'Пользователь не найден');
+            throw new ApiException(404, 'Не найдено');
         }
-        return response()->json(['data'=>$user])->setStatusCode(200);
+        $userData = $user->toArray();
+        $userData['role'] = $user->roles->name;
+        unset($userData['roles']); // Удалить roles из основного массива
+        return response()->json(['data' => $userData])->setStatusCode(200);
     }
+
 
 }

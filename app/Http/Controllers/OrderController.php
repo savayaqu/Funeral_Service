@@ -34,7 +34,7 @@ class OrderController extends Controller
         $cartItems = Cart::where('user_id', $user->id)->get();
         //Если товаров нет, то выводим сообщение об ошибке
         if($cartItems->isEmpty()) {
-            throw new ApiException(404, 'Не удалось оформить заказ, возможно, ваша корзина пуста');
+            throw new ApiException(404, 'Не найдено');
         }
         foreach ($cartItems as $cartItem) {
             // Находим товар по его ID
@@ -68,9 +68,30 @@ class OrderController extends Controller
     //Просмотр всех заказов
     public function index()
     {
-        $compounds = Compound::all();
-        return response()->json(['data'=>$compounds])->setStatusCode(200);
+        $compounds = Compound::with('orders.status_orders', 'products', 'orders.employees', 'orders.users')->get();
+
+        // Преобразуем коллекцию, чтобы включить имена статусов заказов и имена продуктов
+        $compounds = $compounds->map(function ($compound) {
+            $employee = $compound->orders->employees;
+            $employeeName = $employee ? $employee->surname . ' ' . $employee->name . ' ' . $employee->patronymic : '';
+
+            return [
+                'id' => $compound->id,
+                'quantity' => $compound->quantity,
+                'total_price' => $compound->total_price,
+                'order_id' => $compound->order_id,
+                'product_id' => $compound->product_id,
+                'status_order' => $compound->orders->status_orders->name,
+                'product' => $compound->products->name,
+                'user' => $compound->orders->users->surname . ' '. $compound->orders->users->name. ' '. $compound->orders->users->patronymic,
+                'employee' => $employeeName,
+            ];
+        });
+
+        return response()->json(['data' => $compounds])->setStatusCode(200);
     }
+
+
     // Просмотр конкретного заказа
     public function show(int $id)
     {

@@ -4,14 +4,14 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class LoginRequest extends ApiRequest
+class UpdateRoleRequest extends FormRequest
 {
 
     public function rules(): array
     {
         return [
-            'login' => 'required|string|max:128',
-            'password' => 'required|string|max:255'
+            'name' => 'string|min:3',
+            'code' => 'string|unique|min:3'
         ];
     }
 }

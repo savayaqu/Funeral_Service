@@ -33,7 +33,7 @@ class CartController extends Controller
 
         // Проверяем, найден ли товар в корзине
         if (!$cartItem) {
-            throw new ApiException(404, 'Товар не найден в вашей корзине');
+            throw new ApiException(404, 'Не найдено');
         }
         // Получение доступного количества товара из базы данных
         $availableQuantity = $product->quantity;
@@ -62,7 +62,7 @@ class CartController extends Controller
         $product = Product::find($id);
         // Проверка на существование товара
         if(!$product) {
-            throw new ApiException(404, 'Товар не найден');
+            throw new ApiException(404, 'Не найдено');
         }
         // Получение доступного количества товара из базы данных
         $availableQuantity = $product->quantity;
@@ -106,7 +106,7 @@ class CartController extends Controller
             ->first();
         // Проверяем, найден ли товар в корзине
         if (!$cartItem) {
-            throw new ApiException(404, 'Товар не найден в вашей корзине');
+            throw new ApiException(404, 'Не найдено');
         }
         // Удаляем товар из корзины
         $cartItem->delete();

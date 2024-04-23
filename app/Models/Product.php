@@ -15,7 +15,7 @@ class Product extends Model
     }
     public function photo_products()
     {
-        return $this->hasMany(Photo_Product::class);
+        return $this->hasMany(PhotoProduct::class);
     }
     public function reviews()
     {
