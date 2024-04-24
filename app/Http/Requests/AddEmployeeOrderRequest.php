@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AddEmployeeOrderRequest extends FormRequest
+class AddEmployeeOrderRequest extends ApiRequest
 {
     public function rules(): array
     {

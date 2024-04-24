@@ -5,12 +5,26 @@ namespace App\Http\Controllers;
 use App\Exceptions\ApiException;
 use App\Http\Requests\CreateUserRequest;
 use App\Http\Requests\UpdateUserRequest;
+use App\Models\Payment;
 use App\Models\Role;
+use App\Models\StatusOrder;
 use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    //Статусы заказов
+    public function statusOrders()
+    {
+        $statuses = StatusOrder::all();
+        return response()->json(['data' => $statuses])->setStatusCode(200);
+    }
+    //Способы оплаты
+    public function payments()
+    {
+        $payments = Payment::all();
+        return response()->json(['data' => $payments])->setStatusCode(200);
+    }
     //Метод регистрации
     public function create(CreateUserRequest $request)
     {

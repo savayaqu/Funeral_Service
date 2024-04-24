@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AdminUpdateUserRequest extends FormRequest
+class AdminUpdateUserRequest extends ApiRequest
 {
 
     public function rules(): array

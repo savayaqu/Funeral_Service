@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateReviewRequest extends FormRequest
+class CreateReviewRequest extends ApiRequest
 {
     public function rules(): array
     {

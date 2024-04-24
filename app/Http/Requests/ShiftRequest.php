@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ShiftRequest extends FormRequest
+class ShiftRequest extends ApiRequest
 {
     public function rules(): array
     {

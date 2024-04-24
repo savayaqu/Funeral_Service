@@ -3,14 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Exceptions\ApiException;
+use App\Http\Requests\AdminCreatePaymentRequest;
 use App\Http\Requests\AdminCreateReviewRequest;
 use App\Http\Requests\AdminCreateUserRequest;
+use App\Http\Requests\AdminUpdateOrderRequest;
+use App\Http\Requests\AdminUpdatePaymentRequest;
+use App\Http\Requests\AdminUpdateReviewRequest;
 use App\Http\Requests\AdminUpdateUserRequest;
 use App\Http\Requests\CreateNewsRequest;
 use App\Http\Requests\CreateRoleRequest;
 use App\Http\Requests\UpdateNewsRequest;
 use App\Http\Requests\UpdateRoleRequest;
+use App\Models\Category;
 use App\Models\News;
+use App\Models\Order;
+use App\Models\Payment;
 use App\Models\Review;
 use App\Models\Role;
 use App\Models\User;
@@ -18,10 +25,127 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
+    public function updateOrder(AdminUpdateOrderRequest $request, int $orderId)
+    {
+        $order = Order::where('id', $orderId)->first();
+        if(!$order) {
+            throw new ApiException(404, 'Не найдено');
+        }
+        $order->fill($request->all());
+        $order->save();
+        return response()->json(['message' => 'Заказ ' .$orderId. ' обновлён'])->setStatusCode(200);
+
+    }
+    public function deleteOrder(int $id)
+    {
+        $order = Order::where('id', $id)->first();
+        if(!$order) {
+            throw new ApiException(404, 'Не найдено');
+        }
+        $order->delete();
+        return response()->json(['message' => 'Заказ ' .$id. ' удалён'])->setStatusCode(200);
+    }
+    public function createStatusOrders(AdminCreatePaymentRequest $request)
+    {
+        $statusOrders = new Category($request->all());
+        $statusOrders->save();
+        return response()->json(['message' => 'Статус заказа успешно сохранён'])->setStatusCode(201);
+    }
+    public function updateStatusOrders(AdminUpdatePaymentRequest $request, int $statusOrderId)
+    {
+        $statusOrders = Category::where('id', $statusOrderId)->first();
+        if(!$statusOrders) {
+            throw new ApiException(404, 'Не найдено');
+        }
+        $statusOrders->fill($request->all());
+        $statusOrders->save();
+        return response()->json(['message' => 'Статус заказа ' .$statusOrderId. ' обновлён'])->setStatusCode(200);
+    }
+    public function deleteStatusOrders(int $statusOrderId)
+    {
+        $statusOrders = Category::where('id', $statusOrderId)->first();
+        if(!$statusOrders) {
+            throw new ApiException(404, 'Не найдено');
+        }
+        $statusOrders->delete();
+        return response()->json(['message' => 'Статус заказа ' .$statusOrderId. ' удалён'])->setStatusCode(200);
+    }
+    public function createCategory(AdminCreatePaymentRequest $request)
+    {
+        $category = new Category($request->all());
+        $category->save();
+        return response()->json(['message' => 'Категория успешно сохранена'])->setStatusCode(201);
+    }
+    public function updateCategory(AdminUpdatePaymentRequest $request, int $categoryId)
+    {
+        $category = Category::where('id', $categoryId)->first();
+        if(!$category) {
+            throw new ApiException(404, 'Не найдено');
+        }
+        $category->fill($request->all());
+        $category->save();
+        return response()->json(['message' => 'Категория ' .$categoryId. ' обновлена'])->setStatusCode(200);
+    }
+    public function deleteCategory(int $categoryId)
+    {
+        $category = Category::where('id', $categoryId)->first();
+        if(!$category) {
+            throw new ApiException(404, 'Не найдено');
+        }
+        $category->delete();
+        return response()->json(['message' => 'Категория ' .$categoryId. ' удалён'])->setStatusCode(200);
+    }
+
+
+
+    public function createPayment(AdminCreatePaymentRequest $request)
+    {
+        $payment = new Payment($request->all());
+        $payment->save();
+        return response()->json(['message' => 'Способ оплаты успешно сохранен'])->setStatusCode(201);
+    }
+    public function updatePayment(AdminUpdatePaymentRequest $request, int $paymentId)
+    {
+        $payment = Payment::where('id', $paymentId)->first();
+        if(!$payment) {
+            throw new ApiException(404, 'Не найдено');
+        }
+        $payment->fill($request->all());
+        $payment->save();
+        return response()->json(['message' => 'Способ оплаты ' .$paymentId. ' обновлён'])->setStatusCode(200);
+    }
+    public function deletePayment(int $paymentId)
+    {
+        $payment = Payment::where('id', $paymentId)->first();
+        if(!$payment) {
+            throw new ApiException(404, 'Не найдено');
+        }
+        $payment->delete();
+        return response()->json(['message' => 'Способ оплаты ' .$paymentId. ' удалён'])->setStatusCode(200);
+    }
+    public function deleteReview(int $id)
+    {
+        $review = Review::where('id', $id)->first();
+        if(!$review) {
+            throw new ApiException(404, 'Не найдено');
+        }
+        $review->delete();
+        return response()->json(['message' => 'Отзыв ' .$id. ' удалён'])->setStatusCode(200);
+    }
+    public function updateReview(AdminUpdateReviewRequest $request, int $reviewId)
+    {
+        $review = Review::where('id', $reviewId)->first();
+        if(!$review) {
+            throw new ApiException(404, 'Не найдено');
+        }
+        $review->fill($request->all());
+        $review->save();
+        return response()->json(['message' => 'Отзыв ' .$reviewId. ' обновлён'])->setStatusCode(200);
+    }
     public function createReview(AdminCreateReviewRequest $request) {
         $review = new Review($request->all());
         $review->save();
-        return response()->json('Отзыв успешно сохранен')->setStatusCode(201);
+        return response()->json(['message' => 'Отзыв успешно сохранен'])->setStatusCode(201);
     }
     public function createNews(CreateNewsRequest $request) {
         $news = new News($request->all());

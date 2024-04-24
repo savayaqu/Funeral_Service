@@ -9,8 +9,11 @@ use App\Http\Requests\OrderCreateRequest;
 use App\Models\Cart;
 use App\Models\Compound;
 use App\Models\Order;
+use App\Models\Payment;
 use App\Models\Product;
+use App\Models\StatusOrder;
 use Carbon\Carbon;
+use \App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -24,7 +27,7 @@ class OrderController extends Controller
         }
         $order->employee_id = $request->input('employee_id');
         $order->save();
-        return response()->json(['message' => `Сотрудник ${$order->employee_id} прикреплен к заказу ${orderId}`])->setStatusCode(200);
+        return response()->json(['message' => 'Сотрудник ' .$order->employee_id .' прикреплен к заказу '. $orderId])->setStatusCode(200);
     }
     //Метод оформления заказа
     public function checkout(CreateOrderRequest $request) {
@@ -79,27 +82,63 @@ class OrderController extends Controller
     //Просмотр всех заказов
     public function index()
     {
-        $compounds = Compound::with('orders.status_orders', 'products', 'orders.employees', 'orders.users')->get();
+        $userMe = auth()->user();
+        $user = User::with('roles')->whereHas('roles', function ($query) {
+            $query->where('code', 'user');
+        })->where('id', $userMe->id)->first();
+        $userEmployee = User::with('roles')->whereHas('roles', function ($query) {
+            $query->where('code', 'user');
+        })->where('id', $userMe->id)->first();
+        if($user || $userEmployee) {
+            $orders = Order::where('user_id', $user->id)->get();
+            $result = [];
+            foreach ($orders as $order) {
+                $compound = Compound::where('order_id', $order->id)->get();
+                $products = [];
+                foreach ($compound as $item) {
+                    $product = Product::find($item->product_id);
+                    if ($product) {
+                        $products[] = $product;
+                    }
+                }
+                // Получаем соответствующий платеж
+                $payment = Payment::find($order->payment_id);
+                // Получаем соответствующий статус
+                $status = StatusOrder::find($order->status_order_id);
+                $result[] = [
+                    'order' => $order,
+                    'compound' => $compound,
+                    'products' => $products,
+                    'paymentName' => $payment ? $payment->name : 'Неизвестный способ оплаты',
+                    'statusName' => $status ? $status->name : 'Неизвестный статус',
+                ];
+            }
+            return response($result);
+        }
+        else
+        {
+            $compounds = Compound::with('orders.status_orders', 'products', 'orders.employees', 'orders.users')->get();
 
-        // Преобразуем коллекцию, чтобы включить имена статусов заказов и имена продуктов
-        $compounds = $compounds->map(function ($compound) {
-            $employee = $compound->orders->employees;
-            $employeeName = $employee ? $employee->surname . ' ' . $employee->name . ' ' . $employee->patronymic : '';
+            // Преобразуем коллекцию, чтобы включить имена статусов заказов и имена продуктов
+            $compounds = $compounds->map(function ($compound) {
+                $employee = $compound->orders->employees;
+                $employeeName = $employee ? $employee->surname . ' ' . $employee->name . ' ' . $employee->patronymic : '';
 
-            return [
-                'id' => $compound->id,
-                'quantity' => $compound->quantity,
-                'total_price' => $compound->total_price,
-                'order_id' => $compound->order_id,
-                'product_id' => $compound->product_id,
-                'status_order' => $compound->orders->status_orders->name,
-                'product' => $compound->products->name,
-                'user' => $compound->orders->users->surname . ' '. $compound->orders->users->name. ' '. $compound->orders->users->patronymic,
-                'employee' => $employeeName,
-            ];
-        });
+                return [
+                    'id' => $compound->id,
+                    'quantity' => $compound->quantity,
+                    'total_price' => $compound->total_price,
+                    'order_id' => $compound->order_id,
+                    'product_id' => $compound->product_id,
+                    'status_order' => $compound->orders->status_orders->name,
+                    'product' => $compound->products->name,
+                    'user' => $compound->orders->users->surname . ' '. $compound->orders->users->name. ' '. $compound->orders->users->patronymic,
+                    'employee' => $employeeName,
+                ];
+            });
 
-        return response()->json(['data' => $compounds])->setStatusCode(200);
+            return response()->json(['data' => $compounds])->setStatusCode(200);
+        }
     }
 
 
