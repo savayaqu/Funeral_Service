@@ -12,6 +12,14 @@ use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
+    //Просмотр всех фото конкретного товара
+    public function showPhotos(int $id) {
+        $photos = PhotoProduct::where('product_id', $id)->get();
+        if($photos->isEmpty()) {
+            throw new ApiException(404, 'Не найдено');
+        }
+        return response()->json(['data' => $photos])->setStatusCode(200);
+    }
     //Метод просмотра товаров конкретной категории
     public function showMany(int $id) {
         $products = Product::where('category_id', $id)->get();
@@ -99,6 +107,7 @@ class ProductController extends Controller
         if (!$photo) {
             throw new ApiException(404, 'Не найдено');
         }
+        Storage::delete($photo->path);
         $photo->delete();
         return response()->json(['message' => 'Фото удалено'])->setStatusCode(200);
     }

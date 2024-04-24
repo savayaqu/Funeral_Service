@@ -31,6 +31,10 @@ Route::get('/product/{id}/review', [ReviewController::class, 'index']);
 Route::get('/news', [NewsController::class, 'index']);
 //Просмотр конкретной новости
 Route::get('/news/{id}', [NewsController::class, 'show']);
+//Просмотр всех фото конкретной новости
+Route::get('/photo/news/{id}', [NewsController::class, 'showPhotos']);
+//Просмотр всех фото конкретного товара
+Route::get('/photo/product/{id}', [ProductController::class, 'showPhotos']);
 
             // Функционал авторизированного пользователя
 Route::middleware('auth:api')->group(function () {
@@ -54,6 +58,7 @@ Route::middleware('auth:api')->group(function () {
     Route::delete('/cart/product/{id}', [CartController::class, 'delete']);
     //Просмотр всех заказов текущего пользователя
     Route::get('/orders', [OrderController::class, 'index']);
+
 });
             // Функционал менеджера
 Route::middleware('auth:api', 'role:manager')->group(function () {

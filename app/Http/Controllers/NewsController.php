@@ -12,6 +12,14 @@ use Illuminate\Support\Facades\Storage;
 
 class NewsController extends Controller
 {
+    //Просмотр всех фото конкретной новости
+    public function showPhotos(int $id) {
+        $photos = PhotoNews::where('news_id', $id)->get();
+        if($photos->isEmpty()) {
+            throw new ApiException(404, 'Не найдено');
+        }
+        return response()->json(['data' => $photos])->setStatusCode(200);
+    }
     //Метод просмотра всех новостей
     public function index() {
         $news = News::all();
@@ -89,6 +97,7 @@ class NewsController extends Controller
         if (!$photo) {
             throw new ApiException(404, 'Не найдено');
         }
+        Storage::delete($photo->path);
         $photo->delete();
         return response()->json(['message' => 'Фото удалено'])->setStatusCode(200);
     }
