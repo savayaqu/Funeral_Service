@@ -26,7 +26,9 @@ Route::get('/product/{id}', [ProductController::class, 'show']);
 //Просмотр всех товаров
 Route::get('/products', [ProductController::class, 'index']);
 //Просмотр отзывов у товара
-Route::get('/product/{id}/review', [ReviewController::class, 'index']);
+Route::get('/product/{id}/review', [ReviewController::class, 'show']);
+// Просмотр всех отзывов
+Route::get('/reviews', [ReviewController::class, 'index']);
 //Просмотр всех новостей
 Route::get('/news', [NewsController::class, 'index']);
 //Просмотр конкретной новости
@@ -58,6 +60,8 @@ Route::middleware('auth:api')->group(function () {
     Route::delete('/cart/product/{id}', [CartController::class, 'delete']);
     //Просмотр всех заказов текущего пользователя
     Route::get('/orders', [OrderController::class, 'index']);
+    //Создание отзыва для купленного товара
+    Route::post('/review/product/{id}/create', [ReviewController::class, 'createReview']);
 
 });
             // Функционал менеджера
@@ -125,6 +129,10 @@ Route::middleware('auth:api', 'role:admin')->group(function () {
     Route::post('/photo/{id}/product/update', [ProductController::class, 'updatePhoto']);
     //Удаление фото товара
     Route::delete('/photo/{id}/product/delete', [ProductController::class, 'deletePhoto']);
+    //Создание отзыва
+    Route::post('/review/create', [AdminController::class, 'createReview']);
+    //Прикрепление сотрудника к заказу
+    Route::post('/order/{id}/employee', [OrderController::class, 'addEmployee']);
 // Просмотр всех заказов
     Route::get('/orders', [OrderController::class, 'index']);
 // Просмотр конкретного заказа

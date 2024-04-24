@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exceptions\ApiException;
+use App\Http\Requests\AdminCreateReviewRequest;
 use App\Http\Requests\AdminCreateUserRequest;
 use App\Http\Requests\AdminUpdateUserRequest;
 use App\Http\Requests\CreateNewsRequest;
@@ -10,12 +11,18 @@ use App\Http\Requests\CreateRoleRequest;
 use App\Http\Requests\UpdateNewsRequest;
 use App\Http\Requests\UpdateRoleRequest;
 use App\Models\News;
+use App\Models\Review;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
+    public function createReview(AdminCreateReviewRequest $request) {
+        $review = new Review($request->all());
+        $review->save();
+        return response()->json('Отзыв успешно сохранен')->setStatusCode(201);
+    }
     public function createNews(CreateNewsRequest $request) {
         $news = new News($request->all());
         $news->save();

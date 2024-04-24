@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 
 class ShiftController extends Controller
 {
+
     public function index() {
         $shifts = Shift::all();
         return response()->json(['data' => $shifts])->setStatusCode(200);

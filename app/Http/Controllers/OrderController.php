@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exceptions\ApiException;
+use App\Http\Requests\AddEmployeeOrderRequest;
 use App\Http\Requests\CreateOrderRequest;
 use App\Http\Requests\OrderCreateRequest;
 use App\Models\Cart;
@@ -15,6 +16,16 @@ use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
+    //Прикпрепление сотрудника к заказу
+    public function addEmployee(AddEmployeeOrderRequest $request, int $orderId) {
+        $order = Order::where('id', $orderId)->first();
+        if(!$order) {
+            throw new ApiException(404, 'Не найдено');
+        }
+        $order->employee_id = $request->input('employee_id');
+        $order->save();
+        return response()->json(['message' => `Сотрудник ${$order->employee_id} прикреплен к заказу ${orderId}`])->setStatusCode(200);
+    }
     //Метод оформления заказа
     public function checkout(CreateOrderRequest $request) {
         // Получаем текущее время
@@ -93,11 +104,21 @@ class OrderController extends Controller
 
 
     // Просмотр конкретного заказа
-    public function show(int $id)
+    public function show(int $order_id)
     {
-        $compound = Compound::with('orders')->where('id', $id)->first();
-        return response()->json(['data'=>$compound])->setStatusCode(200);
+        // Находим заказ по order_id
+        $order = Order::find($order_id);
+        if (!$order) {
+            throw new ApiException(404, 'Не найдено');
+        }
+        // Получаем компаунд, связанный с этим заказом
+        $compound = Compound::with('orders')->where('order_id', $order_id)->get();
+        if (!$compound) {
+            throw new ApiException(404, 'Не найдено');
+        }
+        return response()->json(['data' => $compound])->setStatusCode(200);
     }
+
     // Просмотр всех заказов по конкретному товару и общей выручки за всё время, а также количеством заказов для данного товара и количество купленного товара
     public function showProduct(int $id)
     {
