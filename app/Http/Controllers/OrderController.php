@@ -111,12 +111,31 @@ class OrderController extends Controller
         if (!$order) {
             throw new ApiException(404, 'Не найдено');
         }
-        // Получаем компаунд, связанный с этим заказом
+        $compounds = Compound::with('orders.status_orders', 'products', 'orders.employees', 'orders.users')->where('order_id', $order_id)->get();
+
+        // Преобразуем коллекцию, чтобы включить имена статусов заказов и имена продуктов
+        $compounds = $compounds->map(function ($compound) {
+            $employee = $compound->orders->employees;
+            $employeeName = $employee ? $employee->surname . ' ' . $employee->name . ' ' . $employee->patronymic : '';
+
+            return [
+                'id' => $compound->id,
+                'quantity' => $compound->quantity,
+                'total_price' => $compound->total_price,
+                'order_id' => $compound->order_id,
+                'product_id' => $compound->product_id,
+                'status_order' => $compound->orders->status_orders->name,
+                'product' => $compound->products->name,
+                'user' => $compound->orders->users->surname . ' '. $compound->orders->users->name. ' '. $compound->orders->users->patronymic,
+                'employee' => $employeeName,
+            ];
+        });
+
         $compound = Compound::with('orders')->where('order_id', $order_id)->get();
         if (!$compound) {
             throw new ApiException(404, 'Не найдено');
         }
-        return response()->json(['data' => $compound])->setStatusCode(200);
+        return response()->json(['data' => $compounds])->setStatusCode(200);
     }
 
     // Просмотр всех заказов по конкретному товару и общей выручки за всё время, а также количеством заказов для данного товара и количество купленного товара
