@@ -174,7 +174,7 @@ Route::middleware('auth:api', 'role:admin')->group(function () {
     //Редактирование заказа
     Route::patch('/order/{id}/update', [AdminController::class, 'updateOrder']);
     //Удаление заказа
-    Route::delete('/order{id}/delete', [AdminController::class, 'deleteOrder']);
+    Route::delete('/order/{id}/delete', [AdminController::class, 'deleteOrder']);
 
 // Просмотр конкретного заказа
     Route::get('/order/{id}', [OrderController::class, 'show']);

@@ -76,10 +76,10 @@ class DatabaseSeeder extends Seeder
 
         // Заполнение таблицы shifts
         DB::table('shifts')->insert([
-            [ 'status' => 'Активна', 'date_start' => '2024-04-23 07:22:44', 'date_end' => '2024-04-23 23:22:44'],
-            [ 'status' => 'Активна', 'date_start' => '2024-04-23 07:22:44', 'date_end' => '2024-04-23 23:22:44'],
-            [ 'status' => 'Не активна', 'date_start' => '2024-05-23 07:22:44', 'date_end' => '2024-06-23 23:22:44'],
-            [ 'status' => 'Активна', 'date_start' => '2024-06-23 07:22:44', 'date_end' => '2024-07-23 23:22:44']
+            [ 'status' => true, 'date_start' => '2024-04-23 07:22:44', 'date_end' => '2024-04-23 23:22:44'],
+            [ 'status' => true, 'date_start' => '2024-04-23 07:22:44', 'date_end' => '2024-04-23 23:22:44'],
+            [ 'status' => false, 'date_start' => '2024-05-23 07:22:44', 'date_end' => '2024-06-23 23:22:44'],
+            [ 'status' => true, 'date_start' => '2024-06-23 07:22:44', 'date_end' => '2024-07-23 23:22:44']
         ]);
         // Заполнение таблицы пользователи
         DB::table('users')->insert([

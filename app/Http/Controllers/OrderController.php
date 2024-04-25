@@ -6,6 +6,7 @@ use App\Exceptions\ApiException;
 use App\Http\Requests\AddEmployeeOrderRequest;
 use App\Http\Requests\CreateOrderRequest;
 use App\Http\Requests\OrderCreateRequest;
+use App\Http\Resources\CompoundsResource;
 use App\Models\Cart;
 use App\Models\Compound;
 use App\Models\Order;
@@ -90,94 +91,64 @@ class OrderController extends Controller
             $query->where('code', 'user');
         })->where('id', $userMe->id)->first();
         if($user || $userEmployee) {
-            $orders = Order::where('user_id', $user->id)->get();
-            $result = [];
-            foreach ($orders as $order) {
-                $compound = Compound::where('order_id', $order->id)->get();
-                $products = [];
-                foreach ($compound as $item) {
-                    $product = Product::find($item->product_id);
-                    if ($product) {
-                        $products[] = $product;
-                    }
-                }
-                // Получаем соответствующий платеж
-                $payment = Payment::find($order->payment_id);
-                // Получаем соответствующий статус
-                $status = StatusOrder::find($order->status_order_id);
-                $result[] = [
-                    'order' => $order,
-                    'compound' => $compound,
-                    'products' => $products,
-                    'paymentName' => $payment ? $payment->name : 'Неизвестный способ оплаты',
-                    'statusName' => $status ? $status->name : 'Неизвестный статус',
+            $orders = Order::with('status_orders', 'employees', 'users')->where('user_id', $user->id)->get();
+            $orders = $orders->map(function ($order) {
+                $employee = $order->employees;
+                $employeeName = $employee ? $employee->surname . ' ' . $employee->name . ' ' . $employee->patronymic : '';
+                return [
+                    'id' => $order->id,
+                    'date_order' => $order->date_order,
+                    'payment_id' => $order->payment_id,
+                    'user_id' => $order->user_id,
+                    'user' => $order->users->surname . ' '. $order->users->name. ' '. $order->users->patronymic,
+                    'employee' => $employeeName,
+                    'status_order' => $order->status_orders->name
                 ];
-            }
-            return response($result);
+            });
+            return response()->json(['data' => $orders]);
         }
         else
         {
-            $compounds = Compound::with('orders.status_orders', 'products', 'orders.employees', 'orders.users')->get();
-
-            // Преобразуем коллекцию, чтобы включить имена статусов заказов и имена продуктов
-            $compounds = $compounds->map(function ($compound) {
-                $employee = $compound->orders->employees;
+            $orders = Order::with('status_orders', 'employees', 'users')->get();
+            $orders = $orders->map(function ($order) {
+                $employee = $order->employees;
                 $employeeName = $employee ? $employee->surname . ' ' . $employee->name . ' ' . $employee->patronymic : '';
-
-                return [
-                    'id' => $compound->id,
-                    'quantity' => $compound->quantity,
-                    'total_price' => $compound->total_price,
-                    'order_id' => $compound->order_id,
-                    'product_id' => $compound->product_id,
-                    'status_order' => $compound->orders->status_orders->name,
-                    'product' => $compound->products->name,
-                    'user' => $compound->orders->users->surname . ' '. $compound->orders->users->name. ' '. $compound->orders->users->patronymic,
-                    'employee' => $employeeName,
-                ];
+               return [
+                   'id' => $order->id,
+                   'date_order' => $order->date_order,
+                   'payment_id' => $order->payment_id,
+                   'user_id' => $order->user_id,
+                   'user' => $order->users->surname . ' '. $order->users->name. ' '. $order->users->patronymic,
+                   'employee' => $employeeName,
+                   'status_order' => $order->status_orders->name
+               ];
             });
-
-            return response()->json(['data' => $compounds])->setStatusCode(200);
+            return response()->json(['data' => $orders])->setStatusCode(200);
         }
     }
-
 
     // Просмотр конкретного заказа
     public function show(int $order_id)
     {
-        // Находим заказ по order_id
-        $order = Order::find($order_id);
-        if (!$order) {
+        $order = Order::with('status_orders', 'employees', 'users')->where('id', $order_id)->first();
+        if(!$order) {
             throw new ApiException(404, 'Не найдено');
         }
-        $compounds = Compound::with('orders.status_orders', 'products', 'orders.employees', 'orders.users')->where('order_id', $order_id)->get();
-
-        // Преобразуем коллекцию, чтобы включить имена статусов заказов и имена продуктов
-        $compounds = $compounds->map(function ($compound) {
-            $employee = $compound->orders->employees;
-            $employeeName = $employee ? $employee->surname . ' ' . $employee->name . ' ' . $employee->patronymic : '';
-
-            return [
-                'id' => $compound->id,
-                'quantity' => $compound->quantity,
-                'total_price' => $compound->total_price,
-                'order_id' => $compound->order_id,
-                'product_id' => $compound->product_id,
-                'status_order' => $compound->orders->status_orders->name,
-                'product' => $compound->products->name,
-                'user' => $compound->orders->users->surname . ' '. $compound->orders->users->name. ' '. $compound->orders->users->patronymic,
-                'employee' => $employeeName,
-            ];
-        });
-
-        $compound = Compound::with('orders')->where('order_id', $order_id)->get();
-        if (!$compound) {
-            throw new ApiException(404, 'Не найдено');
-        }
-        return response()->json(['data' => $compounds])->setStatusCode(200);
+        $employee = $order->employees;
+        $employeeName = $employee ? $employee->surname . ' ' . $employee->name . ' ' . $employee->patronymic : '';
+        $responseData = [
+            'id' => $order->id,
+            'date_order' => $order->date_order,
+            'payment_id' => $order->payment_id,
+            'user_id' => $order->user_id,
+            'user' => $order->users->surname . ' '. $order->users->name. ' '. $order->users->patronymic,
+            'products' => CompoundsResource::collection($order->compounds),
+            'employee' => $employeeName,
+            'status_order' => $order->status_orders->name
+        ];
+        return response()->json(['data' => $responseData])->setStatusCode(200);
     }
-
-    // Просмотр всех заказов по конкретному товару и общей выручки за всё время, а также количеством заказов для данного товара и количество купленного товара
+        //Просмотр всех заказов по конкретному товару и общей выручки за всё время, а также количеством заказов для данного товара и количество купленного товара
     public function showProduct(int $id)
     {
         $compounds = Compound::with('orders')->where('product_id', $id)->get();

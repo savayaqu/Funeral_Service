@@ -15,9 +15,11 @@ use App\Http\Requests\CreateRoleRequest;
 use App\Http\Requests\UpdateNewsRequest;
 use App\Http\Requests\UpdateRoleRequest;
 use App\Models\Category;
+use App\Models\Compound;
 use App\Models\News;
 use App\Models\Order;
 use App\Models\Payment;
+use App\Models\Product;
 use App\Models\Review;
 use App\Models\Role;
 use App\Models\User;
@@ -25,26 +27,53 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-    public function updateOrder(AdminUpdateOrderRequest $request, int $orderId)
+    public function updateOrder(AdminUpdateOrderRequest $request, int $compoundId)
     {
+
+        $compound = Compound::with('orders.status_orders', 'orders.employees', 'orders.users')->where('id', $compoundId)->first();
+        if($request->input('quantity')) {
+            $quantity = $request->input('quantity');
+            $compound->quantity = $quantity;
+        } else {
+            $quantity = $compound->quantity;
+        }
+        if($request->input('product_id')) {
+            $compound->product_id = $request->input('product_id');
+            $compound->save();
+        }
+        $product = Product::where('id', $compound->product_id)->first();
+        $compound->total_price = $quantity * $product->price;
+        $order = Order::where('id', $compound->order_id)->first();
+        if($request->input('status_order_id')) {
+            $order->status_order_id = $request->input('status_order_id');
+            $order->save();
+        }
+        if($request->input('employee_id')) {
+            $order->employee_id = $request->input('employee_id');
+            $order->save();
+        }
+        $compound = Compound::with('orders.status_orders', 'orders.employees', 'orders.users')->where('id', $compoundId)->first();
+        $compound->save();
+
+        return response()->json(['data' => $compound])->setStatusCode(200);
+    }
+    public function deleteOrder(int $orderId)
+    {
+        $compound = Compound::where('order_id', $orderId)->get();
+        if($compound->isEmpty()) {
+            throw new ApiException(404, 'Не найдено');
+        }
+
         $order = Order::where('id', $orderId)->first();
         if(!$order) {
             throw new ApiException(404, 'Не найдено');
         }
-        $order->fill($request->all());
-        $order->save();
-        return response()->json(['message' => 'Заказ ' .$orderId. ' обновлён'])->setStatusCode(200);
-
-    }
-    public function deleteOrder(int $id)
-    {
-        $order = Order::where('id', $id)->first();
-        if(!$order) {
-            throw new ApiException(404, 'Не найдено');
-        }
+        $compound->each->delete(); // Удалить каждый элемент коллекции
         $order->delete();
-        return response()->json(['message' => 'Заказ ' .$id. ' удалён'])->setStatusCode(200);
+
+        return response()->json(['message' =>'Удалено'])->setStatusCode(200);
     }
+
     public function createStatusOrders(AdminCreatePaymentRequest $request)
     {
         $statusOrders = new Category($request->all());

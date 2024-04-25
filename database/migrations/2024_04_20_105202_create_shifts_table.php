@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('shifts', function (Blueprint $table) {
             $table->id();
-            $table->string('status', 64);
+            $table->boolean('status');
             $table->dateTime('date_start');
             $table->dateTime('date_end');
             $table->timestamps();
