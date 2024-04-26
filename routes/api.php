@@ -93,6 +93,7 @@ Route::middleware('auth:api', 'role:employee')->group(function () {
     // Просмотр смен
     Route::get('/shifts', [ShiftController::class, 'index']);
     // Просмотр конкретной смены
+    Route::get('/shift/{id}', [ShiftController::class, 'show']);
     //Прикрепление к заказу
     Route::patch('/order/{id}/employee/attach', [EmployeeController::class, 'attach']);
     //Открепление от заказа
