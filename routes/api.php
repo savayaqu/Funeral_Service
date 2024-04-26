@@ -172,10 +172,10 @@ Route::middleware('auth:api', 'role:admin')->group(function () {
     Route::post('/status_orders/create'       , [AdminController::class, 'createStatusOrders']);
     Route::patch('/status_orders/{id}/update' , [AdminController::class, 'updateStatusOrders']);
     Route::delete('/status_orders/{id}/delete', [AdminController::class, 'deleteStatusOrders']);
-    //Редактирование заказа
-    Route::patch('/order/{id}/update', [AdminController::class, 'updateOrder']);
+    //Редактирование конкретного состава заказа
+    Route::patch('/compound/{id}/update', [AdminController::class, 'updateOrder']);
     //Удаление заказа
-    Route::delete('/order/{id}/delete', [AdminController::class, 'deleteOrder']);
+    Route::delete('/compound/{id}/delete', [AdminController::class, 'deleteOrder']);
 
 // Просмотр конкретного заказа
     Route::get('/order/{id}', [OrderController::class, 'show']);

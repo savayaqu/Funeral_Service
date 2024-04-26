@@ -29,34 +29,35 @@ class AdminController extends Controller
 {
     public function updateOrder(AdminUpdateOrderRequest $request, int $compoundId)
     {
-
-        $compound = Compound::with('orders.status_orders', 'orders.employees', 'orders.users')->where('id', $compoundId)->first();
-        if($request->input('quantity')) {
+        $compound = Compound::with('products')->where('id', $compoundId)->first();
+        $name = $compound->products->name;
+        if ($request->input('quantity')) {
             $quantity = $request->input('quantity');
             $compound->quantity = $quantity;
         } else {
             $quantity = $compound->quantity;
         }
-        if($request->input('product_id')) {
+
+        if ($request->input('product_id')) {
             $compound->product_id = $request->input('product_id');
             $compound->save();
         }
+
         $product = Product::where('id', $compound->product_id)->first();
         $compound->total_price = $quantity * $product->price;
-        $order = Order::where('id', $compound->order_id)->first();
-        if($request->input('status_order_id')) {
-            $order->status_order_id = $request->input('status_order_id');
-            $order->save();
-        }
-        if($request->input('employee_id')) {
-            $order->employee_id = $request->input('employee_id');
-            $order->save();
-        }
-        $compound = Compound::with('orders.status_orders', 'orders.employees', 'orders.users')->where('id', $compoundId)->first();
         $compound->save();
-
-        return response()->json(['data' => $compound])->setStatusCode(200);
+        $response = [
+            'id' => $compoundId,
+            'quantity' => $compound->quantity,
+            'total_price' => $compound->total_price,
+            'order_id' =>$compound->product_id,
+            'product_id' => $compound->product_id,
+            'product_name' => $name,
+        ];
+        return response()->json(['data' => $response])->setStatusCode(200);
     }
+
+
     public function deleteOrder(int $orderId)
     {
         $compound = Compound::where('order_id', $orderId)->get();
