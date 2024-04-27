@@ -30,10 +30,10 @@ class AdminController extends Controller
     public function updateOrder(AdminUpdateOrderRequest $request, int $compoundId)
     {
         $compound = Compound::with('products')->where('id', $compoundId)->first();
-        $name = $compound->products->name;
         if ($request->input('quantity')) {
             $quantity = $request->input('quantity');
             $compound->quantity = $quantity;
+            $compound->save();
         } else {
             $quantity = $compound->quantity;
         }
@@ -44,6 +44,7 @@ class AdminController extends Controller
         }
 
         $product = Product::where('id', $compound->product_id)->first();
+        $name = $compound->products->name;
         $compound->total_price = $quantity * $product->price;
         $compound->save();
         $response = [
