@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Exceptions\ApiException;
 use App\Http\Requests\AddEmployeeOrderRequest;
+use App\Http\Requests\BetweenDateOrderRequest;
 use App\Http\Requests\CreateOrderRequest;
+use App\Http\Requests\DateOrderRequest;
+use App\Http\Requests\UpdateOrderRequest;
 use App\Http\Resources\CompoundsResource;
 use App\Models\Cart;
 use App\Models\Compound;
@@ -19,6 +22,24 @@ use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
+    //Просмотр состава заказа
+    public function showCompound(int $compoundId) {
+        $compound = Compound::where('id', $compoundId)->first();
+        if(!$compound) {
+            throw new ApiException(404, 'Не найдено');
+        }
+        return response()->json(['data' => $compound])->setStatusCode(200);
+    }
+    //Обновление заказа
+    public function update(UpdateOrderRequest $request, int $orderId) {
+        $order = Order::where('id', $orderId)->first();
+        if(!$order) {
+            throw new ApiException(404, 'Не найдено');
+        }
+        $order->fill($request->all());
+        $order->save();
+        return response()->json(['message' => 'Заказ '.$orderId. ' обновлён'])->setStatusCode(200);
+    }
     // Прикрепление сотрудника к заказу
     public function attach(int $orderId, AddEmployeeOrderRequest $request)
     {
@@ -203,7 +224,7 @@ class OrderController extends Controller
         ]);
     }
     // Просмотр всех заказов и общей выручки за конкретный ГГГГ.ММ.ДД
-    public function dateOrder(Request $request)
+    public function dateOrder(DateOrderRequest $request)
     {
         // Получаем заказы для переданной даты
         $date = $request->input('date_order');
@@ -226,7 +247,7 @@ class OrderController extends Controller
         ])->setStatusCode(200);
     }
     // Просмотр всех заказов и общей выручки за период от ГГГГ.ММ.ДД до ГГГГ.ММ.ДД
-    public function betweenDate(Request $request)
+    public function betweenDate(BetweenDateOrderRequest $request)
     {
         // Получаем начальную и конечную даты из запроса
         $date_start = $request->input('date_start');
@@ -253,7 +274,7 @@ class OrderController extends Controller
         ])->setStatusCode(200);
     }
     // Просмотр всех заказов по конкретному товару и общей выручки за период ГГГГ.ММ.ДД до ГГГГ.ММ.ДД, а также количеством заказов для данного товара и количество купленного товара
-    public function productBetweenDate(Request $request, int $id)
+    public function productBetweenDate(BetweenDateOrderRequest $request, int $id)
     {
         // Получаем начальную и конечную даты из запроса
         $date_start = $request->input('date_start');
@@ -269,6 +290,9 @@ class OrderController extends Controller
         $compounds = Compound::with('orders')->where('product_id', $id)->whereHas('orders', function ($query) use ($orderIds) {
             $query->whereIn('id', $orderIds);
         })->get();
+        if(!$compounds) {
+            throw new ApiException(404, 'Не найдено');
+        }
         $total_money = 0;
         $countProduct = 0;
         $countOrder = 0;

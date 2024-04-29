@@ -27,9 +27,20 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-    public function updateOrder(AdminUpdateOrderRequest $request, int $compoundId)
+    public function deleteCompound(int $compoundId) {
+        $compound = Compound::where('id', $compoundId)->first();
+        if(!$compound) {
+            throw new ApiException(404, 'Не найдено');
+        }
+        $compound->delete();
+        return response()->json(['message' => 'Состав заказа '. $compoundId .' удалён'])->setStatusCode(200);
+    }
+    public function updateCompound(AdminUpdateOrderRequest $request, int $compoundId)
     {
         $compound = Compound::with('products')->where('id', $compoundId)->first();
+        if(!$compound) {
+            throw new ApiException(404, 'Не найдено');
+        }
         if ($request->input('quantity')) {
             $quantity = $request->input('quantity');
             $compound->quantity = $quantity;
