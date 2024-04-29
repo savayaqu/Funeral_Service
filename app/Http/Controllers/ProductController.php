@@ -49,7 +49,7 @@ class ProductController extends Controller
             'data' => $product
         ]);
     }
-    // Добавление фото к новости
+    // Добавление фото к товару
     public function createPhoto(CreatePhotoProductRequest $request) {
         // Получаем новость, к которой нужно добавить фото
         $productId = $request->input('product_id');
@@ -63,9 +63,10 @@ class ProductController extends Controller
         $fileName = $productId . '_' . time() . '.' . $file->getClientOriginalExtension();
         // Сохраняем файл в папку public/storage/Product/product_id/filename
         $filePath = $file->storeAs('public/Product/' . $productId, $fileName);
+        $pathBd = 'Product/' . $productId. '/'. $fileName;
         // Создаем запись о фото в базе данных
         $photo = new PhotoProduct([
-            'path' => $filePath,
+            'path' => $pathBd,
             'product_id' => $productId,
         ]);
         $photo->save();
@@ -95,8 +96,10 @@ class ProductController extends Controller
         Storage::delete($photo->path);
         // Сохраняем новый файл, заменяя старый
         $filePath = $file->storeAs('public/Product/' . $productId, $fileName);
+        $pathBd = 'Product/' . $productId. '/'. $fileName;
+
         // Обновляем запись о фотографии в базе данных
-        $photo->path = $filePath;
+        $photo->path = $pathBd;
         $photo->save();
         return response()->json(['message' => 'Фото обновлено', 'data' => $photo])->setStatusCode(200);
     }
@@ -107,7 +110,7 @@ class ProductController extends Controller
         if (!$photo) {
             throw new ApiException(404, 'Не найдено');
         }
-        Storage::delete($photo->path);
+        Storage::delete('public/'.$photo->path);
         $photo->delete();
         return response()->json(['message' => 'Фото удалено'])->setStatusCode(200);
     }

@@ -32,11 +32,11 @@ class DatabaseSeeder extends Seeder
         ]);
         //Заполнение таблицы фото новостей
         DB::table('photo_news')->insert([
-           ['news_id' => 1, 'path' => 'public/News/1/1_1714125442.jpg'],
-           ['news_id' => 2, 'path' => 'public/News/2/2_1714125492.jpg'],
-           ['news_id' => 3, 'path' => 'public/News/3/3_1714125519.jpg'],
-           ['news_id' => 4, 'path' => 'public/News/4/4_1714125539.jpg'],
-           ['news_id' => 5, 'path' => 'public/News/5/5_1714125596.jpg'],
+           ['news_id' => 1, 'path' => 'News/1/1_1714125442.jpg'],
+           ['news_id' => 2, 'path' => 'News/2/2_1714125492.jpg'],
+           ['news_id' => 3, 'path' => 'News/3/3_1714125519.jpg'],
+           ['news_id' => 4, 'path' => 'News/4/4_1714125539.jpg'],
+           ['news_id' => 5, 'path' => 'News/5/5_1714125596.jpg'],
         ]);
         // Заполнение таблицы categories
         DB::table('categories')->insert([
@@ -127,6 +127,9 @@ class DatabaseSeeder extends Seeder
             ['quantity' => 1, 'total_price' => 31000, 'order_id' => 3, 'product_id' => 4],
             ['quantity' => 3, 'total_price' => 6900, 'order_id' => 4, 'product_id' => 11],
             ['quantity' => 1, 'total_price' => 3000, 'order_id' => 1, 'product_id' => 7],
+            ['quantity' => 2, 'total_price' => 6000, 'order_id' => 1, 'product_id' => 7],
+            ['quantity' => 3, 'total_price' => 9000, 'order_id' => 1, 'product_id' => 7],
+            ['quantity' => 3, 'total_price' => 18000, 'order_id' => 1, 'product_id' => 6],
         ]);
         // Заполнение таблицы отзывов
         DB::table('reviews')->insert([
@@ -136,25 +139,25 @@ class DatabaseSeeder extends Seeder
         ]);
         // Заполнение таблицы фото товаров
         DB::table('photo_products')->insert([
-           ['path' => 'public/Product/1/1_1713951257.jpeg', 'product_id' => 1],
-           ['path' => 'public/Product/2/2_1713951267.jpeg', 'product_id' => 2],
-           ['path' => 'public/Product/3/3_1713951276.jpeg', 'product_id' => 3],
-           ['path' => 'public/Product/4/4_1713951284.jpeg', 'product_id' => 4],
-           ['path' => 'public/Product/5/5_1713951289.jpg', 'product_id' => 5],
-           ['path' => 'public/Product/6/6_1713951296.jpg', 'product_id' => 6],
-           ['path' => 'public/Product/7/7_1713951302.jpeg', 'product_id' => 7],
-           ['path' => 'public/Product/7/7_1713951306.jpeg', 'product_id' => 7],
-           ['path' => 'public/Product/8/8_1713951312.jpeg', 'product_id' => 8],
-           ['path' => 'public/Product/8/8_1713951315.jpeg', 'product_id' => 8],
-           ['path' => 'public/Product/9/9_1713951321.png', 'product_id' => 9],
-           ['path' => 'public/Product/10/10_1713951326.jpeg', 'product_id' => 10],
-           ['path' => 'public/Product/11/11_1713951332.jpeg', 'product_id' => 11],
-           ['path' => 'public/Product/12/12_1713951337.jpg', 'product_id' => 12],
-           ['path' => 'public/Product/13/13_1713951342.jpeg', 'product_id' => 13],
-           ['path' => 'public/Product/14/14_1713951347.jpeg', 'product_id' => 14],
-           ['path' => 'public/Product/15/15_1713951352.jpeg', 'product_id' => 15],
-           ['path' => 'public/Product/16/16_1713951357.png', 'product_id' => 16],
-           ['path' => 'public/Product/17/17_1713951362.jpeg', 'product_id' => 17],
+           ['path' => 'Product/1/1_1713951257.jpeg', 'product_id' => 1],
+           ['path' => 'Product/2/2_1713951267.jpeg', 'product_id' => 2],
+           ['path' => 'Product/3/3_1713951276.jpeg', 'product_id' => 3],
+           ['path' => 'Product/4/4_1713951284.jpeg', 'product_id' => 4],
+           ['path' => 'Product/5/5_1713951289.jpg', 'product_id' => 5],
+           ['path' => 'Product/6/6_1713951296.jpg', 'product_id' => 6],
+           ['path' => 'Product/7/7_1713951302.jpeg', 'product_id' => 7],
+           ['path' => 'Product/7/7_1713951306.jpeg', 'product_id' => 7],
+           ['path' => 'Product/8/8_1713951312.jpeg', 'product_id' => 8],
+           ['path' => 'Product/8/8_1713951315.jpeg', 'product_id' => 8],
+           ['path' => 'Product/9/9_1713951321.png', 'product_id' => 9],
+           ['path' => 'Product/10/10_1713951326.jpeg', 'product_id' => 10],
+           ['path' => 'Product/11/11_1713951332.jpeg', 'product_id' => 11],
+           ['path' => 'Product/12/12_1713951337.jpg', 'product_id' => 12],
+           ['path' => 'Product/13/13_1713951342.jpeg', 'product_id' => 13],
+           ['path' => 'Product/14/14_1713951347.jpeg', 'product_id' => 14],
+           ['path' => 'Product/15/15_1713951352.jpeg', 'product_id' => 15],
+           ['path' => 'Product/16/16_1713951357.png', 'product_id' => 16],
+           ['path' => 'Product/17/17_1713951362.jpeg', 'product_id' => 17],
         ]);
 
     }

@@ -53,9 +53,10 @@ class NewsController extends Controller
         $fileName = $newsId . '_' . time() . '.' . $file->getClientOriginalExtension();
         // Сохраняем файл в папку public/storage/News/news_id/filename
         $filePath = $file->storeAs('public/News/' . $newsId, $fileName);
+        $pathBd = 'News/' . $newsId. '/'. $fileName;
         // Создаем запись о фото в базе данных
         $photo = new PhotoNews([
-            'path' => $filePath,
+            'path' => $pathBd,
             'news_id' => $newsId,
         ]);
         $photo->save();
@@ -85,8 +86,9 @@ class NewsController extends Controller
         Storage::delete($photo->path);
         // Сохраняем новый файл, заменяя старый
         $filePath = $file->storeAs('public/News/' . $newsId, $fileName);
+        $pathBd = 'News/' . $newsId. '/'. $fileName;
         // Обновляем запись о фотографии в базе данных
-        $photo->path = $filePath;
+        $photo->path = $pathBd;
         $photo->save();
         return response()->json(['message' => 'Фото обновлено', 'data' => $photo])->setStatusCode(200);
     }
@@ -97,7 +99,7 @@ class NewsController extends Controller
         if (!$photo) {
             throw new ApiException(404, 'Не найдено');
         }
-        Storage::delete($photo->path);
+        Storage::delete('public/'.$photo->path);
         $photo->delete();
         return response()->json(['message' => 'Фото удалено'])->setStatusCode(200);
     }

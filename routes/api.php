@@ -174,25 +174,14 @@ Route::middleware('auth:api', 'role:admin')->group(function () {
     Route::post('/order/compound/{id}/update', [AdminController::class, 'updateCompound']);
     //Удаление товара из состава заказа
     Route::delete('/order/compound/{id}/delete', [AdminController::class, 'deleteCompound']);
-
-
-
-
-
-
-
-
-
-
-
-// Просмотр конкретного заказа
-    Route::get('/order/{id}', [OrderController::class, 'show']);
-// Просмотр всех заказов по конкретному товару и общей выручки за всё время, а также количеством заказов для данного товара и количество купленного товара
+            //CRUD ОТЧЁТЫ
+// Выручка товара за всё время
     Route::get('/orders/product/{id}', [OrderController::class, 'showProduct']);
-// Просмотр всех заказов и общей выручки, заказов за конкретный ГГГГ.ММ.ДД
+// Выручка заказов за день
     Route::post('/orders', [OrderController::class, 'dateOrder']);
-// Просмотр всех заказов и общей выручки за период от ГГГГ.ММ.ДД до ГГГГ.ММ.ДД
+// Выручка заказов за период
     Route::post('/orders/between', [OrderController::class, 'betweenDate']);
-// Просмотр всех заказов по конкретному товару и общей выручки за период ГГГГ.ММ.ДД до ГГГГ.ММ.ДД, а также количеством заказов для данного товара и количество купленного товара
+// Выпручка товара за период
     Route::post('/orders/product/{id}/between', [OrderController::class, 'productBetweenDate']);
+
 });
