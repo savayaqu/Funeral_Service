@@ -12,6 +12,7 @@ use \App\Http\Controllers\NewsController;
 use \App\Http\Controllers\AdminController;
 use \App\Http\Controllers\ShiftController;
 use \App\Http\Controllers\CompoundController;
+use \App\Http\Controllers\RoleController;
              // Функционал пользователя
 //Регистрация
 Route::post('/register', [UserController::class, 'create']);
@@ -115,12 +116,14 @@ Route::middleware('auth:api', 'role:admin')->group(function () {
     Route::post('/product/{id}/update', [ProductController::class, 'update']);
     Route::post('/product/{id}/delete', [ProductController::class, 'delete']);
             //CRUD ROLES
+    // Просмотр ролей
+    Route::get('/roles', [RoleController::class, 'index']);
     // Создание роли
-    Route::post('/role/create', [AdminController::class, 'createRole']);
+    Route::post('/role/create', [RoleController::class, 'createRole']);
     // Редактирование роли
-    Route::post('/role/{id}/update', [AdminController::class, 'updateRole']);
+    Route::post('/role/{id}/update', [RoleController::class, 'updateRole']);
     // Удаление роли
-    Route::delete('/role/{id}/delete', [AdminController::class, 'deleteRole']);
+    Route::delete('/role/{id}/delete', [RoleController::class, 'deleteRole']);
             //CRUD SHIFTS
     // Удаление смены
     Route::delete('/shift/{id}/delete', [ShiftController::class, 'deleteShift']);
