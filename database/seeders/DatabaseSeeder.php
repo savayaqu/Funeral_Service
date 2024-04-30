@@ -158,12 +158,15 @@ class DatabaseSeeder extends Seeder
            ['path' => 'Product/15/15_1713951352.jpeg', 'product_id' => 15],
            ['path' => 'Product/16/16_1713951357.png', 'product_id' => 16],
            ['path' => 'Product/17/17_1713951362.jpeg', 'product_id' => 17],
-           ['path' => 'Product/18/18_1714495191.jpg', 'product_id' => 18],
-           ['path' => 'Product/19/19_1714495271.jpg', 'product_id' => 19],
-           ['path' => 'Product/20/20_1714495305.jpg', 'product_id' => 20],
-           ['path' => 'Product/20/20_1714495378.jpg', 'product_id' => 20],
-           ['path' => 'Product/21/21_1714495407.jpg', 'product_id' => 21],
-           ['path' => 'Product/22/22_1714495432.jpg', 'product_id' => 22],
+
+            ['path' => 'Product/18/18_1714497031.jpg', 'product_id' => 18],
+            ['path' => 'Product/19/19_1714497057.jpg', 'product_id' => 19],
+            ['path' => 'Product/20/20_1714497077.jpg', 'product_id' => 20],
+            ['path' => 'Product/21/21_1714497101.jpg', 'product_id' => 21],
+            ['path' => 'Product/21/21_1714497123.jpg', 'product_id' => 21],
+            ['path' => 'Product/22/22_1714497144.jpeg', 'product_id' => 22],
+            ['path' => 'Product/23/23_1714497162.jpg', 'product_id' => 23],
+
         ]);
 
     }
