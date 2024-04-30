@@ -12,7 +12,7 @@ use App\Models\PhotoProduct;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-class ProductController extends Controller
+class  ProductController extends Controller
 {
     //Создание товара
     public function create(CreateProductRequest $request) {
@@ -57,15 +57,37 @@ class ProductController extends Controller
     }
     //Метод просмотра всех товаров
     public function index() {
-        $products = Product::all();
+        $products = Product::with('categories')->get();
+
         if($products->isEmpty()) {
             throw new ApiException(404, 'Не найдено');
         } else {
-            return response([
-                'data' => $products,
+            // Массив для хранения данных о продуктах с категориями
+            $formattedProducts = [];
+
+            // Проходим по каждому продукту и формируем данные для ответа
+            foreach ($products as $product) {
+                $formattedProduct = [
+                    'id' => $product->id,
+                    'name' => $product->name,
+                    'description' => $product->description,
+                    'price' => $product->price,
+                    'quantity' => $product->quantity,
+                    'category_id' => $product->category_id,
+                    'category_name' => $product->categories->name ?? null,
+                ];
+
+                // Добавляем сформированный продукт в массив
+                $formattedProducts[] = $formattedProduct;
+            }
+
+            // Возвращаем данные о продуктах с категориями
+            return response()->json([
+                'data' => $formattedProducts,
             ]);
         }
     }
+
     //Метод просмотра конкретного товара
     public function show(int $id) {
         $product = Product::where('id', $id)->first();

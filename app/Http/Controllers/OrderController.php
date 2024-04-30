@@ -10,6 +10,7 @@ use App\Http\Requests\DateOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
 use App\Http\Resources\CompoundsResource;
 use App\Models\Cart;
+use App\Models\Category;
 use App\Models\Compound;
 use App\Models\Order;
 use App\Models\Payment;
@@ -310,11 +311,68 @@ class OrderController extends Controller
             $total_money += $compound->total_price;
             $countProduct += $compound->quantity;
         }
+        $product = Product::where('id', $id)->first();
         return response()->json([
             'data'=>$compounds,
+            'price' => $product->price,
             'total_money' => $total_money,
             'order_count'=>$countOrder,
-            'product_count'=>$countProduct
+            'product_count'=>$countProduct,
+            'product_name' => $product->name,
+            'product_description' => $product->description,
         ])->setStatusCode(200);
     }
+    public function categoryBetweenDate(BetweenDateOrderRequest $request, int $id)
+    {
+        // Получаем начальную и конечную даты из запроса
+        $date_start = $request->input('date_start');
+        $date_end = $request->input('date_end');
+
+        // Конвертируем даты в формат datetime
+        $start_datetime = Carbon::parse($date_start)->startOfDay();
+        $end_datetime = Carbon::parse($date_end)->endOfDay();
+
+        // Выполняем запрос на выборку всех заказов за указанный период
+        $orders = Order::whereBetween('date_order', [$start_datetime, $end_datetime])->get();
+
+        // Выбираем только идентификаторы заказов
+        $orderIds = $orders->pluck('id');
+
+        // Получаем все связанные с заказами объекты Compound для указанной категории
+        $compounds = Compound::with('products')->whereHas('products', function ($query) use ($id) {
+            $query->where('category_id', $id);
+        })->whereHas('orders', function ($query) use ($orderIds) {
+            $query->whereIn('id', $orderIds);
+        })->get();
+
+        if ($compounds->isEmpty()) {
+            throw new ApiException(404, 'Не найдено');
+        }
+
+        $total_money = 0;
+        $countProduct = 0;
+        $countOrder = 0;
+        $orderIds = [];
+
+        foreach ($compounds as $compound) {
+            if (!in_array($compound->order_id, $orderIds)) {
+                $orderIds[] = $compound->order_id;
+                $countOrder++;
+            }
+            $total_money += $compound->total_price;
+            $countProduct += $compound->quantity;
+        }
+
+        $category = Category::findOrFail($id);
+
+        return response()->json([
+            'data' => $compounds,
+            'total_money' => $total_money,
+            'order_count' => $countOrder,
+            'product_count' => $countProduct,
+            'category_name' => $category->name,
+            'category_description' => $category->description,
+        ])->setStatusCode(200);
+    }
+
 }

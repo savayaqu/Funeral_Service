@@ -184,5 +184,7 @@ Route::middleware('auth:api', 'role:admin')->group(function () {
     Route::post('/orders/between', [OrderController::class, 'betweenDate']);
 // Выпручка товара за период
     Route::post('/orders/product/{id}/between', [OrderController::class, 'productBetweenDate']);
+// Выручка категории за период
+    Route::post('/orders/category/{id}/between', [OrderController::class, 'categoryBetweenDate']);
 
 });
