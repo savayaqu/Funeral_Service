@@ -139,7 +139,7 @@ class DatabaseSeeder extends Seeder
         ]);
         // Заполнение таблицы фото товаров
         DB::table('photo_products')->insert([
-           ['path' => 'Product/1/1_1713951257.jpeg', 'product_id' => 1],
+           ['path' => 'Product/1/1_1714495671.jpeg', 'product_id' => 1],
            ['path' => 'Product/2/2_1713951267.jpeg', 'product_id' => 2],
            ['path' => 'Product/3/3_1713951276.jpeg', 'product_id' => 3],
            ['path' => 'Product/4/4_1713951284.jpeg', 'product_id' => 4],
