@@ -223,29 +223,6 @@ class OrderController extends Controller
             'product_count'=>$countProduct
         ]);
     }
-    // Просмотр всех заказов и общей выручки за конкретный ГГГГ.ММ.ДД
-    public function dateOrder(DateOrderRequest $request)
-    {
-        // Получаем заказы для переданной даты
-        $date = $request->input('date_order');
-        $orders = Order::whereDate('date_order', $date)->get();
-
-        // Выбираем только идентификаторы заказов
-        $orderIds = $orders->pluck('id');
-
-        // Получаем все связанные с заказами объекты Compound
-        $compounds = Compound::with('orders')->whereHas('orders', function ($query) use ($orderIds) {
-            $query->whereIn('id', $orderIds);
-        })->get();
-        $total_money = 0;
-        foreach ($compounds as $compound) {
-            $total_money += $compound->total_price;
-        }
-        return response()->json([
-            'data' => $compounds,
-            'total_money'=>$total_money
-        ])->setStatusCode(200);
-    }
     // Просмотр всех заказов и общей выручки за период от ГГГГ.ММ.ДД до ГГГГ.ММ.ДД
     public function betweenDate(BetweenDateOrderRequest $request)
     {

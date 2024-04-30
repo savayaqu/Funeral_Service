@@ -111,7 +111,9 @@ Route::middleware('auth:api', 'role:admin')->group(function () {
     //Удаление фото новости
     Route::delete('/photo/{id}/news/delete', [NewsController::class, 'deletePhoto']);
             //CRUD PRODUCTS
-
+    Route::post('/product/create', [ProductController::class, 'create']);
+    Route::post('/product/{id}/update', [ProductController::class, 'update']);
+    Route::post('/product/{id}/delete', [ProductController::class, 'delete']);
             //CRUD ROLES
     // Создание роли
     Route::post('/role/create', [AdminController::class, 'createRole']);
@@ -174,11 +176,10 @@ Route::middleware('auth:api', 'role:admin')->group(function () {
     Route::post('/order/compound/{id}/update', [AdminController::class, 'updateCompound']);
     //Удаление товара из состава заказа
     Route::delete('/order/compound/{id}/delete', [AdminController::class, 'deleteCompound']);
+
             //CRUD ОТЧЁТЫ
 // Выручка товара за всё время
     Route::get('/orders/product/{id}', [OrderController::class, 'showProduct']);
-// Выручка заказов за день
-    Route::post('/orders', [OrderController::class, 'dateOrder']);
 // Выручка заказов за период
     Route::post('/orders/between', [OrderController::class, 'betweenDate']);
 // Выпручка товара за период

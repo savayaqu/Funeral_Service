@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Exceptions\ApiException;
 use App\Http\Requests\CreatePhotoProductRequest;
+use App\Http\Requests\CreateProductRequest;
 use App\Http\Requests\UpdatePhotoProductRequest;
+use App\Http\Requests\UpdateProductRequest;
 use App\Models\Product;
 use App\Models\PhotoProduct;
 use Illuminate\Http\Request;
@@ -12,6 +14,29 @@ use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
+    //Создание товара
+    public function create(CreateProductRequest $request) {
+        $product = new Product($request->all());
+        $product->save();
+        return response()->json(['message' => 'Товар создан'])->setStatusCode(201);
+    }
+    public function update(UpdateProductRequest $request, int $productId) {
+        $product = Product::where('id', $productId)->first();
+        if(!$product) {
+            throw new ApiException(404, 'Не найдено');
+        }
+        $product->fill($request->all());
+        $product->save();
+        return response()->json(['message' => 'Товар '.$productId. ' обновлён'])->setStatusCode(200);
+    }
+    public function delete(int $productId) {
+        $product = Product::where('id', $productId)->first();
+        if(!$product) {
+            throw new ApiException(404, 'Не найдено');
+        }
+        $product->delete();
+        return response()->json(['message' => 'Товар '.$productId. ' удалён'])->setStatusCode(200);
+    }
     //Просмотр всех фото конкретного товара
     public function showPhotos(int $id) {
         $photos = PhotoProduct::where('product_id', $id)->get();
