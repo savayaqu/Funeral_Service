@@ -13,6 +13,7 @@ class CreateNewsRequest extends ApiRequest
             'name' => 'required|string|max:64',
             'short_description' => 'required|string|max:255',
             'long_description' => 'required|string',
+            'path.*'      => '         file|mimes:jpg,webp,jpeg,png',
         ];
     }
 }

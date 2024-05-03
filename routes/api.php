@@ -38,6 +38,8 @@ Route::get('/news/{id}', [NewsController::class, 'show']);
 Route::get('/photo/news/{id}', [NewsController::class, 'showPhotos']);
 //Просмотр всех фото конкретного товара
 Route::get('/photo/product/{id}', [ProductController::class, 'showPhotos']);
+//Просмотр всех фотографий товаров
+Route::get('/photo/products', [ProductController::class, 'indexPhoto']);
 //Просмотр способов оплаты
 Route::get('/payments', [UserController::class, 'payments']);
 //Просмотр статусов заказов
@@ -99,11 +101,11 @@ Route::middleware('auth:api', 'role:employee,manager,admin')->group(function () 
 Route::middleware('auth:api', 'role:admin')->group(function () {
              //CRUD NEWS
     // Создание новости
-    Route::post('/news/create', [AdminController::class, 'createNews']);
+    Route::post('/news/create', [NewsController::class, 'createNews']);
     // Редактирвание новости
-    Route::post('/news/{id}/update', [AdminController::class, 'updateNews']);
+    Route::post('/news/{id}/update', [NewsController::class, 'updateNews']);
     // Удаление новости
-    Route::delete('/news/{id}/delete', [AdminController::class, 'deleteNews']);
+    Route::delete('/news/{id}/delete', [NewsController::class, 'deleteNews']);
             //CRUD PHOTO NEWS
     // Добавление фото к новостям
     Route::post('/photo/news/create', [NewsController::class, 'createPhoto']);

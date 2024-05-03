@@ -10,8 +10,8 @@ class UpdatePhotoProductRequest extends ApiRequest
     public function rules(): array
     {
         return [
-            'path' =>       'file|mimes:jpg,webp,jpeg,png',
-            'product_id' => 'integer',
+            'path.*' => 'file|mimes:jpg,webp,jpeg,png',
+            'product_id' => 'integer|exists:products,id',
         ];
     }
 }

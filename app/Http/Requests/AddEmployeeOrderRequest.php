@@ -9,7 +9,7 @@ class AddEmployeeOrderRequest extends ApiRequest
     public function rules(): array
     {
         return [
-            'employee_id' => 'required|integer|min:1',
+            'employee_id' => 'required|integer|exists:employees,id',
         ];
     }
 }

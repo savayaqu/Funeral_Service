@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Exceptions\ApiException;
+use App\Http\Requests\CreateNewsRequest;
 use App\Http\Requests\CreatePhotoNewsRequest;
+use App\Http\Requests\UpdateNewsRequest;
 use App\Http\Requests\UpdatePhotoNewsRequest;
 use App\Models\News;
 use App\Models\PhotoNews;
@@ -41,26 +43,33 @@ class NewsController extends Controller
     }
     // Добавление фото к новости
     public function createPhoto(CreatePhotoNewsRequest $request) {
-        // Получаем новость, к которой нужно добавить фото
-        $newsId = $request->input('news_id');
-        $news = News::find($newsId);
-        if (!$news) {
+        $photos = NewsController::createPhoto($request->file('path'), $request->input('news_id'));
+        return response()->json(['message' => 'Фото успешно добавлены', 'data' => $photos])->setStatusCode(201);
+    }
+    public function createNews(CreateNewsRequest $request) {
+        $news = new News($request->all());
+        $news->save();
+        if ($request->hasFile('path')) {
+            $photo = PhotoNews::createPhoto($request->file('path'), $news->id);
+        }
+        return response()->json(['message' => 'Товар создан', 'dataProduct' => $news, 'dataPhoto' => $photo])->setStatusCode(201);
+    }
+    public function updateNews(UpdateNewsRequest $request, int $id) {
+        $news = News::where('id', $id)->first();
+        if(!$news) {
             throw new ApiException(404, 'Не найдено');
         }
-        // Получаем файл из запроса
-        $file = $request->file('path');
-        // Генерируем уникальное имя для файла
-        $fileName = $newsId . '_' . time() . '.' . $file->getClientOriginalExtension();
-        // Сохраняем файл в папку public/storage/News/news_id/filename
-        $filePath = $file->storeAs('public/News/' . $newsId, $fileName);
-        $pathBd = 'News/' . $newsId. '/'. $fileName;
-        // Создаем запись о фото в базе данных
-        $photo = new PhotoNews([
-            'path' => $pathBd,
-            'news_id' => $newsId,
-        ]);
-        $photo->save();
-        return response()->json(['message' => 'Фото успешно добавлено', 'data' => $photo])->setStatusCode(201);
+        $news->fill($request->all());
+        $news->save();
+        return response()->json(['message'=> 'Новость '. $id .' обновлена'])->setStatusCode(200);
+    }
+    public function deleteNews(int $id) {
+        $news = News::where('id', $id)->first();
+        if(!$news) {
+            throw new ApiException(404, 'Не найдено');
+        }
+        $news->delete();
+        return response()->json(['message'=> 'Новость '. $id .' удалена'])->setStatusCode(200);
     }
     // Обновление фото
     public function updatePhoto(UpdatePhotoNewsRequest $request, int $photoId) {

@@ -14,12 +14,13 @@ use Illuminate\Support\Facades\Storage;
 
 class  ProductController extends Controller
 {
-    //Создание товара
-    public function create(CreateProductRequest $request) {
-        $product = new Product($request->all());
-        $product->save();
-        return response()->json(['message' => 'Товар создан'])->setStatusCode(201);
+    //Просмотр всех фото товаров
+    public function indexPhoto() {
+        $photos = PhotoProduct::all();
+        return response()->json(['data' => $photos])->setStatusCode(200);
     }
+
+
     public function update(UpdateProductRequest $request, int $productId) {
         $product = Product::where('id', $productId)->first();
         if(!$product) {
@@ -67,6 +68,7 @@ class  ProductController extends Controller
 
             // Проходим по каждому продукту и формируем данные для ответа
             foreach ($products as $product) {
+                $photos = PhotoProduct::where('product_id', $product->id)->get();
                 $formattedProduct = [
                     'id' => $product->id,
                     'name' => $product->name,
@@ -75,6 +77,7 @@ class  ProductController extends Controller
                     'quantity' => $product->quantity,
                     'category_id' => $product->category_id,
                     'category_name' => $product->categories->name ?? null,
+                    'photos' => $photos ?? null
                 ];
 
                 // Добавляем сформированный продукт в массив
@@ -91,33 +94,27 @@ class  ProductController extends Controller
     //Метод просмотра конкретного товара
     public function show(int $id) {
         $product = Product::where('id', $id)->first();
+        $photos = PhotoProduct::where('product_id', $product->id)->get();
         if(!$product) throw new ApiException(404, 'Не найдено');
-        return response([
-            'data' => $product
-        ]);
+        return response()->json([
+            'data' => $product,
+            'photos' => $photos,
+        ])->setStatusCode(200);
+    }
+    //Создание товара
+    public function create(CreateProductRequest $request) {
+        $product = new Product($request->all());
+        $product->save();
+        // Если есть файлы, вызываем функцию createPhoto
+        if ($request->hasFile('path')) {
+            $photo = PhotoProduct::createPhoto($request->file('path'), $product->id);
+        }
+        return response()->json(['message' => 'Товар создан', 'dataProduct' => $product, 'dataPhoto' => $photo])->setStatusCode(201);
     }
     // Добавление фото к товару
     public function createPhoto(CreatePhotoProductRequest $request) {
-        // Получаем новость, к которой нужно добавить фото
-        $productId = $request->input('product_id');
-        $product = Product::find($productId);
-        if (!$product) {
-            throw new ApiException(404, 'Не найдено');
-        }
-        // Получаем файл из запроса
-        $file = $request->file('path');
-        // Генерируем уникальное имя для файла
-        $fileName = $productId . '_' . time() . '.' . $file->getClientOriginalExtension();
-        // Сохраняем файл в папку public/storage/Product/product_id/filename
-        $filePath = $file->storeAs('public/Product/' . $productId, $fileName);
-        $pathBd = 'Product/' . $productId. '/'. $fileName;
-        // Создаем запись о фото в базе данных
-        $photo = new PhotoProduct([
-            'path' => $pathBd,
-            'product_id' => $productId,
-        ]);
-        $photo->save();
-        return response()->json(['message' => 'Фото успешно добавлено', 'data' => $photo])->setStatusCode(201);
+        $photos = PhotoProduct::createPhoto($request->file('path'), $request->input('product_id'));
+        return response()->json(['message' => 'Фото успешно добавлены', 'data' => $photos])->setStatusCode(201);
     }
     // Обновление фото
     public function updatePhoto(UpdatePhotoProductRequest $request, int $photoId) {

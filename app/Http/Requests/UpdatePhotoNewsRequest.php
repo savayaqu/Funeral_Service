@@ -10,8 +10,8 @@ class UpdatePhotoNewsRequest extends ApiRequest
     public function rules(): array
     {
         return [
-            'path' =>    'file|mimes:jpg,webp,jpeg,png',
-            'news_id' => 'integer',
+            'path.*' => 'file|mimes:jpg,webp,jpeg,png',
+            'news_id' => 'integer|exists:news,id',
         ];
     }
 }

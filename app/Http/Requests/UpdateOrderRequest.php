@@ -13,7 +13,7 @@ class UpdateOrderRequest extends FormRequest
             'payment_id' => 'integer|min:1',
             'user_id' => 'integer|min:1',
             'employee_id' => 'integer|min:1|nullable',
-            'status_order_id' => 'integer|min:1',
+            'status_order_id' => 'integer|exists:status_orders,id',
         ];
     }
 }

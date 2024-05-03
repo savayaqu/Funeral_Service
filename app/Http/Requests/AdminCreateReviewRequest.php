@@ -12,8 +12,8 @@ class AdminCreateReviewRequest extends ApiRequest
         return [
             'rating'      => 'required|integer|min:1|max:5',
             'description' => 'required|string|max:255',
-            'user_id'     => 'required|integer',
-            'product_id'  => 'required|integer',
+            'user_id'     => 'required|integer|exists:users,id',
+            'product_id'  => 'required|integer|exists:products,id',
         ];
     }
 }

@@ -13,6 +13,7 @@ class UpdateNewsRequest extends ApiRequest
             'name' =>               'string|max:64',
             'short_description' =>  'string|max:255',
             'long_description' =>   'string',
+
         ];
     }
 }

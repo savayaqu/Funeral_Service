@@ -10,6 +10,7 @@ use App\Models\Role;
 use App\Models\StatusOrder;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -28,9 +29,11 @@ class UserController extends Controller
     //Метод регистрации
     public function create(CreateUserRequest $request)
     {
-        $user = new User($request->all());
+        $userData = $request->except('password');
+        $user = new User($userData);
         $role = Role::where('code', 'user')->first();
         $user->role_id = $role->id;
+        $user->password = Hash::make($request->input('password'));
         $user->save();
         return response()->json()->setStatusCode(201);
     }

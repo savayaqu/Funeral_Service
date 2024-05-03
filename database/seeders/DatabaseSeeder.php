@@ -6,6 +6,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -91,16 +92,16 @@ class DatabaseSeeder extends Seeder
         ]);
         // Заполнение таблицы пользователи
         DB::table('users')->insert([
-           ['name' => 'Алексей', 'surname' => 'Смирнов', 'patronymic' => 'Владимирович', 'login' => 'savayaqu', 'password' => 'savayaqu', 'email' => 'savayaqu@mail.ru', 'telephone' => '88005553535', 'api_token' => 'savayaqu', 'role_id' => 1, 'shift_id' => NULL],
-           ['name' => 'Елена', 'surname' => 'Иванова', 'patronymic' => 'Сергеевна', 'login' => 'admin', 'password' => 'admin', 'email' => 'admin@mail.ru', 'telephone' => '89061902635', 'api_token' => 'admin', 'role_id' => 1, 'shift_id' => NULL],
-           ['name' => 'Максим', 'surname' => 'Петров', 'patronymic' => 'Александрович', 'login' => 'manager', 'password' => 'manager', 'email' => 'manager@mail.ru', 'telephone' => '89991995129', 'api_token' => 'manager', 'role_id' => 3, 'shift_id' => NULL],
-           ['name' => 'Анна', 'surname' => 'Соколова', 'patronymic' => 'Дмитриевна', 'login' => 'employee', 'password' => 'employee', 'email' => 'employee@mail.ru', 'telephone' => '85061468723', 'api_token' => 'employee', 'role_id' => 4, 'shift_id' => NULL],
-           ['name' => 'Иван', 'surname' => 'Кузнецов', 'patronymic' => 'Николаевич', 'login' => 'ivan', 'password' => 'ivan', 'email' => 'ivan@mail.ru', 'telephone' => '89134597126', 'api_token' => 'ivan', 'role_id' => 2, 'shift_id' => NULL],
-           ['name' => 'Ольга', 'surname' => 'Попова', 'patronymic' => 'Анатольевна', 'login' => 'user1', 'password' => 'user1', 'email' => 'user1@mail.ru', 'telephone' => '89112538619', 'api_token' => 'user1', 'role_id' => 2, 'shift_id' => NULL],
-           ['name' => 'Дмитрий', 'surname' => 'Лебедев', 'patronymic' => 'Игоревич', 'login' => 'user2', 'password' => 'user2', 'email' => 'user2@mail.ru', 'telephone' => '89168120459', 'api_token' => 'user2', 'role_id' => 2, 'shift_id' => NULL],
-           ['name' => 'Екатерина', 'surname' => 'Морозова', 'patronymic' => 'Владимировна', 'login' => 'user3', 'password' => 'user3', 'email' => 'user3@mail.ru', 'telephone' => '89065551254', 'api_token' => 'user3', 'role_id' => 2, 'shift_id' => NULL],
-           ['name' => 'Александр', 'surname' => 'Новиков', 'patronymic' => 'Алексеевич', 'login' => 'employee2', 'password' => 'employee2', 'email' => 'employee2@mail.ru', 'telephone' => '89596579812', 'api_token' => 'employee2', 'role_id' => 4, 'shift_id' => 1],
-           ['name' => 'Мария', 'surname' => 'Волкова', 'patronymic' => 'Алексеевна', 'login' => 'employee3', 'password' => 'employee3', 'email' => 'employee3@mail.ru', 'telephone' => '89006173650', 'api_token' => 'employee3', 'role_id' => 4, 'shift_id' => 2],
+           ['name' => 'Алексей', 'surname' => 'Смирнов', 'patronymic' => 'Владимирович', 'login' => 'savayaqu',     'password' => Hash::make('savayaqu'), 'email' => 'savayaqu@mail.ru', 'telephone' => '88005553535', 'api_token' => 'savayaqu', 'role_id' => 1, 'shift_id' => NULL],
+           ['name' => 'Елена', 'surname' => 'Иванова', 'patronymic' => 'Сергеевна', 'login' => 'admin',             'password' => Hash::make('admin'), 'email' => 'admin@mail.ru', 'telephone' => '89061902635', 'api_token' => 'admin', 'role_id' => 1, 'shift_id' => NULL],
+           ['name' => 'Максим', 'surname' => 'Петров', 'patronymic' => 'Александрович', 'login' => 'manager',       'password' => Hash::make('manager'), 'email' => 'manager@mail.ru', 'telephone' => '89991995129', 'api_token' => 'manager', 'role_id' => 3, 'shift_id' => NULL],
+           ['name' => 'Анна', 'surname' => 'Соколова', 'patronymic' => 'Дмитриевна', 'login' => 'employee',         'password' => Hash::make('employee'), 'email' => 'employee@mail.ru', 'telephone' => '85061468723', 'api_token' => 'employee', 'role_id' => 4, 'shift_id' => NULL],
+           ['name' => 'Иван', 'surname' => 'Кузнецов', 'patronymic' => 'Николаевич', 'login' => 'ivan',             'password' => Hash::make('ivan'), 'email' => 'ivan@mail.ru', 'telephone' => '89134597126', 'api_token' => 'ivan', 'role_id' => 2, 'shift_id' => NULL],
+           ['name' => 'Ольга', 'surname' => 'Попова', 'patronymic' => 'Анатольевна', 'login' => 'user1',            'password' => Hash::make('user1'), 'email' => 'user1@mail.ru', 'telephone' => '89112538619', 'api_token' => 'user1', 'role_id' => 2, 'shift_id' => NULL],
+           ['name' => 'Дмитрий', 'surname' => 'Лебедев', 'patronymic' => 'Игоревич', 'login' => 'user2',            'password' => Hash::make('user2'), 'email' => 'user2@mail.ru', 'telephone' => '89168120459', 'api_token' => 'user2', 'role_id' => 2, 'shift_id' => NULL],
+           ['name' => 'Екатерина', 'surname' => 'Морозова', 'patronymic' => 'Владимировна', 'login' => 'user3',     'password' => Hash::make('user3'), 'email' => 'user3@mail.ru', 'telephone' => '89065551254', 'api_token' => 'user3', 'role_id' => 2, 'shift_id' => NULL],
+           ['name' => 'Александр', 'surname' => 'Новиков', 'patronymic' => 'Алексеевич', 'login' => 'employee2',    'password' => Hash::make('employee2'), 'email' => 'employee2@mail.ru', 'telephone' => '89596579812', 'api_token' => 'employee2', 'role_id' => 4, 'shift_id' => 1],
+           ['name' => 'Мария', 'surname' => 'Волкова', 'patronymic' => 'Алексеевна', 'login' => 'employee3',        'password' => Hash::make('employee3'), 'email' => 'employee3@mail.ru', 'telephone' => '89006173650', 'api_token' => 'employee3', 'role_id' => 4, 'shift_id' => 2],
         ]);
         // Заполнение таблицы статуса заказов
         DB::table('status_orders')->insert([

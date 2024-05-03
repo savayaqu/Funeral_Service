@@ -9,7 +9,7 @@ class CreateOrderRequest extends ApiRequest
     public function rules(): array
     {
         return [
-            'payment_id' => 'required|integer|min:1|max:20'
+            'payment_id' => 'required|integer|exists:payments,id'
         ];
     }
 }

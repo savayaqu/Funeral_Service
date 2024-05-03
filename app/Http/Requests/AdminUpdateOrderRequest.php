@@ -10,7 +10,7 @@ class AdminUpdateOrderRequest extends ApiRequest
     {
         return [
             'quantity' => 'integer|min:1',
-            'product_id' => 'integer|min:1',
+            'product_id' => 'integer|exists:products,id',
         ];
     }
 }

@@ -9,8 +9,8 @@ class CreatePhotoProductRequest extends ApiRequest
     public function rules(): array
     {
         return [
-            'path' => 'required|file|mimes:jpg,webp,jpeg,png',
-            'product_id' => 'required|integer',
+            'path.*' => 'required|file|mimes:jpg,webp,jpeg,png',
+            'product_id' => 'required|integer|exists:products,id',
         ];
     }
 }
