@@ -47,7 +47,7 @@ class UserController extends Controller
     public function changePass(UpdateUserRequest $request)
     {
         $user = auth()->user();
-        $user->password = $request->input('password');
+        $user->password = Hash::make($request->input('password'));
         $user->save();
         return response()->json('Пароль изменен')->setStatusCode(200);
     }
