@@ -15,7 +15,7 @@ class CreateProductRequest extends ApiRequest
             'price'       => 'required|regex:/^\d+(\.\d{1,2})?$/',
             'quantity'    => 'required|integer|min:1',
             'category_id' => 'required|integer|exists:categories,id',
-            'path.*'      => '         file|mimes:jpg,webp,jpeg,png',
+            'path'      => '         file|mimes:jpg,webp,jpeg,png',
         ];
     }
 }

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('name', 64);
             $table->string('short_description', 255);
             $table->text('long_description');
+            $table->string('path', 255)->nullable()->unique();
             $table->timestamps();
         });
     }

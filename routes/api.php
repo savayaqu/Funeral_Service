@@ -106,13 +106,6 @@ Route::middleware('auth:api', 'role:admin')->group(function () {
     Route::post('/news/{id}/update', [NewsController::class, 'updateNews']);
     // Удаление новости
     Route::delete('/news/{id}/delete', [NewsController::class, 'deleteNews']);
-            //CRUD PHOTO NEWS
-    // Добавление фото к новостям
-    Route::post('/photo/news/create', [NewsController::class, 'createPhoto']);
-    //Редактирование фото новости
-    Route::post('/photo/{id}/news/update', [NewsController::class, 'updatePhoto']);
-    //Удаление фото новости
-    Route::delete('/photo/{id}/news/delete', [NewsController::class, 'deletePhoto']);
             //CRUD PRODUCTS
     Route::post('/product/create', [ProductController::class, 'create']);
     Route::post('/product/{id}/update', [ProductController::class, 'update']);
@@ -137,13 +130,6 @@ Route::middleware('auth:api', 'role:admin')->group(function () {
     Route::post('/user/{id}/update', [AdminController::class, 'updateUser']);
     //Удаление пользователя
     Route::delete('/user/{id}/delete', [AdminController::class, 'deleteUser']);
-            //CRUD PHOTO PRODUCTS
-    // Добавление фото к товарам
-    Route::post('/photo/product/create', [ProductController::class, 'createPhoto']);
-    //Редактирование фото товара
-    Route::post('/photo/{id}/product/update', [ProductController::class, 'updatePhoto']);
-    //Удаление фото товара
-    Route::delete('/photo/{id}/product/delete', [ProductController::class, 'deletePhoto']);
             //CRUD REVIEWS
     //Редактирование отзыва
     Route::post('/review/{id}/update', [AdminController::class, 'updateReview']);

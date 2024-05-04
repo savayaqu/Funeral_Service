@@ -18,6 +18,7 @@ return new class extends Migration
             $table->decimal('price', 15, 2);
             $table->integer('quantity');
             $table->foreignId('category_id')->constrained('categories', 'id')->onUpdate('cascade');
+            $table->string('path', 255)->nullable()->unique();
             $table->timestamps();
         });
     }
