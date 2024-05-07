@@ -10,7 +10,7 @@ class CreateShiftRequest extends ApiRequest
     public function rules(): array
     {
         return [
-            'status' => 'required|string|min:2|max:64',
+            'status' => 'required|integer|min:1|max:2',
             'date_start' => 'required|date_format:Y-m-d H:i:s',
             'date_end' => 'required|date_format:Y-m-d H:i:s',
         ];

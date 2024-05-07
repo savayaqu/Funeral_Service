@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Exceptions\ApiException;
 use App\Http\Requests\AddEmployeeOrderRequest;
 use App\Http\Requests\BetweenDateOrderRequest;
+use App\Http\Requests\CreateCompoundRequest;
 use App\Http\Requests\CreateOrderRequest;
 use App\Http\Requests\DateOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
@@ -23,6 +24,22 @@ use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
+    //Создание состава заказа
+    public function create(CreateCompoundRequest $request, int $orderId) {
+        if($request->input('total_price') === null) {
+            $compound = new Compound($request->all());
+            $product = Product::where('id', $compound->product_id)->first();
+            $compound->total_price = $compound->quantity *  $product->price;
+            $compound->order_id = $orderId;
+            $compound->save();
+        }
+        else {
+            $compound = new Compound($request->all());
+            $compound->order_id = $orderId;
+            $compound->save();
+        }
+        return response()->json(['message' => 'Состав заказа создан для заказа '. $orderId, 'data' => $compound])->setStatusCode(201);
+    }
     //Просмотр состава заказа
     public function showCompound(int $compoundId) {
         $compound = Compound::where('id', $compoundId)->first();

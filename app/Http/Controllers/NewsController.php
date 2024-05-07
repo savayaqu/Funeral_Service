@@ -33,6 +33,7 @@ class NewsController extends Controller
             'data' => $news
         ]);
     }
+    // Создание новости
     public function createNews(CreateNewsRequest $request) {
         $news = new News($request->except('path'));
         $news->save();
@@ -41,6 +42,7 @@ class NewsController extends Controller
         }
         return response()->json(['message' => 'Товар создан', 'dataProduct' => $news])->setStatusCode(201);
     }
+    // Обновление новости
     public function updateNews(UpdateNewsRequest $request, int $id) {
         $news = News::where('id', $id)->first();
         if(!$news) {
@@ -53,6 +55,7 @@ class NewsController extends Controller
         }
         return response()->json(['message'=> 'Новость '. $id .' обновлена'])->setStatusCode(200);
     }
+    // Удаление новости
     public function deleteNews(int $id) {
         $news = News::where('id', $id)->first();
         if(!$news) {

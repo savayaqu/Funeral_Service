@@ -3,12 +3,23 @@
 namespace App\Http\Controllers;
 
 use App\Exceptions\ApiException;
+use App\Http\Requests\AddToCartRequest;
 use App\Models\Cart;
+use App\Models\User;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
+    // Метод просмотра корзины другого пользователя
+    public function show(int $userId) {
+        $user = User::where('id', $userId)->first();
+        if(!$user) {
+            throw new ApiException(404, 'Не найдено');
+        }
+        $cart = Cart::where('user_id', $userId)->get();
+        return response()->json(['message' => 'Корзина пользователя '. $userId, 'data' => $cart])->setStatusCode(200);
+    }
     //Метод просмотра корзины текущего пользователя
     public function index()
     {
@@ -54,7 +65,7 @@ class CartController extends Controller
         }
     }
     //Метод добавления товара в корзину
-    public function addToCart(Request $request, $id) {
+    public function addToCart(AddToCartRequest $request, $id) {
         // Получение текущего пользователя
         $user = auth()->user();
         // Проверка существует ли пользователь
@@ -96,7 +107,7 @@ class CartController extends Controller
         return response()->json(['message' => 'Продукт добавлен в корзину'])->setStatusCode(200);
     }
     //Метод удаления товара из корзины
-    public function delete(Request $request, int $id)
+    public function delete(int $id)
     {
         // Получаем текущего пользователя
         $user = auth()->user();

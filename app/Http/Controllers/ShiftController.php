@@ -16,6 +16,7 @@ class ShiftController extends Controller
 
     public function index() {
         $shifts = Shift::all();
+
         return response()->json(['data' => $shifts])->setStatusCode(200);
     }
     public function show(int $id) {
@@ -34,7 +35,7 @@ class ShiftController extends Controller
         }
         if($request->input('date_start'))
         $shift->save();
-        return response()->json('Смена создана')->setStatusCode(201);
+        return response()->json(['message' => 'Смена создана', 'data' => $shift])->setStatusCode(201);
     }
     public function updateShift(UpdateShiftRequest $request, int $id) {
         $shift = Shift::where('id', $id)->first();
@@ -46,7 +47,7 @@ class ShiftController extends Controller
         }
         $shift->fill($request->all());
         $shift->save();
-        return response()->json('Смена '. $id. ' обновлена')->setStatusCode(200);
+        return response()->json(['message' => 'Смена '. $id. ' обновлена'])->setStatusCode(200);
     }
     public function deleteShift(int $id) {
         $shift = Shift::where('id', $id)->first();
@@ -54,10 +55,11 @@ class ShiftController extends Controller
             throw new ApiException(404, 'Не найдено');
         }
         $shift->delete();
-        return response()->json('Смена '. $id. ' удалена')->setStatusCode(200);
+        return response()->json(['message' => 'Смена '. $id. ' удалена'])->setStatusCode(200);
     }
     public function addUser(ShiftRequest $request, int $id) {
         $shift = Shift::where('id', $id)->first();
+        return response($shift);
         if(!$shift) {
             throw new ApiException(404, 'Не найдено');
         }
@@ -70,7 +72,7 @@ class ShiftController extends Controller
             throw new ApiException(404, 'Не найдено');
         }
         if ($user->shift_id != NULL) {
-            throw new ApiException(406, 'Неприемлимо');
+            throw new ApiException(400, 'Некорректный запрос');
         }
         $user->shift_id = $id;
         $user->save();

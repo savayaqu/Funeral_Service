@@ -11,7 +11,7 @@ class UpdateShiftRequest extends ApiRequest
     public function rules(): array
     {
         return [
-            'status' =>     'string|min:2|max:64',
+            'status' =>     'integer|min:0|max:1',
             'date_start' => 'date_format:Y-m-d H:i:s',
             'date_end' =>   'date_format:Y-m-d H:i:s',
         ];
@@ -23,7 +23,7 @@ class UpdateShiftRequest extends ApiRequest
             $dateEnd = $this->input('date_end');
 
             if ($dateStart >= $dateEnd) {
-                throw new ApiException(400, 'Дата окончания должна быть позже даты начала');
+                throw new ApiException(400, 'Некорректный запрос');
             }
         });
     }

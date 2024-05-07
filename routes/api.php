@@ -81,8 +81,7 @@ Route::middleware('auth:api', 'role:manager,admin')->group(function () {
     // Удаление сотрудника со смены
     Route::delete('/shift/{id}/user/delete', [ShiftController::class, 'deleteUser']);
     // Добавление сотрудника на смену
-    Route::delete('/shift/{id}/user/update', [ShiftController::class, 'addUser']);
-
+    Route::post('/shift/{id}/user/add', [ShiftController::class, 'addUser']);
 });
 
             // Функционал сотрудника
@@ -109,7 +108,7 @@ Route::middleware('auth:api', 'role:admin')->group(function () {
             //CRUD PRODUCTS
     Route::post('/product/create', [ProductController::class, 'create']);
     Route::post('/product/{id}/update', [ProductController::class, 'update']);
-    Route::post('/product/{id}/delete', [ProductController::class, 'delete']);
+    Route::delete('/product/{id}/delete', [ProductController::class, 'delete']);
             //CRUD ROLES
     // Просмотр ролей
     Route::get('/roles', [RoleController::class, 'index']);
@@ -122,7 +121,6 @@ Route::middleware('auth:api', 'role:admin')->group(function () {
             //CRUD SHIFTS
     // Удаление смены
     Route::delete('/shift/{id}/delete', [ShiftController::class, 'deleteShift']);
-
             //CRUD USERS
     //Создание нового пользователя с присвоением роли
     Route::post('/user/create', [AdminController::class, 'createUser']);
@@ -157,17 +155,17 @@ Route::middleware('auth:api', 'role:admin')->group(function () {
     Route::post('/order/{id}/update', [OrderController::class, 'update']);
     //Удаление заказа
     Route::delete('/order/{id}/delete', [AdminController::class, 'deleteOrder']);
-
             //CRUD COMPOUND
     //Просмотр состава заказа по id заказа
     Route::get('/compounds/order/{id}', [CompoundController::class, 'show']);
     //Просмотр состава заказа
     Route::get('/order/compound/{id}', [OrderController::class, 'showCompound']);
+    //Создание состава заказа
+    Route::post('/order/{id}/compound/create', [OrderController::class, 'create']);
     //Обновление состава заказа
     Route::post('/order/compound/{id}/update', [AdminController::class, 'updateCompound']);
     //Удаление товара из состава заказа
     Route::delete('/order/compound/{id}/delete', [AdminController::class, 'deleteCompound']);
-
             //CRUD ОТЧЁТЫ
 // Выручка товара за всё время
     Route::get('/orders/product/{id}', [OrderController::class, 'showProduct']);
@@ -178,4 +176,7 @@ Route::middleware('auth:api', 'role:admin')->group(function () {
 // Выручка категории за период
     Route::post('/orders/category/{id}/between', [OrderController::class, 'categoryBetweenDate']);
 
+
+    // Просмотр корзины другого пользователя
+    Route::get('/user/{id}/cart', [CartController::class, 'show']);
 });

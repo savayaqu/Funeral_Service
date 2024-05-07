@@ -9,7 +9,7 @@ class UpdateUserRequest extends ApiRequest
     public function rules(): array
     {
         return [
-            'password'      => '        |string|min:5|max:255|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/',
+            'password'      => 'string|min:5|max:255|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/',
         ];
     }
 }

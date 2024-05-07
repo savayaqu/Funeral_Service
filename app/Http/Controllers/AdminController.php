@@ -48,6 +48,7 @@ class AdminController extends Controller
             $compound->save();
         } else {
             $quantity = $compound->quantity;
+            $compound->save();
         }
 
         if ($request->input('product_id')) {

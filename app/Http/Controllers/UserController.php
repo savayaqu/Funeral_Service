@@ -49,7 +49,7 @@ class UserController extends Controller
         $user = auth()->user();
         $user->password = Hash::make($request->input('password'));
         $user->save();
-        return response()->json('Пароль изменен')->setStatusCode(200);
+        return response()->json(['message' => 'Пароль изменен'])->setStatusCode(200);
     }
     // Просмотр всех пользователей
     public function index()

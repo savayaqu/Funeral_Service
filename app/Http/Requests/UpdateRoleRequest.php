@@ -11,7 +11,7 @@ class UpdateRoleRequest extends ApiRequest
     {
         return [
             'name' => 'string|min:3',
-            'code' => 'string|unique|min:3'
+            'code' => 'string|min:3|unique'
         ];
     }
 }
