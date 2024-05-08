@@ -94,6 +94,9 @@ Route::middleware('auth:api', 'role:employee,manager,admin')->group(function () 
     Route::post('/order/{id}/employee/attach', [OrderController::class, 'attach']);
     //Открепление от заказа
     Route::post('/order/{id}/employee/detach', [OrderController::class, 'detach']);
+    //Просмотр заказов без сотрудника
+
+    //Просмотр выполненных заказов
 });
 
             // Функционал администратора
