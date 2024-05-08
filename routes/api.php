@@ -34,10 +34,6 @@ Route::get('/reviews', [ReviewController::class, 'index']);
 Route::get('/news', [NewsController::class, 'index']);
 //Просмотр конкретной новости
 Route::get('/news/{id}', [NewsController::class, 'show']);
-//Просмотр всех фото конкретной новости
-Route::get('/photo/news/{id}', [NewsController::class, 'showPhotos']);
-//Просмотр всех фото конкретного товара
-Route::get('/photo/product/{id}', [ProductController::class, 'showPhotos']);
 //Просмотр всех фотографий товаров
 Route::get('/photo/products', [ProductController::class, 'indexPhoto']);
 //Просмотр способов оплаты
@@ -94,9 +90,6 @@ Route::middleware('auth:api', 'role:employee,manager,admin')->group(function () 
     Route::post('/order/{id}/employee/attach', [OrderController::class, 'attach']);
     //Открепление от заказа
     Route::post('/order/{id}/employee/detach', [OrderController::class, 'detach']);
-    //Просмотр заказов без сотрудника
-
-    //Просмотр выполненных заказов
 });
 
             // Функционал администратора
@@ -109,8 +102,11 @@ Route::middleware('auth:api', 'role:admin')->group(function () {
     // Удаление новости
     Route::delete('/news/{id}/delete', [NewsController::class, 'deleteNews']);
             //CRUD PRODUCTS
+   //Создание товара
     Route::post('/product/create', [ProductController::class, 'create']);
+    //Редактирование товара
     Route::post('/product/{id}/update', [ProductController::class, 'update']);
+    //Удаление товара
     Route::delete('/product/{id}/delete', [ProductController::class, 'delete']);
             //CRUD ROLES
     // Просмотр ролей
@@ -137,12 +133,18 @@ Route::middleware('auth:api', 'role:admin')->group(function () {
     //Удаление отзыва
     Route::delete('/review/{id}/delete', [AdminController::class, 'deleteReview']);
             //CRUD категорий
+    //Создание категории
     Route::post('/category/create'       , [AdminController::class, 'createCategory']);
+    //Обновление категории
     Route::post('/category/{id}/update' , [AdminController::class, 'updateCategory']);
+    //Удаление категории
     Route::delete('/category/{id}/delete', [AdminController::class, 'deleteCategory']);
             //CRUD статусов заказов
+    //Создание статуса заказа
     Route::post('/status_order/create'       , [AdminController::class, 'createStatusOrders']);
+    //Обновление статуса заказа
     Route::post('/status_order/{id}/update' , [AdminController::class, 'updateStatusOrders']);
+    //Удаление статуса заказа
     Route::delete('/status_order/{id}/delete', [AdminController::class, 'deleteStatusOrders']);
             //CRUD PAYMENTS
     //Редактирование способов оплаты
@@ -178,8 +180,6 @@ Route::middleware('auth:api', 'role:admin')->group(function () {
     Route::post('/orders/product/{id}/between', [OrderController::class, 'productBetweenDate']);
 // Выручка категории за период
     Route::post('/orders/category/{id}/between', [OrderController::class, 'categoryBetweenDate']);
-
-
     // Просмотр корзины другого пользователя
     Route::get('/user/{id}/cart', [CartController::class, 'show']);
 });
