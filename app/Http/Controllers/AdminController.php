@@ -22,6 +22,7 @@ use App\Models\Payment;
 use App\Models\Product;
 use App\Models\Review;
 use App\Models\Role;
+use App\Models\StatusOrder;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -91,13 +92,13 @@ class AdminController extends Controller
 
     public function createStatusOrders(AdminCreatePaymentRequest $request)
     {
-        $statusOrders = new Category($request->all());
+        $statusOrders = new StatusOrder($request->all());
         $statusOrders->save();
         return response()->json(['message' => 'Статус заказа успешно сохранён'])->setStatusCode(201);
     }
     public function updateStatusOrders(AdminUpdatePaymentRequest $request, int $statusOrderId)
     {
-        $statusOrders = Category::where('id', $statusOrderId)->first();
+        $statusOrders = StatusOrder::where('id', $statusOrderId)->first();
         if(!$statusOrders) {
             throw new ApiException(404, 'Не найдено');
         }
@@ -107,7 +108,7 @@ class AdminController extends Controller
     }
     public function deleteStatusOrders(int $statusOrderId)
     {
-        $statusOrders = Category::where('id', $statusOrderId)->first();
+        $statusOrders = StatusOrder::where('id', $statusOrderId)->first();
         if(!$statusOrders) {
             throw new ApiException(404, 'Не найдено');
         }

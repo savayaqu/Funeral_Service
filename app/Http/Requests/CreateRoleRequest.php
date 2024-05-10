@@ -10,8 +10,8 @@ class CreateRoleRequest extends ApiRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|min:3',
-            'code' => 'required|string|unique|min:3'
+            'name' => 'required|string|min:3|max:64',
+            'code' => 'required|string|unique:roles,code|min:3|max:64'
         ];
     }
 }

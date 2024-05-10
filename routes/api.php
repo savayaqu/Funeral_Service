@@ -73,6 +73,8 @@ Route::middleware('auth:api', 'role:manager,admin')->group(function () {
     Route::get('/user/{id}', [UserController::class, 'show']);
     // Создание смены
     Route::post('/shift/create', [ShiftController::class, 'createShift']);
+    // Удаление смены
+    Route::delete('/shift/{id}/delete', [ShiftController::class, 'deleteShift']);
     // Редактирование смены
     Route::post('/shift/{id}/update', [ShiftController::class, 'updateShift']);
     // Удаление сотрудника со смены
@@ -118,9 +120,6 @@ Route::middleware('auth:api', 'role:admin')->group(function () {
     Route::post('/role/{id}/update', [RoleController::class, 'updateRole']);
     // Удаление роли
     Route::delete('/role/{id}/delete', [RoleController::class, 'deleteRole']);
-            //CRUD SHIFTS
-    // Удаление смены
-    Route::delete('/shift/{id}/delete', [ShiftController::class, 'deleteShift']);
             //CRUD USERS
     //Создание нового пользователя с присвоением роли
     Route::post('/user/create', [AdminController::class, 'createUser']);

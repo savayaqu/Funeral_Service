@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Exceptions\ApiException;
 use App\Http\Requests\AddToCartRequest;
+use App\Http\Requests\UpdateCartRequest;
 use App\Models\Cart;
 use App\Models\User;
 use App\Models\Product;
@@ -30,7 +31,7 @@ class CartController extends Controller
         return response(['data'=>$cartItems])->setStatusCode(200);
     }
     //Метод редактирования корзины
-    public function update(Request $request)
+    public function update(UpdateCartRequest $request)
     {
         // Получаем текущего пользователя
         $user = auth()->user();
@@ -56,7 +57,6 @@ class CartController extends Controller
         if ($newQuantity > 0 && $newQuantity <= $availableQuantity) {
             // Обновляем количество товара
             $existingCartItem->quantity = $newQuantity;
-            $existingCartItem->price = $product->price * $newQuantity;
             $existingCartItem->save();
             // Возвращаем ответ с сообщением об успешном обновлении корзины
             return response()->json(['message' => 'Количество товара в корзине успешно обновлено'], 200);

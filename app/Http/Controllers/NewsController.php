@@ -40,7 +40,7 @@ class NewsController extends Controller
         if ($request->hasFile('path')) {
            News::createPhoto($request->file('path'), $news->id);
         }
-        return response()->json(['message' => 'Товар создан', 'dataProduct' => $news])->setStatusCode(201);
+        return response()->json(['message' => 'Новость создана', 'dataNews' => $news])->setStatusCode(201);
     }
     // Обновление новости
     public function updateNews(UpdateNewsRequest $request, int $id) {

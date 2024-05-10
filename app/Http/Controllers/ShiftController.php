@@ -32,6 +32,7 @@ class ShiftController extends Controller
                 'employees' => $shift->users->map(function ($user) {
                     // Возвращаем только необходимые данные сотрудника
                     return [
+                        'employee_id' => $user->id,
                         'name' => $user->name,
                         'surname' => $user->surname,
                         'patronymic' => $user->patronymic,
@@ -71,6 +72,7 @@ class ShiftController extends Controller
             'employees' => $shift->users->map(function ($user) {
                 // Возвращаем только необходимые данные сотрудника
                 return [
+                    'employee_id' => $user->id,
                     'name' => $user->name,
                     'surname' => $user->surname,
                     'patronymic' => $user->patronymic,
