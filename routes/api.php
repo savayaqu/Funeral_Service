@@ -40,7 +40,6 @@ Route::get('/photo/products', [ProductController::class, 'indexPhoto']);
 Route::get('/payments', [UserController::class, 'payments']);
 //Просмотр статусов заказов
 Route::get('/status_orders', [UserController::class, 'statusOrders']);
-
             // Функционал авторизированного пользователя
 Route::middleware('auth:api')->group(function () {
     //Выход
@@ -68,6 +67,8 @@ Route::middleware('auth:api')->group(function () {
 Route::middleware('auth:api', 'role:manager,admin')->group(function () {
     // Просмотр всех пользователей
     Route::get('/users', [UserController::class, 'index']);
+    //Просмотр сотрудников
+    Route::get('/employees', [UserController::class, 'employees']);
     //Просмотр конкретного пользователя
     Route::get('/user/{id}', [UserController::class, 'show']);
     // Создание смены

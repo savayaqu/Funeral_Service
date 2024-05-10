@@ -13,7 +13,6 @@ use Illuminate\Http\Request;
 
 class ShiftController extends Controller
 {
-
     public function index() {
         // Получаем все смены
         $shifts = Shift::with('users')->get();

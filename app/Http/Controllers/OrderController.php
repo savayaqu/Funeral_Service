@@ -222,6 +222,9 @@ class OrderController extends Controller
     public function showProduct(int $id)
     {
         $compounds = Compound::with('orders')->where('product_id', $id)->get();
+        if($compounds->isEmpty()) {
+            throw  new ApiException(404, 'Не найдено');
+        }
         $total_money = 0;
         $countProduct = 0;
         $countOrder = 0;
@@ -307,13 +310,16 @@ class OrderController extends Controller
         $end_datetime = Carbon::parse($date_end)->endOfDay();
         // Выполняем запрос на выборку всех заказов за указанный период
         $orders = Order::whereBetween('date_order', [$start_datetime, $end_datetime])->get();
+        if(!$orders->isEmpty()) {
+            throw new ApiException(404, 'Не найдено');
+        }
         // Выбираем только идентификаторы заказов
         $orderIds = $orders->pluck('id');
         // Получаем все связанные с заказами объекты Compound
         $compounds = Compound::with('orders')->where('product_id', $id)->whereHas('orders', function ($query) use ($orderIds) {
             $query->whereIn('id', $orderIds);
         })->get();
-        if(!$compounds) {
+        if(!$compounds->isEmpty()) {
             throw new ApiException(404, 'Не найдено');
         }
         $total_money = 0;
@@ -351,7 +357,9 @@ class OrderController extends Controller
 
         // Выполняем запрос на выборку всех заказов за указанный период
         $orders = Order::whereBetween('date_order', [$start_datetime, $end_datetime])->get();
-
+        if($orders->isEmpty()) {
+            throw new ApiException(404, 'Не найдено');
+        }
         // Выбираем только идентификаторы заказов
         $orderIds = $orders->pluck('id');
 

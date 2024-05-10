@@ -14,6 +14,13 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
+    public function employees()
+    {
+        $employees = User::whereHas('roles', function ($query) {
+                $query->where('code', 'employee');
+            })->get();
+        return response()->json(['data' => $employees])->setStatusCode(200);
+    }
     //Статусы заказов
     public function statusOrders()
     {
