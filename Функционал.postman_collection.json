@@ -1,0 +1,8276 @@
+{
+	"info": {
+		"_postman_id": "26afe50f-1d32-4ecd-a812-9d3e69884421",
+		"name": "Функционал",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32893660",
+		"_collection_link": "https://galactic-resonance-805662.postman.co/workspace/Funeral~c6368638-406c-4c96-89eb-1e0a868f3b4e/collection/32893660-26afe50f-1d32-4ecd-a812-9d3e69884421?action=share&creator=32893660&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "Пользователи",
+			"item": [
+				{
+					"name": "💚Выход из системы",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/logout",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "💚Вход",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/login?login=user1&password=user1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"login"
+							],
+							"query": [
+								{
+									"key": "login",
+									"value": "user1"
+								},
+								{
+									"key": "password",
+									"value": "user1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "💚Просмотр списка пользователей",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/users",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "💚Просмотр своего профиля",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/profile",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "💚Регистрация",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{host}}/register?name=Pidor&surname=Pidor&login=Pidor&password=Pidor1!&email=zdsfsk@mail.eu&telephone=23213131231",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"register"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Pidor"
+								},
+								{
+									"key": "surname",
+									"value": "Pidor"
+								},
+								{
+									"key": "login",
+									"value": "Pidor"
+								},
+								{
+									"key": "password",
+									"value": "Pidor1!"
+								},
+								{
+									"key": "email",
+									"value": "zdsfsk@mail.eu"
+								},
+								{
+									"key": "telephone",
+									"value": "23213131231"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "💚Создание пользователя с нужной ролью",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "dfgdfg",
+									"type": "text"
+								},
+								{
+									"key": "surname",
+									"value": "dfggdfgd",
+									"type": "text"
+								},
+								{
+									"key": "login",
+									"value": "Pifgdfgdg",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "sdfskj@mail.ru",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Pidor0121!",
+									"type": "text"
+								},
+								{
+									"key": "telephone",
+									"value": "2353434",
+									"type": "text"
+								},
+								{
+									"key": "role_id",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/user/create",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"user",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "💚Редактирование пользователя",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/user/5/update",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"user",
+								"5",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "💚Изменение пароля пользователя",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/profile/update",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"profile",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "💚Удаление пользователя",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/user/18/delete",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"user",
+								"18",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "💚Просмотр конкретного пользователя",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/user/5",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"user",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Просмотр сотрудников",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/employees",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"employees"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Смена",
+			"item": [
+				{
+					"name": "💚Удаление сотрудника со смены",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "user_id",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/shift/2/user/delete",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"shift",
+								"2",
+								"user",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "💚Добавление сотрудника на смену",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "user_id",
+									"value": "10",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/shift/2/user/add",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"shift",
+								"2",
+								"user",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "💚Просмотр смен",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/shifts",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"shifts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "💚Просмотр конкретной смены",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/shift/2",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"shift",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "💚Создание смены",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "date_start",
+									"value": "2024-10-10 10:10:10",
+									"type": "text"
+								},
+								{
+									"key": "date_end",
+									"value": "2024-10-11 20:20:20",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/shift/create",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"shift",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "💚Редактирование смены",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "date_start",
+									"value": "2020-12-12 12:12:12",
+									"type": "text"
+								},
+								{
+									"key": "date_end",
+									"value": "2027-01-01 10:10:10",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/shift/2/update",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"shift",
+								"2",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "💚Удаление смены",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/shift/4/delete",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"shift",
+								"4",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Роли",
+			"item": [
+				{
+					"name": "💚Просмотр ролей",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/roles",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"roles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "💚Создание роли",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "WhatHappened",
+									"type": "text"
+								},
+								{
+									"key": "code",
+									"value": "Админиап",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/role/create",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"role",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "💚Редактирование роли",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/role/2/update",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"role",
+								"2",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "💚Удаление роли",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/role/5/delete",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"role",
+								"5",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Корзина",
+			"item": [
+				{
+					"name": "💚Добавление товара в корзину",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/cart/product/2",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"cart",
+								"product",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "💚Редактирование корзины",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "product_id",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "quantity",
+									"value": "3",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/cart/update",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"cart",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "💚Удаление товара из корзины",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/cart/product/2",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"cart",
+								"product",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "💚Просмотр своей корзины",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/cart",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"cart"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "💚Просмотр корзины другого пользователя",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/user/6/cart",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"user",
+								"6",
+								"cart"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Новости",
+			"item": [
+				{
+					"name": "💚Просмотр новостей",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/news",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"news"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "💚Просмотр конкретной новости",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/news/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"news",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "💚Редактирование новости",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/news/1/update",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"news",
+								"1",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "💚Удаление новости",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/news/1/delete",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"news",
+								"1",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "💚Создание новости",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "date",
+									"value": "2020-01-01 12:12:12",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "sdfsdf",
+									"type": "text"
+								},
+								{
+									"key": "short_description",
+									"value": "dfgdfg",
+									"type": "text"
+								},
+								{
+									"key": "long_description",
+									"value": "sdfsdf",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/news/create",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"news",
+								"create"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Отзывы",
+			"item": [
+				{
+					"name": "💚Просмотр отзывов",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/reviews",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"reviews"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "💚Просмотр отзывов у конкретного товара",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/product/5/reviews",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"product",
+								"5",
+								"reviews"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "💚Создание отзыва",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/product/2/review/create?rating=3&description=dfgdfgd",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"product",
+								"2",
+								"review",
+								"create"
+							],
+							"query": [
+								{
+									"key": "rating",
+									"value": "3"
+								},
+								{
+									"key": "description",
+									"value": "dfgdfgd"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "💚Редактирование отзыва",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/review/1/update",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"review",
+								"1",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "💚Удаление отзыва",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/review/1/delete",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"review",
+								"1",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Способы оплаты",
+			"item": [
+				{
+					"name": "💚Просмотр способов оплаты",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/payments",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"payments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "💚Редактирование способов оплаты",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/payment/5/update",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"payment",
+								"5",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "💚Создание способов оплаты",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "dfgdfgd",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/payment/create",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"payment",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "💚Удаление способа оплаты",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/payment/5/delete",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"payment",
+								"5",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Статус заказов",
+			"item": [
+				{
+					"name": "💚Просмотр статуса заказов",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/status_orders",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"status_orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "💚Создание статуса заказа",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "dfgdfgd",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/status_order/create",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"status_order",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "💚Редактирование статуса заказа",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/status_order/1/update",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"status_order",
+								"1",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "💚Удаление статуса заказа",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/status_order/6/delete",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"status_order",
+								"6",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Категории",
+			"item": [
+				{
+					"name": "💚Создание категории",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "dfgdfgdfgd",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/category/create",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"category",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "💚Редактирование категории",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "dgdfgdg",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/category/1/update",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"category",
+								"1",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "💚Удаление категории",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/category/7/delete",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"category",
+								"7",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "💚Просмотр категорий",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/categories",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Товары",
+			"item": [
+				{
+					"name": "💚Создание товара",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Товар",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Описание",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "342342.22",
+									"type": "text"
+								},
+								{
+									"key": "quantity",
+									"value": "999",
+									"type": "text"
+								},
+								{
+									"key": "category_id",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "path",
+									"type": "file",
+									"src": [],
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/product/create",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"product",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "💚Просмотр товаров",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/products",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "💚Просмотр товара",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/product/8",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"product",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "💚Редактирование товара",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/product/1/update",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"product",
+								"1",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "💚Удаление товара",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/product/1/delete",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"product",
+								"1",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Просмотр товаров определённой категории",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/category/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"category",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Заказы",
+			"item": [
+				{
+					"name": "💚Просмотр заказов",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/orders",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "💚Просмотр заказа",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/order/2",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"order",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "💚Оформление заказа",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/checkout?payment_id=1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"checkout"
+							],
+							"query": [
+								{
+									"key": "payment_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "💚Редактирование заказа",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/order/1/update",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"order",
+								"1",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "💚Удаление заказа",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/order/1/delete",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"order",
+								"1",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "💚Прикрепление сотрудника к заказу",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "employee_id",
+									"value": "11",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/order/1/employee/attach",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"order",
+								"1",
+								"employee",
+								"attach"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "💚Открепление текущего сотрудника к заказу",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/order/1/employee/detach",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"order",
+								"1",
+								"employee",
+								"detach"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Состав заказов",
+			"item": [
+				{
+					"name": "💚Просмотр составов заказа по идентификатору заказа",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/compounds/order/2",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"compounds",
+								"order",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "💚Просмотр состава заказа",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/order/compound/4",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"order",
+								"compound",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "💚Создание состава заказа",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/order/2/compound/create?product_id=5&quantity=2",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"order",
+								"2",
+								"compound",
+								"create"
+							],
+							"query": [
+								{
+									"key": "product_id",
+									"value": "5"
+								},
+								{
+									"key": "quantity",
+									"value": "2"
+								},
+								{
+									"key": "total_price",
+									"value": "2000",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "💚Редактирование состава заказа",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "quantity",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "product_id",
+									"value": "4",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/order/compound/6/update",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"order",
+								"compound",
+								"6",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "💚Удаление состава заказа",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/order/compound/6/delete",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"order",
+								"compound",
+								"6",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Отчёты",
+			"item": [
+				{
+					"name": "💚Выручка товара (за всё время)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/orders/product/4",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"orders",
+								"product",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "💚Выручка заказов (за период)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/orders/between?date_start=2017-01-01&date_end=2024-07-03",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"orders",
+								"between"
+							],
+							"query": [
+								{
+									"key": "date_start",
+									"value": "2017-01-01"
+								},
+								{
+									"key": "date_end",
+									"value": "2024-07-03"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "💚Выручка товара (за период)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/orders/product/5/between?date_start=2017-01-01&date_end=2025-01-01",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"orders",
+								"product",
+								"5",
+								"between"
+							],
+							"query": [
+								{
+									"key": "date_start",
+									"value": "2017-01-01"
+								},
+								{
+									"key": "date_end",
+									"value": "2025-01-01"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "💚Выручка категории (за период)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/orders/category/1/between?date_start=2017-01-01&date_end=2024-01-01",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"orders",
+								"category",
+								"1",
+								"between"
+							],
+							"query": [
+								{
+									"key": "date_start",
+									"value": "2017-01-01"
+								},
+								{
+									"key": "date_end",
+									"value": "2024-01-01"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Автотесты",
+			"item": [
+				{
+					"name": "401",
+					"item": [
+						{
+							"name": "Пользователи Copy",
+							"item": [
+								{
+									"name": "💚Выход из системы",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/logout",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"logout"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Просмотр списка пользователей",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/users",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"users"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Просмотр своего профиля",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/profile",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"profile"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Создание пользователя с нужной ролью",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "name",
+													"value": "dfgdfg",
+													"type": "text"
+												},
+												{
+													"key": "surname",
+													"value": "dfggdfgd",
+													"type": "text"
+												},
+												{
+													"key": "login",
+													"value": "Pifgdfgdg",
+													"type": "text"
+												},
+												{
+													"key": "email",
+													"value": "sdfskj@mail.ru",
+													"type": "text"
+												},
+												{
+													"key": "password",
+													"value": "Pidor0121!",
+													"type": "text"
+												},
+												{
+													"key": "telephone",
+													"value": "2353434",
+													"type": "text"
+												},
+												{
+													"key": "role_id",
+													"value": "1",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{host}}/user/create",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"user",
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Редактирование пользователя",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/user/5/update",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"user",
+												"5",
+												"update"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Изменение пароля пользователя",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/profile/update",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"profile",
+												"update"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Удаление пользователя",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/user/18/delete",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"user",
+												"18",
+												"delete"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Просмотр конкретного пользователя",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/user/5",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"user",
+												"5"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Просмотр сотрудников",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/employees",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"employees"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Смена Copy",
+							"item": [
+								{
+									"name": "💚Удаление сотрудника со смены",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "user_id",
+													"value": "1",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{host}}/shift/2/user/delete",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"shift",
+												"2",
+												"user",
+												"delete"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Добавление сотрудника на смену",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "user_id",
+													"value": "10",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{host}}/shift/2/user/add",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"shift",
+												"2",
+												"user",
+												"add"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Просмотр смен",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/shifts",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"shifts"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Просмотр конкретной смены",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/shift/2",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"shift",
+												"2"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Создание смены",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "date_start",
+													"value": "2024-10-10 10:10:10",
+													"type": "text"
+												},
+												{
+													"key": "date_end",
+													"value": "2024-10-11 20:20:20",
+													"type": "text"
+												},
+												{
+													"key": "status",
+													"value": "1",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{host}}/shift/create",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"shift",
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Редактирование смены",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "date_start",
+													"value": "2020-12-12 12:12:12",
+													"type": "text"
+												},
+												{
+													"key": "date_end",
+													"value": "2027-01-01 10:10:10",
+													"type": "text"
+												},
+												{
+													"key": "status",
+													"value": "1",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{host}}/shift/2/update",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"shift",
+												"2",
+												"update"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Удаление смены",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/shift/4/delete",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"shift",
+												"4",
+												"delete"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Роли Copy",
+							"item": [
+								{
+									"name": "💚Просмотр ролей",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/roles",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"roles"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Создание роли",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "name",
+													"value": "WhatHappened",
+													"type": "text"
+												},
+												{
+													"key": "code",
+													"value": "Админиап",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{host}}/role/create",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"role",
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Редактирование роли",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/role/2/update",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"role",
+												"2",
+												"update"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Удаление роли",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/role/5/delete",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"role",
+												"5",
+												"delete"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Корзина Copy",
+							"item": [
+								{
+									"name": "💚Добавление товара в корзину",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/cart/product/2",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"cart",
+												"product",
+												"2"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Редактирование корзины",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "product_id",
+													"value": "2",
+													"type": "text"
+												},
+												{
+													"key": "quantity",
+													"value": "3",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{host}}/cart/update",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"cart",
+												"update"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Удаление товара из корзины",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/cart/product/2",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"cart",
+												"product",
+												"2"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Просмотр своей корзины",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/cart",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"cart"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Просмотр корзины другого пользователя",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/user/6/cart",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"user",
+												"6",
+												"cart"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Новости Copy",
+							"item": [
+								{
+									"name": "💚Редактирование новости",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/news/1/update",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"news",
+												"1",
+												"update"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Удаление новости",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/news/1/delete",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"news",
+												"1",
+												"delete"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Создание новости",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "date",
+													"value": "2020-01-01 12:12:12",
+													"type": "text"
+												},
+												{
+													"key": "name",
+													"value": "sdfsdf",
+													"type": "text"
+												},
+												{
+													"key": "short_description",
+													"value": "dfgdfg",
+													"type": "text"
+												},
+												{
+													"key": "long_description",
+													"value": "sdfsdf",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{host}}/news/create",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"news",
+												"create"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Отзывы Copy",
+							"item": [
+								{
+									"name": "💚Создание отзыва",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/product/2/review/create?rating=3&description=dfgdfgd",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"product",
+												"2",
+												"review",
+												"create"
+											],
+											"query": [
+												{
+													"key": "rating",
+													"value": "3"
+												},
+												{
+													"key": "description",
+													"value": "dfgdfgd"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Редактирование отзыва",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/review/1/update",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"review",
+												"1",
+												"update"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Удаление отзыва",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/review/1/delete",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"review",
+												"1",
+												"delete"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Способы оплаты Copy",
+							"item": [
+								{
+									"name": "💚Редактирование способов оплаты",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/payment/5/update",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"payment",
+												"5",
+												"update"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Создание способов оплаты",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "name",
+													"value": "dfgdfgd",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{host}}/payment/create",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"payment",
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Удаление способа оплаты",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/payment/5/delete",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"payment",
+												"5",
+												"delete"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Статус заказов Copy",
+							"item": [
+								{
+									"name": "💚Создание статуса заказа",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "name",
+													"value": "dfgdfgd",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{host}}/status_order/create",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"status_order",
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Редактирование статуса заказа",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/status_order/1/update",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"status_order",
+												"1",
+												"update"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Удаление статуса заказа",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/status_order/6/delete",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"status_order",
+												"6",
+												"delete"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Категории Copy",
+							"item": [
+								{
+									"name": "💚Создание категории",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "name",
+													"value": "dfgdfgdfgd",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{host}}/category/create",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"category",
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Редактирование категории",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "name",
+													"value": "dgdfgdg",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{host}}/category/1/update",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"category",
+												"1",
+												"update"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Удаление категории",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/category/7/delete",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"category",
+												"7",
+												"delete"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Товары Copy",
+							"item": [
+								{
+									"name": "💚Создание товара",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "name",
+													"value": "ЭТО ПИЗДЕЦ",
+													"type": "text"
+												},
+												{
+													"key": "description",
+													"value": "ЭТО ПИЗДЕЦ",
+													"type": "text"
+												},
+												{
+													"key": "price",
+													"value": "342342.22",
+													"type": "text"
+												},
+												{
+													"key": "quantity",
+													"value": "999",
+													"type": "text"
+												},
+												{
+													"key": "category_id",
+													"value": "2",
+													"type": "text"
+												},
+												{
+													"key": "path",
+													"type": "file",
+													"src": "/C:/Users/guseinov-ms/Downloads/logo.png.png"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{host}}/product/create",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"product",
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Редактирование товара",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/product/1/update",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"product",
+												"1",
+												"update"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Удаление товара",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/product/1/delete",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"product",
+												"1",
+												"delete"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Заказы Copy",
+							"item": [
+								{
+									"name": "💚Просмотр заказов",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/orders",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"orders"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Просмотр заказа",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/order/2",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"order",
+												"2"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Оформление заказа",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/checkout?payment_id=1",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"checkout"
+											],
+											"query": [
+												{
+													"key": "payment_id",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Редактирование заказа",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/order/1/update",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"order",
+												"1",
+												"update"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Удаление заказа",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/order/1/delete",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"order",
+												"1",
+												"delete"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Прикрепление сотрудника к заказу",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "employee_id",
+													"value": "11",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{host}}/order/1/employee/attach",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"order",
+												"1",
+												"employee",
+												"attach"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Открепление текущего сотрудника к заказу",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/order/1/employee/detach",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"order",
+												"1",
+												"employee",
+												"detach"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Состав заказов Copy",
+							"item": [
+								{
+									"name": "💚Просмотр составов заказа по идентификатору заказа",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/compounds/order/2",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"compounds",
+												"order",
+												"2"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Просмотр состава заказа",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/order/compound/4",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"order",
+												"compound",
+												"4"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Создание состава заказа",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/order/2/compound/create?product_id=5&quantity=2",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"order",
+												"2",
+												"compound",
+												"create"
+											],
+											"query": [
+												{
+													"key": "product_id",
+													"value": "5"
+												},
+												{
+													"key": "quantity",
+													"value": "2"
+												},
+												{
+													"key": "total_price",
+													"value": "2000",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Редактирование состава заказа",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "quantity",
+													"value": "1",
+													"type": "text"
+												},
+												{
+													"key": "product_id",
+													"value": "4",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{host}}/order/compound/6/update",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"order",
+												"compound",
+												"6",
+												"update"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Удаление состава заказа",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/order/compound/6/delete",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"order",
+												"compound",
+												"6",
+												"delete"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Отчёты Copy",
+							"item": [
+								{
+									"name": "💚Выручка товара (за всё время)",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/orders/product/4",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"orders",
+												"product",
+												"4"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Выручка заказов (за период)",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/orders/between?date_start=2017-01-01&date_end=2024-07-03",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"orders",
+												"between"
+											],
+											"query": [
+												{
+													"key": "date_start",
+													"value": "2017-01-01"
+												},
+												{
+													"key": "date_end",
+													"value": "2024-07-03"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Выручка товара (за период)",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/orders/product/5/between?date_start=2017-01-01&date_end=2025-01-01",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"orders",
+												"product",
+												"5",
+												"between"
+											],
+											"query": [
+												{
+													"key": "date_start",
+													"value": "2017-01-01"
+												},
+												{
+													"key": "date_end",
+													"value": "2025-01-01"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Выручка категории (за период)",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/orders/category/1/between?date_start=2017-01-01&date_end=2024-01-01",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"orders",
+												"category",
+												"1",
+												"between"
+											],
+											"query": [
+												{
+													"key": "date_start",
+													"value": "2017-01-01"
+												},
+												{
+													"key": "date_end",
+													"value": "2024-01-01"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					],
+					"auth": {
+						"type": "noauth"
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"packages": {},
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"packages": {},
+								"exec": [
+									"pm.test(\"Проверка кода ответа\", function () {",
+									"    pm.response.to.have.status(401); ",
+									"});",
+									"pm.test(\"Проверка времени ответа\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(500); ",
+									"});",
+									"pm.test(\"Проверка наличия ключа 'message'\", function () {",
+									"    pm.expect(pm.response.json()).to.have.property(\"message\");",
+									"});",
+									"pm.test(\"Проверка значения поля 'message'\", function () {",
+									"    pm.expect(pm.response.json().message).to.eql(\"Ошибка авторизации\");",
+									"});",
+									"",
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "403",
+					"item": [
+						{
+							"name": "Пользователи Copy 2",
+							"item": [
+								{
+									"name": "💚Просмотр списка пользователей",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/users",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"users"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Создание пользователя с нужной ролью",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "name",
+													"value": "dfgdfg",
+													"type": "text"
+												},
+												{
+													"key": "surname",
+													"value": "dfggdfgd",
+													"type": "text"
+												},
+												{
+													"key": "login",
+													"value": "Pifgdfgdg",
+													"type": "text"
+												},
+												{
+													"key": "email",
+													"value": "sdfskj@mail.ru",
+													"type": "text"
+												},
+												{
+													"key": "password",
+													"value": "Pidor0121!",
+													"type": "text"
+												},
+												{
+													"key": "telephone",
+													"value": "2353434",
+													"type": "text"
+												},
+												{
+													"key": "role_id",
+													"value": "1",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{host}}/user/create",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"user",
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Редактирование пользователя",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/user/5/update",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"user",
+												"5",
+												"update"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Удаление пользователя",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/user/18/delete",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"user",
+												"18",
+												"delete"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Просмотр конкретного пользователя",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/user/5",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"user",
+												"5"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Просмотр сотрудников",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/employees",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"employees"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Смена Copy 2",
+							"item": [
+								{
+									"name": "💚Удаление сотрудника со смены",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "user_id",
+													"value": "1",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{host}}/shift/2/user/delete",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"shift",
+												"2",
+												"user",
+												"delete"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Добавление сотрудника на смену",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "user_id",
+													"value": "10",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{host}}/shift/2/user/add",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"shift",
+												"2",
+												"user",
+												"add"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Просмотр смен",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/shifts",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"shifts"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Просмотр конкретной смены",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/shift/2",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"shift",
+												"2"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Создание смены",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "date_start",
+													"value": "2024-10-10 10:10:10",
+													"type": "text"
+												},
+												{
+													"key": "date_end",
+													"value": "2024-10-11 20:20:20",
+													"type": "text"
+												},
+												{
+													"key": "status",
+													"value": "1",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{host}}/shift/create",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"shift",
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Редактирование смены",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "date_start",
+													"value": "2020-12-12 12:12:12",
+													"type": "text"
+												},
+												{
+													"key": "date_end",
+													"value": "2027-01-01 10:10:10",
+													"type": "text"
+												},
+												{
+													"key": "status",
+													"value": "1",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{host}}/shift/2/update",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"shift",
+												"2",
+												"update"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Удаление смены",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/shift/4/delete",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"shift",
+												"4",
+												"delete"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Роли Copy 2",
+							"item": [
+								{
+									"name": "💚Просмотр ролей",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/roles",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"roles"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Создание роли",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "name",
+													"value": "WhatHappened",
+													"type": "text"
+												},
+												{
+													"key": "code",
+													"value": "Админиап",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{host}}/role/create",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"role",
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Редактирование роли",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/role/2/update",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"role",
+												"2",
+												"update"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Удаление роли",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/role/5/delete",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"role",
+												"5",
+												"delete"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Корзина Copy 2",
+							"item": [
+								{
+									"name": "💚Просмотр корзины другого пользователя",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/user/6/cart",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"user",
+												"6",
+												"cart"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Новости Copy 2",
+							"item": [
+								{
+									"name": "💚Редактирование новости",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/news/1/update",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"news",
+												"1",
+												"update"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Удаление новости",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/news/1/delete",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"news",
+												"1",
+												"delete"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Создание новости",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "date",
+													"value": "2020-01-01 12:12:12",
+													"type": "text"
+												},
+												{
+													"key": "name",
+													"value": "sdfsdf",
+													"type": "text"
+												},
+												{
+													"key": "short_description",
+													"value": "dfgdfg",
+													"type": "text"
+												},
+												{
+													"key": "long_description",
+													"value": "sdfsdf",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{host}}/news/create",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"news",
+												"create"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Отзывы Copy 2",
+							"item": [
+								{
+									"name": "💚Редактирование отзыва",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/review/1/update",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"review",
+												"1",
+												"update"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Удаление отзыва",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/review/1/delete",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"review",
+												"1",
+												"delete"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Способы оплаты Copy 2",
+							"item": [
+								{
+									"name": "💚Редактирование способов оплаты",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/payment/5/update",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"payment",
+												"5",
+												"update"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Создание способов оплаты",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "name",
+													"value": "dfgdfgd",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{host}}/payment/create",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"payment",
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Удаление способа оплаты",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/payment/5/delete",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"payment",
+												"5",
+												"delete"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Статус заказов Copy 2",
+							"item": [
+								{
+									"name": "💚Создание статуса заказа",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "name",
+													"value": "dfgdfgd",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{host}}/status_order/create",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"status_order",
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Редактирование статуса заказа",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/status_order/1/update",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"status_order",
+												"1",
+												"update"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Удаление статуса заказа",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/status_order/6/delete",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"status_order",
+												"6",
+												"delete"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Категории Copy 2",
+							"item": [
+								{
+									"name": "💚Создание категории",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "name",
+													"value": "dfgdfgdfgd",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{host}}/category/create",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"category",
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Редактирование категории",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "name",
+													"value": "dgdfgdg",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{host}}/category/1/update",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"category",
+												"1",
+												"update"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Удаление категории",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/category/7/delete",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"category",
+												"7",
+												"delete"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Товары Copy 2",
+							"item": [
+								{
+									"name": "💚Создание товара",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "name",
+													"value": "ЭТО ПИЗДЕЦ",
+													"type": "text"
+												},
+												{
+													"key": "description",
+													"value": "ЭТО ПИЗДЕЦ",
+													"type": "text"
+												},
+												{
+													"key": "price",
+													"value": "342342.22",
+													"type": "text"
+												},
+												{
+													"key": "quantity",
+													"value": "999",
+													"type": "text"
+												},
+												{
+													"key": "category_id",
+													"value": "2",
+													"type": "text"
+												},
+												{
+													"key": "path",
+													"type": "file",
+													"src": "/C:/Users/guseinov-ms/Downloads/logo.png.png"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{host}}/product/create",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"product",
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Редактирование товара",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/product/1/update",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"product",
+												"1",
+												"update"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Удаление товара",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/product/1/delete",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"product",
+												"1",
+												"delete"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Заказы Copy 2",
+							"item": [
+								{
+									"name": "💚Просмотр заказа",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/order/2",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"order",
+												"2"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Редактирование заказа",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/order/1/update",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"order",
+												"1",
+												"update"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Удаление заказа",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/order/1/delete",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"order",
+												"1",
+												"delete"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Прикрепление сотрудника к заказу",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "employee_id",
+													"value": "11",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{host}}/order/1/employee/attach",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"order",
+												"1",
+												"employee",
+												"attach"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Открепление текущего сотрудника к заказу",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/order/1/employee/detach",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"order",
+												"1",
+												"employee",
+												"detach"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Состав заказов Copy 2",
+							"item": [
+								{
+									"name": "💚Просмотр составов заказа по идентификатору заказа",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/compounds/order/2",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"compounds",
+												"order",
+												"2"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Просмотр состава заказа",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/order/compound/4",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"order",
+												"compound",
+												"4"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Создание состава заказа",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/order/2/compound/create?product_id=5&quantity=2",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"order",
+												"2",
+												"compound",
+												"create"
+											],
+											"query": [
+												{
+													"key": "product_id",
+													"value": "5"
+												},
+												{
+													"key": "quantity",
+													"value": "2"
+												},
+												{
+													"key": "total_price",
+													"value": "2000",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Редактирование состава заказа",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "quantity",
+													"value": "1",
+													"type": "text"
+												},
+												{
+													"key": "product_id",
+													"value": "4",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{host}}/order/compound/6/update",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"order",
+												"compound",
+												"6",
+												"update"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Удаление состава заказа",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/order/compound/6/delete",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"order",
+												"compound",
+												"6",
+												"delete"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Отчёты Copy 2",
+							"item": [
+								{
+									"name": "💚Выручка товара (за всё время)",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/orders/product/4",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"orders",
+												"product",
+												"4"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Выручка заказов (за период)",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/orders/between?date_start=2017-01-01&date_end=2024-07-03",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"orders",
+												"between"
+											],
+											"query": [
+												{
+													"key": "date_start",
+													"value": "2017-01-01"
+												},
+												{
+													"key": "date_end",
+													"value": "2024-07-03"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Выручка товара (за период)",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/orders/product/5/between?date_start=2017-01-01&date_end=2025-01-01",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"orders",
+												"product",
+												"5",
+												"between"
+											],
+											"query": [
+												{
+													"key": "date_start",
+													"value": "2017-01-01"
+												},
+												{
+													"key": "date_end",
+													"value": "2025-01-01"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Выручка категории (за период)",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/orders/category/1/between?date_start=2017-01-01&date_end=2024-01-01",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"orders",
+												"category",
+												"1",
+												"between"
+											],
+											"query": [
+												{
+													"key": "date_start",
+													"value": "2017-01-01"
+												},
+												{
+													"key": "date_end",
+													"value": "2024-01-01"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					],
+					"auth": {
+						"type": "bearer",
+						"bearer": [
+							{
+								"key": "token",
+								"value": "user3",
+								"type": "string"
+							}
+						]
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"packages": {},
+								"exec": [
+									"pm.test(\"Проверка кода ответа\", function () {",
+									"    pm.response.to.have.status(403); ",
+									"});",
+									"pm.test(\"Проверка времени ответа\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(500); ",
+									"});",
+									"pm.test(\"Проверка наличия ключа 'message'\", function () {",
+									"    pm.expect(pm.response.json()).to.have.property(\"message\");",
+									"});",
+									"pm.test(\"Проверка значения поля 'message'\", function () {",
+									"    pm.expect(pm.response.json().message).to.eql(\"Доступ запрещён\");",
+									"});",
+									"",
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "400",
+					"item": [
+						{
+							"name": "💚Создание смены",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/shift/create",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"shift",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "💚Редактирование смены Copy",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/shift/2/update",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"shift",
+										"2",
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "💚Редактирование корзины Copy",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "product_id",
+											"value": "2",
+											"type": "text"
+										},
+										{
+											"key": "quantity",
+											"value": "99999",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}/cart/update",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"cart",
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "💚Добавление товара в корзину Copy",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "quantity",
+											"value": "999999",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}/cart/product/2",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"cart",
+										"product",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "💚Добавление сотрудника на смену Copy",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "user_id",
+											"value": "9",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}/shift/2/user/add",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"shift",
+										"2",
+										"user",
+										"add"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"auth": {
+						"type": "bearer",
+						"bearer": [
+							{
+								"key": "token",
+								"value": "savayaqu",
+								"type": "string"
+							}
+						]
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"packages": {},
+								"exec": [
+									"pm.test(\"Проверка кода ответа\", function () {",
+									"    pm.response.to.have.status(400); ",
+									"});",
+									"pm.test(\"Проверка времени ответа\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(500); ",
+									"});",
+									"pm.test(\"Проверка наличия ключа 'message'\", function () {",
+									"    pm.expect(pm.response.json()).to.have.property(\"message\");",
+									"});",
+									"pm.test(\"Проверка значения поля 'message'\", function () {",
+									"    pm.expect(pm.response.json().message).to.eql(\"Некорректный запрос\");",
+									"});",
+									"",
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "404",
+					"item": [
+						{
+							"name": "Пользователи Copy",
+							"item": [
+								{
+									"name": "💚Удаление пользователя",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/user/99/delete",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"user",
+												"99",
+												"delete"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Просмотр конкретного пользователя",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/user/99",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"user",
+												"99"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Роли Copy",
+							"item": [
+								{
+									"name": "💚Удаление роли",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/role/99/delete",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"role",
+												"99",
+												"delete"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Смена Copy",
+							"item": [
+								{
+									"name": "💚Удаление сотрудника со смены",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/shift/99/user/delete?user_id=1",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"shift",
+												"99",
+												"user",
+												"delete"
+											],
+											"query": [
+												{
+													"key": "user_id",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Добавление сотрудника на смену",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/shift/99/user/add?user_id=1",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"shift",
+												"99",
+												"user",
+												"add"
+											],
+											"query": [
+												{
+													"key": "user_id",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Просмотр конкретной смены",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/shift/99",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"shift",
+												"99"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Удаление смены",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/shift/99/delete",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"shift",
+												"99",
+												"delete"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Корзина Copy",
+							"item": [
+								{
+									"name": "💚Добавление товара в корзину",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/cart/product/99",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"cart",
+												"product",
+												"99"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Удаление товара из корзины",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/cart/product/99",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"cart",
+												"product",
+												"99"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Просмотр корзины другого пользователя",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/user/99/cart",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"user",
+												"99",
+												"cart"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Новости Copy",
+							"item": [
+								{
+									"name": "💚Просмотр конкретной новости",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/news/99",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"news",
+												"99"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Редактирование новости",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/news/99/update",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"news",
+												"99",
+												"update"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Удаление новости",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/news/99/delete",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"news",
+												"99",
+												"delete"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Отзывы Copy",
+							"item": [
+								{
+									"name": "💚Просмотр отзывов у конкретного товара",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/product/99/reviews",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"product",
+												"99",
+												"reviews"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Редактирование отзыва",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/review/99/update",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"review",
+												"99",
+												"update"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Удаление отзыва",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/review/99/delete",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"review",
+												"99",
+												"delete"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Способы оплаты Copy",
+							"item": [
+								{
+									"name": "💚Редактирование способов оплаты",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/payment/99/update",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"payment",
+												"99",
+												"update"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Удаление способа оплаты",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/payment/99/delete",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"payment",
+												"99",
+												"delete"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Статус заказов Copy",
+							"item": [
+								{
+									"name": "💚Редактирование статуса заказа",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/status_order/99/update",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"status_order",
+												"99",
+												"update"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Удаление статуса заказа",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/status_order/99/delete",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"status_order",
+												"99",
+												"delete"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Категории Copy",
+							"item": [
+								{
+									"name": "💚Редактирование категории",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/category/99/update",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"category",
+												"99",
+												"update"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Удаление категории",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/category/99/delete",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"category",
+												"99",
+												"delete"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Товары Copy",
+							"item": [
+								{
+									"name": "💚Просмотр товара",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/product/99",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"product",
+												"99"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Редактирование товара",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/product/99/update",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"product",
+												"99",
+												"update"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Удаление товара",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/product/99/delete",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"product",
+												"99",
+												"delete"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Заказы Copy",
+							"item": [
+								{
+									"name": "💚Оформление заказа",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/checkout?payment_id=2",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"checkout"
+											],
+											"query": [
+												{
+													"key": "payment_id",
+													"value": "2"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Редактирование заказа",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/order/99/update",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"order",
+												"99",
+												"update"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Удаление заказа",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/order/99/delete",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"order",
+												"99",
+												"delete"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Состав заказов Copy",
+							"item": [
+								{
+									"name": "💚Просмотр составов заказа по идентификатору заказа",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/compounds/order/99",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"compounds",
+												"order",
+												"99"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Редактирование состава заказа",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "quantity",
+													"value": "1",
+													"type": "text"
+												},
+												{
+													"key": "product_id",
+													"value": "4",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{host}}/order/compound/99/update",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"order",
+												"compound",
+												"99",
+												"update"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Удаление состава заказа",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/order/compound/99/delete",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"order",
+												"compound",
+												"99",
+												"delete"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Отчёты Copy",
+							"item": [
+								{
+									"name": "💚Выручка товара (за всё время)",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/orders/product/99",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"orders",
+												"product",
+												"99"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Выручка товара (за период)",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "date_start",
+													"value": "2010-01-01",
+													"type": "text"
+												},
+												{
+													"key": "date_end",
+													"value": "2025-01-01",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{host}}/orders/product/99/between",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"orders",
+												"product",
+												"99",
+												"between"
+											],
+											"query": [
+												{
+													"key": "date_start",
+													"value": "2017-01-01",
+													"disabled": true
+												},
+												{
+													"key": "date_end",
+													"value": "2024-01-01",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Выручка категории (за период)",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "date_start",
+													"value": "2010-01-01",
+													"type": "text"
+												},
+												{
+													"key": "date_end",
+													"value": "2025-01-01",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{host}}/orders/category/99/between",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"orders",
+												"category",
+												"99",
+												"between"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					],
+					"auth": {
+						"type": "bearer",
+						"bearer": [
+							{
+								"key": "token",
+								"value": "savayaqu",
+								"type": "string"
+							}
+						]
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Проверка кода ответа\", function () {",
+									"    pm.response.to.have.status(404); ",
+									"});",
+									"pm.test(\"Проверка времени ответа\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(500); ",
+									"});",
+									"pm.test(\"Проверка наличия ключа 'message'\", function () {",
+									"    pm.expect(pm.response.json()).to.have.property(\"message\");",
+									"});",
+									"pm.test(\"Проверка значения поля 'message'\", function () {",
+									"    pm.expect(pm.response.json().message).to.eql(\"Не найдено\");",
+									"});",
+									"",
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "422",
+					"item": [
+						{
+							"name": "Пользователи Copy",
+							"item": [
+								{
+									"name": "💚Вход",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/login?login&password",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"login"
+											],
+											"query": [
+												{
+													"key": "login",
+													"value": null
+												},
+												{
+													"key": "password",
+													"value": null
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Регистрация",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": []
+										},
+										"url": {
+											"raw": "{{host}}/register?name=Pidor&surname=Pidor&login=Pidor&password=Pidor1!&email=zdsfsk@mail.eu&telephone=23213131231",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"register"
+											],
+											"query": [
+												{
+													"key": "name",
+													"value": "Pidor"
+												},
+												{
+													"key": "surname",
+													"value": "Pidor"
+												},
+												{
+													"key": "login",
+													"value": "Pidor"
+												},
+												{
+													"key": "password",
+													"value": "Pidor1!"
+												},
+												{
+													"key": "email",
+													"value": "zdsfsk@mail.eu"
+												},
+												{
+													"key": "telephone",
+													"value": "23213131231"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Создание пользователя с нужной ролью",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/user/create",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"user",
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Редактирование пользователя",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "password",
+													"value": "ee",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{host}}/user/5/update",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"user",
+												"5",
+												"update"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Изменение пароля пользователя",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/profile/update?password=fsfgdsg",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"profile",
+												"update"
+											],
+											"query": [
+												{
+													"key": "password",
+													"value": "fsfgdsg"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Роли Copy",
+							"item": [
+								{
+									"name": "💚Создание роли",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/role/create",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"role",
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Редактирование роли",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/role/2/update?code=22",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"role",
+												"2",
+												"update"
+											],
+											"query": [
+												{
+													"key": "code",
+													"value": "22"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Смена Copy",
+							"item": [
+								{
+									"name": "💚Добавление сотрудника на смену",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/shift/2/user/add",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"shift",
+												"2",
+												"user",
+												"add"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Создание смены",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/shift/create?date_start=2023-01-01&date_end=2023-01-04",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"shift",
+												"create"
+											],
+											"query": [
+												{
+													"key": "date_start",
+													"value": "2023-01-01"
+												},
+												{
+													"key": "date_end",
+													"value": "2023-01-04"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Редактирование смены",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/shift/2/update?date_start=2024-01-01&date_end=2025-01-01",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"shift",
+												"2",
+												"update"
+											],
+											"query": [
+												{
+													"key": "date_start",
+													"value": "2024-01-01"
+												},
+												{
+													"key": "date_end",
+													"value": "2025-01-01"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Новости Copy",
+							"item": [
+								{
+									"name": "💚Редактирование новости",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "",
+													"type": "file",
+													"src": []
+												}
+											]
+										},
+										"url": {
+											"raw": "{{host}}/news/1/update?name",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"news",
+												"1",
+												"update"
+											],
+											"query": [
+												{
+													"key": "name",
+													"value": null
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Создание новости",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/news/create",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"news",
+												"create"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Отзывы Copy",
+							"item": [
+								{
+									"name": "💚Создание отзыва",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/product/5/review/create",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"product",
+												"5",
+												"review",
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Редактирование отзыва",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/review/1/update?rating",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"review",
+												"1",
+												"update"
+											],
+											"query": [
+												{
+													"key": "rating",
+													"value": null
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Способы оплаты Copy",
+							"item": [
+								{
+									"name": "💚Редактирование способов оплаты",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/payment/1/update?name",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"payment",
+												"1",
+												"update"
+											],
+											"query": [
+												{
+													"key": "name",
+													"value": null
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Создание способов оплаты",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/payment/create",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"payment",
+												"create"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Статус заказов Copy",
+							"item": [
+								{
+									"name": "💚Создание статуса заказа",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/status_order/create",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"status_order",
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Редактирование статуса заказа",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/status_order/1/update?name",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"status_order",
+												"1",
+												"update"
+											],
+											"query": [
+												{
+													"key": "name",
+													"value": null
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Категории Copy",
+							"item": [
+								{
+									"name": "💚Создание категории",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/category/create",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"category",
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Редактирование категории",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/category/1/update?name",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"category",
+												"1",
+												"update"
+											],
+											"query": [
+												{
+													"key": "name",
+													"value": null
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Товары Copy",
+							"item": [
+								{
+									"name": "💚Создание товара",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/product/create",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"product",
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Редактирование товара",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/product/7/update?name",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"product",
+												"7",
+												"update"
+											],
+											"query": [
+												{
+													"key": "name",
+													"value": null
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Заказы Copy",
+							"item": [
+								{
+									"name": "💚Оформление заказа",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/checkout",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"checkout"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Редактирование заказа",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/order/1/update?date_order=2024-13-13",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"order",
+												"1",
+												"update"
+											],
+											"query": [
+												{
+													"key": "date_order",
+													"value": "2024-13-13"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Прикрепление текущего сотрудника к заказу",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/order/1/employee/attach?employee_id=",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"order",
+												"1",
+												"employee",
+												"attach"
+											],
+											"query": [
+												{
+													"key": "employee_id",
+													"value": ""
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Состав заказов Copy",
+							"item": [
+								{
+									"name": "💚Создание состава заказа",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/order/1/compound/create?product_id=&quantity=",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"order",
+												"1",
+												"compound",
+												"create"
+											],
+											"query": [
+												{
+													"key": "product_id",
+													"value": ""
+												},
+												{
+													"key": "quantity",
+													"value": ""
+												},
+												{
+													"key": "total_price",
+													"value": "2000",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Редактирование состава заказа",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "quantity",
+													"value": "",
+													"type": "text"
+												},
+												{
+													"key": "product_id",
+													"value": "4",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{host}}/order/compound/8/update",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"order",
+												"compound",
+												"8",
+												"update"
+											],
+											"query": [
+												{
+													"key": "product_id",
+													"value": "sdsd",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Отчёты Copy",
+							"item": [
+								{
+									"name": "💚Выручка заказов (за период)",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/orders/between?date_start=2017-01-01&date_end=2024-07-03 03:03:03",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"orders",
+												"between"
+											],
+											"query": [
+												{
+													"key": "date_start",
+													"value": "2017-01-01"
+												},
+												{
+													"key": "date_end",
+													"value": "2024-07-03 03:03:03"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Выручка товара (за период)",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/orders/product/4/between?date_start=2017-01-01&date_end=2024-01-01 01:01:01",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"orders",
+												"product",
+												"4",
+												"between"
+											],
+											"query": [
+												{
+													"key": "date_start",
+													"value": "2017-01-01"
+												},
+												{
+													"key": "date_end",
+													"value": "2024-01-01 01:01:01"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Выручка категории (за период)",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/orders/category/1/between?date_start=2017-01-01&date_end=2024-01-01 01:01:01",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"orders",
+												"category",
+												"1",
+												"between"
+											],
+											"query": [
+												{
+													"key": "date_start",
+													"value": "2017-01-01"
+												},
+												{
+													"key": "date_end",
+													"value": "2024-01-01 01:01:01"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"packages": {},
+								"exec": [
+									"pm.test(\"Проверка кода ответа\", function () {",
+									"    pm.response.to.have.status(422); ",
+									"});",
+									"pm.test(\"Проверка времени ответа\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(500); ",
+									"});",
+									"pm.test(\"Проверка наличия ключа 'message'\", function () {",
+									"    pm.expect(pm.response.json()).to.have.property(\"message\");",
+									"});",
+									"",
+									"",
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "201",
+					"item": [
+						{
+							"name": "💚Регистрация Copy",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{host}}/register?name=Pidor&surname=Pidor&login=Pidor33df&password=Pidor1!3&email=zdsfsksdf@mail.er&telephone=2321313123133",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"register"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "Pidor"
+										},
+										{
+											"key": "surname",
+											"value": "Pidor"
+										},
+										{
+											"key": "login",
+											"value": "Pidor33df"
+										},
+										{
+											"key": "password",
+											"value": "Pidor1!3"
+										},
+										{
+											"key": "email",
+											"value": "zdsfsksdf@mail.er"
+										},
+										{
+											"key": "telephone",
+											"value": "2321313123133"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "💚Создание пользователя с нужной ролью Copy",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "dfgdfg",
+											"type": "text"
+										},
+										{
+											"key": "surname",
+											"value": "dfggdfgd",
+											"type": "text"
+										},
+										{
+											"key": "login",
+											"value": "Pifgdfgdg2",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "sdfskj@mail.ru3",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "Pidor0121!3",
+											"type": "text"
+										},
+										{
+											"key": "telephone",
+											"value": "23534342",
+											"type": "text"
+										},
+										{
+											"key": "role_id",
+											"value": "1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}/user/create",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"user",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "💚Создание смены Copy",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "date_start",
+											"value": "2024-10-10 10:10:10",
+											"type": "text"
+										},
+										{
+											"key": "date_end",
+											"value": "2024-10-11 20:20:20",
+											"type": "text"
+										},
+										{
+											"key": "status",
+											"value": "1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}/shift/create",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"shift",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "💚Создание роли Copy",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "WhatHappened",
+											"type": "text"
+										},
+										{
+											"key": "code",
+											"value": "Админиап",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}/role/create",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"role",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "💚Создание новости Copy",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "date",
+											"value": "2020-01-01 12:12:12",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "sdfsdf",
+											"type": "text"
+										},
+										{
+											"key": "short_description",
+											"value": "dfgdfg",
+											"type": "text"
+										},
+										{
+											"key": "long_description",
+											"value": "sdfsdf",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}/news/create",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"news",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "💚Создание отзыва Copy",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/product/2/review/create?rating=3&description=dfgdfgd",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"product",
+										"2",
+										"review",
+										"create"
+									],
+									"query": [
+										{
+											"key": "rating",
+											"value": "3"
+										},
+										{
+											"key": "description",
+											"value": "dfgdfgd"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "💚Создание способов оплаты Copy",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "dfgdfgd",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}/payment/create",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"payment",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "💚Создание статуса заказа Copy",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "dfgdfgd",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}/status_order/create",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"status_order",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "💚Создание категории Copy",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "dfgdfgdfgd",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}/category/create",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"category",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "💚Создание товара Copy",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "ЭТО ПИЗДЕЦ",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "ЭТО ПИЗДЕЦ",
+											"type": "text"
+										},
+										{
+											"key": "price",
+											"value": "342342.22",
+											"type": "text"
+										},
+										{
+											"key": "quantity",
+											"value": "999",
+											"type": "text"
+										},
+										{
+											"key": "category_id",
+											"value": "2",
+											"type": "text"
+										},
+										{
+											"key": "path",
+											"type": "file",
+											"src": "/C:/Users/guseinov-ms/Downloads/logo.png.png"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}/product/create",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"product",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "💚Создание состава заказа Copy",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/order/2/compound/create?product_id=5&quantity=2",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"order",
+										"2",
+										"compound",
+										"create"
+									],
+									"query": [
+										{
+											"key": "product_id",
+											"value": "5"
+										},
+										{
+											"key": "quantity",
+											"value": "2"
+										},
+										{
+											"key": "total_price",
+											"value": "2000",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"auth": {
+						"type": "bearer",
+						"bearer": [
+							{
+								"key": "token",
+								"value": "savayaqu",
+								"type": "string"
+							}
+						]
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"packages": {},
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"packages": {},
+								"exec": [
+									"pm.test(\"Проверка кода ответа\", function () {\r",
+									"    pm.response.to.have.status(201); \r",
+									"});\r",
+									"pm.test(\"Проверка времени ответа\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500); \r",
+									"});\r",
+									"pm.test(\"Проверка наличия ключа 'message'\", function () {\r",
+									"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+									"});\r",
+									"\r",
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "200",
+					"item": [
+						{
+							"name": "Пользователи Copy",
+							"item": [
+								{
+									"name": "💚Вход",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/login?login=user1&password=user1",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"login"
+											],
+											"query": [
+												{
+													"key": "login",
+													"value": "user1"
+												},
+												{
+													"key": "password",
+													"value": "user1"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Просмотр списка пользователей",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/users",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"users"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Просмотр своего профиля",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/profile",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"profile"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Редактирование пользователя",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/user/5/update",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"user",
+												"5",
+												"update"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Изменение пароля пользователя",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/profile/update",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"profile",
+												"update"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Удаление пользователя",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/user/18/delete",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"user",
+												"18",
+												"delete"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Просмотр конкретного пользователя",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/user/5",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"user",
+												"5"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Просмотр сотрудников",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/employees",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"employees"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Смена Copy",
+							"item": [
+								{
+									"name": "💚Удаление сотрудника со смены",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "user_id",
+													"value": "10",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{host}}/shift/2/user/delete",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"shift",
+												"2",
+												"user",
+												"delete"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Добавление сотрудника на смену",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "user_id",
+													"value": "10",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{host}}/shift/2/user/add",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"shift",
+												"2",
+												"user",
+												"add"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Просмотр смен",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/shifts",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"shifts"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Просмотр конкретной смены",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/shift/2",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"shift",
+												"2"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Редактирование смены",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "date_start",
+													"value": "2020-12-12 12:12:12",
+													"type": "text"
+												},
+												{
+													"key": "date_end",
+													"value": "2027-01-01 10:10:10",
+													"type": "text"
+												},
+												{
+													"key": "status",
+													"value": "1",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{host}}/shift/2/update",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"shift",
+												"2",
+												"update"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Удаление смены",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/shift/4/delete",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"shift",
+												"4",
+												"delete"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Роли Copy",
+							"item": [
+								{
+									"name": "💚Просмотр ролей",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/roles",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"roles"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Редактирование роли",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/role/2/update",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"role",
+												"2",
+												"update"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Удаление роли",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/role/5/delete",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"role",
+												"5",
+												"delete"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Корзина Copy",
+							"item": [
+								{
+									"name": "💚Добавление товара в корзину",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/cart/product/2",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"cart",
+												"product",
+												"2"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Редактирование корзины",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "product_id",
+													"value": "2",
+													"type": "text"
+												},
+												{
+													"key": "quantity",
+													"value": "3",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{host}}/cart/update",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"cart",
+												"update"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Удаление товара из корзины",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/cart/product/2",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"cart",
+												"product",
+												"2"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Просмотр своей корзины",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/cart",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"cart"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Просмотр корзины другого пользователя",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/user/6/cart",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"user",
+												"6",
+												"cart"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Новости Copy",
+							"item": [
+								{
+									"name": "💚Просмотр новостей",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/news",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"news"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Просмотр конкретной новости",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/news/1",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"news",
+												"1"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Редактирование новости",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/news/1/update",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"news",
+												"1",
+												"update"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Удаление новости",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/news/1/delete",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"news",
+												"1",
+												"delete"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Отзывы Copy",
+							"item": [
+								{
+									"name": "💚Просмотр отзывов",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/reviews",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"reviews"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Просмотр отзывов у конкретного товара",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/product/5/reviews",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"product",
+												"5",
+												"reviews"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Редактирование отзыва",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/review/1/update",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"review",
+												"1",
+												"update"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Удаление отзыва",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/review/1/delete",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"review",
+												"1",
+												"delete"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Способы оплаты Copy",
+							"item": [
+								{
+									"name": "💚Просмотр способов оплаты",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/payments",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"payments"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Редактирование способов оплаты",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/payment/5/update",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"payment",
+												"5",
+												"update"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Удаление способа оплаты",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/payment/4/delete",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"payment",
+												"4",
+												"delete"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Статус заказов Copy",
+							"item": [
+								{
+									"name": "💚Просмотр статуса заказов",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/status_orders",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"status_orders"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Редактирование статуса заказа",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/status_order/1/update",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"status_order",
+												"1",
+												"update"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Удаление статуса заказа",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/status_order/6/delete",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"status_order",
+												"6",
+												"delete"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Категории Copy",
+							"item": [
+								{
+									"name": "💚Редактирование категории",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "name",
+													"value": "dgdfgdg",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{host}}/category/1/update",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"category",
+												"1",
+												"update"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Удаление категории",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/category/7/delete",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"category",
+												"7",
+												"delete"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Просмотр категорий",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/categories",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"categories"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Товары Copy",
+							"item": [
+								{
+									"name": "💚Просмотр товаров",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/products",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"products"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Просмотр товара",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/product/8",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"product",
+												"8"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Редактирование товара",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/product/1/update",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"product",
+												"1",
+												"update"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Удаление товара",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/product/1/delete",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"product",
+												"1",
+												"delete"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Просмотр товаров определённой категории",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/category/1",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"category",
+												"1"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Заказы Copy",
+							"item": [
+								{
+									"name": "💚Просмотр заказов",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/orders",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"orders"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Просмотр заказа",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/order/2",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"order",
+												"2"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Редактирование заказа",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/order/1/update",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"order",
+												"1",
+												"update"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Удаление заказа",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/order/1/delete",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"order",
+												"1",
+												"delete"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Прикрепление сотрудника к заказу",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "employee_id",
+													"value": "11",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{host}}/order/1/employee/attach",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"order",
+												"1",
+												"employee",
+												"attach"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Открепление текущего сотрудника к заказу",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/order/1/employee/detach",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"order",
+												"1",
+												"employee",
+												"detach"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Состав заказов Copy",
+							"item": [
+								{
+									"name": "💚Просмотр составов заказа по идентификатору заказа",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/compounds/order/2",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"compounds",
+												"order",
+												"2"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Просмотр состава заказа",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/order/compound/4",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"order",
+												"compound",
+												"4"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Редактирование состава заказа",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "quantity",
+													"value": "1",
+													"type": "text"
+												},
+												{
+													"key": "product_id",
+													"value": "4",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{host}}/order/compound/6/update",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"order",
+												"compound",
+												"6",
+												"update"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Удаление состава заказа",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/order/compound/6/delete",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"order",
+												"compound",
+												"6",
+												"delete"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Отчёты Copy",
+							"item": [
+								{
+									"name": "💚Выручка товара (за всё время)",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/orders/product/4",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"orders",
+												"product",
+												"4"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Выручка заказов (за период)",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/orders/between?date_start=2017-01-01&date_end=2024-07-03",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"orders",
+												"between"
+											],
+											"query": [
+												{
+													"key": "date_start",
+													"value": "2017-01-01"
+												},
+												{
+													"key": "date_end",
+													"value": "2024-07-03"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Выручка товара (за период)",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/orders/product/5/between?date_start=2017-01-01&date_end=2025-01-01",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"orders",
+												"product",
+												"5",
+												"between"
+											],
+											"query": [
+												{
+													"key": "date_start",
+													"value": "2017-01-01"
+												},
+												{
+													"key": "date_end",
+													"value": "2025-01-01"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "💚Выручка категории (за период)",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/orders/category/1/between?date_start=2017-01-01&date_end=2024-01-01",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"orders",
+												"category",
+												"1",
+												"between"
+											],
+											"query": [
+												{
+													"key": "date_start",
+													"value": "2017-01-01"
+												},
+												{
+													"key": "date_end",
+													"value": "2024-01-01"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"packages": {},
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"packages": {},
+								"exec": [
+									"pm.test(\"Проверка кода ответа\", function () {\r",
+									"    pm.response.to.have.status(200); \r",
+									"});\r",
+									"pm.test(\"Проверка времени ответа\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500); \r",
+									"});\r",
+									"pm.test(\"Проверка наличия ключа 'message'\", function () {\r",
+									"    pm.expect(pm.response.json()).to.have.property(\"message\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									""
+								]
+							}
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "savayaqu",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "http://zaikin-va.tepk-it.ru/api",
+			"type": "string"
+		}
+	]
+}

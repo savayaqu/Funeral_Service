@@ -34,8 +34,6 @@ Route::get('/reviews', [ReviewController::class, 'index']);
 Route::get('/news', [NewsController::class, 'index']);
 //Просмотр конкретной новости
 Route::get('/news/{id}', [NewsController::class, 'show']);
-//Просмотр всех фотографий товаров
-Route::get('/photo/products', [ProductController::class, 'indexPhoto']);
 //Просмотр способов оплаты
 Route::get('/payments', [UserController::class, 'payments']);
 //Просмотр статусов заказов
